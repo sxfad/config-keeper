@@ -1,0 +1,6 @@
+rootProject.name = 'config-keeper'
+include 'suixingpay-config-front'
+include 'suixingpay-config-common'
+include 'suixingpay-config-server'
+include 'suixingpay-config-client'
+include 'suixingpay-config-client-demo'

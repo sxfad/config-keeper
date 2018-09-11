@@ -1,0 +1,114 @@
+.login-box {
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    width: 400px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #666;
+    font-size: 14px;
+}
+
+.login-box h1 {
+    font-size: 2em;
+    margin: .67em 0;
+    font-weight: normal;
+}
+
+.login-box .form-item {
+    margin-bottom: 20px;
+}
+
+.login-box label {
+    display: inline-block;
+    width: 70px;
+    text-align: right;
+    font-size: 14px;
+}
+
+.login-box input {
+    height: 45px;
+    border: 1px solid #d9d9d9;
+    -webkit-transition: 300ms;
+    transition: 300ms;
+    box-sizing: border-box;
+    border-radius: 6px;
+    width: 240px;
+    padding: 6px;
+    font: inherit;
+    color: #666;
+    display: inline-block;
+    vertical-align: middle;
+}
+.login-box .ocx_style {
+    height: 45px;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 6px;
+    width: 100%;
+    padding: 0 6px;
+    font: inherit;
+    color: #666;
+    display: inline-block;
+    vertical-align: middle;
+}
+.login-box input:hover,
+.login-box input:active,
+.login-box input:focus,
+.login-box .ocx_style:focus {
+    outline: 0;
+    border: 1px solid #2db7f5;
+}
+
+.login-box input::-moz-placeholder {
+    color: #ccc;
+    opacity: 1;
+}
+
+.login-box input:-ms-input-placeholder {
+    color: #ccc;
+}
+
+.login-box input::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+.login-box .error {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%, -80%);
+    transform: translate(-50%, -80%);
+    width: 100%;
+    text-align: center;
+    color: #f50;
+    font-size: 14px;
+}
+
+.login-box .button {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #fff;
+    background: #2db7f5;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: 300ms;
+    transition: 300ms;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.login-box .button:hover {
+    background: #57c5f7;
+}
+
+.login-title {
+    text-align: center;
+    padding: 10px 0 20px 0px;
+}

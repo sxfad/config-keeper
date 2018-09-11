@@ -1,0 +1,56 @@
+#基本信息
+info:
+  # application: ${name}
+  # description: ${description}
+  # version: ${version}
+  author: jiayu.qiu
+
+spring:
+  mvc:
+    favicon:
+      enabled: false
+  application:
+    name: suixingpay-config-server
+  profiles:
+    active: ${profile:dev}
+
+server:
+  port: ${port:8080}
+
+management:
+  security:
+    enabled: false
+  context-path: /ops
+
+#mybatis see org.mybatis.spring.boot.autoconfigure.MybatisProperties
+#mybatis.type-handlers-package=
+mybatis:
+  configuration:
+    cacheEnabled: false
+    default-statement-timeout: 5
+  mapperLocations: classpath:mybatis/*.xml
+
+suixingpay:
+  security:
+    path-patterns:
+    - /open/**
+  token:
+    path-patterns:
+    - /**
+    ignore-urls:
+    - /auth/login
+    - /auth/logout
+    - /open/**
+    - /captcha/**
+    - /bootstrap/**
+    - /js/**
+    - /css/**
+    - /images/**
+    - /**/favicon.ico
+    - /webjars/**
+    - /swagger-ui.html
+    - /v2/api-docs
+    - /configuration/**
+    - /swagger-resources/**
+    - "*.html"
+    - /error

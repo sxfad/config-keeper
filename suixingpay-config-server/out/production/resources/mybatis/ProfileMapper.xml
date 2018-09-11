@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suixingpay.config.server.mapper.ProfileMapper">
+
+    <resultMap id="ProfileResultMap" type="com.suixingpay.config.server.entity.ProfileDO">
+        <id column="profile" property="profile"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <sql id="columns">
+    profile, name
+  </sql>
+
+    <select id="getByProfile" parameterType="java.lang.String" resultMap="ProfileResultMap">
+        select
+        <include refid="columns"/>
+        from profile
+        where profile = #{profile}
+    </select>
+
+    <select id="listAll" resultMap="ProfileResultMap">
+        select
+        <include refid="columns"/>
+        from profile
+    </select>
+
+    <insert id="addProfile" parameterType="com.suixingpay.config.server.entity.ProfileDO">
+    insert into profile(profile, name) 
+    values(#{profile}, #{name})
+  </insert>
+
+    <update id="updateProfile" parameterType="com.suixingpay.config.server.entity.ProfileDO">
+    update profile 
+    set name = #{name}
+    where profile = #{profile}
+  </update>
+
+</mapper>

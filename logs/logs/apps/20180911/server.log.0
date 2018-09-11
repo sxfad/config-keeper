@@ -1,0 +1,1072 @@
+2018-09-11 15:17:40.777|INFO -[Starting ConfigServerApplication on qiujiayudeMacBook-Pro.local with PID 1712 (/Users/qiujiayu/Documents/suixingpay/opensource/config-keeper/suixingpay-config-server/out/production/classes started by qiujiayu in /Users/qiujiayu/Documents/suixingpay/opensource/config-keeper)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:17:40.786|DEBUG-[Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:17:40.787|INFO -[The following profiles are active: dev]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:17:40.923|INFO -[Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@ccb4b1b: startup date [Tue Sep 11 15:17:40 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[main]
+2018-09-11 15:17:43.377|INFO -[Overriding bean definition for bean 'filterRegistrationBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.alibaba.druid.spring.boot.autoconfigure.stat.DruidWebStatFilterConfiguration; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/stat/DruidWebStatFilterConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jarvis/cache/autoconfigure/AutoloadCacheAutoConfigure.class]]]-[o.s.b.f.s.DefaultListableBeanFactory]-[main]
+2018-09-11 15:17:43.557|INFO -[Multiple Spring Data modules found, entering strict repository configuration mode!]-[o.s.d.r.c.RepositoryConfigurationDelegate]-[main]
+2018-09-11 15:17:44.392|INFO -[Bean 'com.jarvis.cache.autoconfigure.DistributedLockConfiguration' of type [com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$72d30c93] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:17:44.552|INFO -[Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:17:44.559|INFO -[Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration$$EnhancerBySpringCGLIB$$9f071976] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:17:44.703|INFO -[Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.jedis.JedisConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:17:44.764|ERROR-[Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool]-[c.j.c.a.DistributedLockConfiguration]-[main]
+org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:204)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.getConnection(JedisConnectionFactory.java:348)
+	at com.jarvis.cache.autoconfigure.DistributedLockConfiguration.autoLoadCacheDistributedLock(DistributedLockConfiguration.java:47)
+	at com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$72d30c93.CGLIB$autoLoadCacheDistributedLock$0(<generated>)
+	at com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$72d30c93$$FastClassBySpringCGLIB$$40b28029.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:358)
+	at com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$72d30c93.autoLoadCacheDistributedLock(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider.getIfAvailable(DefaultListableBeanFactory.java:1662)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure.<init>(AutoloadCacheAutoConfigure.java:62)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure$$EnhancerBySpringCGLIB$$b910eaf5.<init>(<generated>)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:122)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:271)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1193)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1095)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.registerBeanPostProcessors(PostProcessorRegistrationDelegate.java:225)
+	at org.springframework.context.support.AbstractApplicationContext.registerBeanPostProcessors(AbstractApplicationContext.java:703)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:528)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:134)
+	at com.suixingpay.config.server.ConfigServerApplication.main(ConfigServerApplication.java:32)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:53)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:226)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:16)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:194)
+	... 59 common frames omitted
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: Connection refused (Connection refused)
+	at redis.clients.jedis.Connection.connect(Connection.java:207)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:93)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1767)
+	at redis.clients.jedis.JedisFactory.makeObject(JedisFactory.java:106)
+	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:888)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:432)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:361)
+	at redis.clients.util.Pool.getResource(Pool.java:49)
+	... 62 common frames omitted
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at redis.clients.jedis.Connection.connect(Connection.java:184)
+	... 69 common frames omitted
+2018-09-11 15:17:44.923|INFO -[Bean 'autoload.cache-com.jarvis.cache.autoconfigure.AutoloadCacheProperties' of type [com.jarvis.cache.autoconfigure.AutoloadCacheProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:17:44.935|INFO -[Bean 'com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure' of type [com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure$$EnhancerBySpringCGLIB$$b910eaf5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:17:45.467|DEBUG-[HessianSerializer auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 15:17:45.500|ERROR-[Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:204)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.getConnection(JedisConnectionFactory.java:348)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheManageConfiguration.autoloadCacheCacheManager(AutoloadCacheManageConfiguration.java:124)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheManageConfiguration$$EnhancerBySpringCGLIB$$4651004f.CGLIB$autoloadCacheCacheManager$2(<generated>)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheManageConfiguration$$EnhancerBySpringCGLIB$$4651004f$$FastClassBySpringCGLIB$$a59f71c6.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:358)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheManageConfiguration$$EnhancerBySpringCGLIB$$4651004f.autoloadCacheCacheManager(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.aop.framework.autoproxy.BeanFactoryAdvisorRetrievalHelper.findAdvisorBeans(BeanFactoryAdvisorRetrievalHelper.java:92)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findCandidateAdvisors(AbstractAdvisorAutoProxyCreator.java:102)
+	at org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator.findCandidateAdvisors(AnnotationAwareAspectJAutoProxyCreator.java:88)
+	at org.springframework.aop.aspectj.autoproxy.AspectJAwareAdvisorAutoProxyCreator.shouldSkip(AspectJAwareAdvisorAutoProxyCreator.java:103)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessBeforeInstantiation(AbstractAutoProxyCreator.java:248)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInstantiation(AbstractAutowireCapableBeanFactory.java:1037)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.resolveBeforeInstantiation(AbstractAutowireCapableBeanFactory.java:1011)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:473)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.aop.framework.autoproxy.BeanFactoryAdvisorRetrievalHelper.findAdvisorBeans(BeanFactoryAdvisorRetrievalHelper.java:92)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findCandidateAdvisors(AbstractAdvisorAutoProxyCreator.java:102)
+	at org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator.findCandidateAdvisors(AnnotationAwareAspectJAutoProxyCreator.java:88)
+	at org.springframework.aop.aspectj.autoproxy.AspectJAwareAdvisorAutoProxyCreator.shouldSkip(AspectJAwareAdvisorAutoProxyCreator.java:103)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessBeforeInstantiation(AbstractAutoProxyCreator.java:248)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInstantiation(AbstractAutowireCapableBeanFactory.java:1037)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.resolveBeforeInstantiation(AbstractAutowireCapableBeanFactory.java:1011)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:473)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.getEmbeddedServletContainerFactory(EmbeddedWebApplicationContext.java:199)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.createEmbeddedServletContainer(EmbeddedWebApplicationContext.java:162)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.onRefresh(EmbeddedWebApplicationContext.java:134)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:537)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:134)
+	at com.suixingpay.config.server.ConfigServerApplication.main(ConfigServerApplication.java:32)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:53)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:226)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:16)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:194)
+	... 106 common frames omitted
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: Connection refused (Connection refused)
+	at redis.clients.jedis.Connection.connect(Connection.java:207)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:93)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1767)
+	at redis.clients.jedis.JedisFactory.makeObject(JedisFactory.java:106)
+	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:888)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:432)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:361)
+	at redis.clients.util.Pool.getResource(Pool.java:49)
+	... 109 common frames omitted
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at redis.clients.jedis.Connection.connect(Connection.java:184)
+	... 116 common frames omitted
+2018-09-11 15:17:45.513|DEBUG-[SpringELParser auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 15:17:46.237|INFO -[Tomcat initialized with port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 15:17:46.261|INFO -[Starting service [Tomcat]]-[o.a.catalina.core.StandardService]-[main]
+2018-09-11 15:17:46.263|INFO -[Starting Servlet Engine: Apache Tomcat/8.5.23]-[o.a.catalina.core.StandardEngine]-[main]
+2018-09-11 15:17:46.576|INFO -[Initializing Spring embedded WebApplicationContext]-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[localhost-startStop-1]
+2018-09-11 15:17:47.223|INFO -[Mapping filter: 'metricsFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:17:47.224|INFO -[Mapping filter: 'characterEncodingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:17:47.224|INFO -[Mapping filter: 'hiddenHttpMethodFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:17:47.225|INFO -[Mapping filter: 'httpPutFormContentFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:17:47.225|INFO -[Mapping filter: 'requestContextFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:17:47.225|INFO -[Mapping filter: 'webRequestLoggingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:17:47.226|INFO -[Mapping filter: 'noCacheFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:17:47.226|INFO -[Mapping filter: 'HTTPBasicAuthorizeAttribute' to urls: [/autoload-cache-ui.html, /autoload-cache/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:17:47.226|INFO -[Mapping filter: 'simpleCORSFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:17:47.226|INFO -[Mapping filter: 'applicationContextIdFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:17:47.227|INFO -[Mapping servlet: 'dispatcherServlet' to [/]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:17:47.229|INFO -[Mapping servlet: 'statViewServlet' to [/druid/*]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:17:50.028|WARN -[Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'autoloadCacheAutoConfigurationValidator': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: No cache manager could be auto-configured]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[main]
+2018-09-11 15:17:50.030|INFO -[----------------------AutoLoadHandler.shutdown--------------------]-[com.jarvis.cache.AutoLoadHandler]-[main]
+2018-09-11 15:17:50.030|TRACE-[cache destroy ... ... ...]-[com.jarvis.cache.CacheHandler]-[main]
+2018-09-11 15:17:50.034|INFO -[Stopping service [Tomcat]]-[o.a.catalina.core.StandardService]-[main]
+2018-09-11 15:17:50.077|INFO -[
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.]-[o.s.b.a.l.AutoConfigurationReportLoggingInitializer]-[main]
+2018-09-11 15:17:50.082|ERROR-[Application startup failed]-[o.s.boot.SpringApplication]-[main]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'autoloadCacheAutoConfigurationValidator': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: No cache manager could be auto-configured
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:137)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:409)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:134)
+	at com.suixingpay.config.server.ConfigServerApplication.main(ConfigServerApplication.java:32)
+Caused by: java.lang.IllegalArgumentException: No cache manager could be auto-configured
+	at org.springframework.util.Assert.notNull(Assert.java:134)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure$CacheManagerValidator.checkHasCacheManager(AutoloadCacheAutoConfigure.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:311)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:134)
+	... 17 common frames omitted
+2018-09-11 15:22:01.352|INFO -[Starting ConfigServerApplication on qiujiayudeMacBook-Pro.local with PID 1742 (/Users/qiujiayu/Documents/suixingpay/opensource/config-keeper/suixingpay-config-server/out/production/classes started by qiujiayu in /Users/qiujiayu/Documents/suixingpay/opensource/config-keeper)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:22:01.358|DEBUG-[Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:22:01.359|INFO -[The following profiles are active: dev]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:22:01.433|INFO -[Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3f0846c6: startup date [Tue Sep 11 15:22:01 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[main]
+2018-09-11 15:22:02.571|INFO -[Overriding bean definition for bean 'filterRegistrationBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.alibaba.druid.spring.boot.autoconfigure.stat.DruidWebStatFilterConfiguration; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/stat/DruidWebStatFilterConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jarvis/cache/autoconfigure/AutoloadCacheAutoConfigure.class]]]-[o.s.b.f.s.DefaultListableBeanFactory]-[main]
+2018-09-11 15:22:02.841|INFO -[Multiple Spring Data modules found, entering strict repository configuration mode!]-[o.s.d.r.c.RepositoryConfigurationDelegate]-[main]
+2018-09-11 15:22:03.205|INFO -[Bean 'com.jarvis.cache.autoconfigure.DistributedLockConfiguration' of type [com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$b76d44de] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:22:03.312|INFO -[Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:22:03.318|INFO -[Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration$$EnhancerBySpringCGLIB$$e3a151c1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:22:03.358|INFO -[Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.jedis.JedisConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:22:03.380|ERROR-[Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool]-[c.j.c.a.DistributedLockConfiguration]-[main]
+org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:204)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.getConnection(JedisConnectionFactory.java:348)
+	at com.jarvis.cache.autoconfigure.DistributedLockConfiguration.autoLoadCacheDistributedLock(DistributedLockConfiguration.java:47)
+	at com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$b76d44de.CGLIB$autoLoadCacheDistributedLock$0(<generated>)
+	at com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$b76d44de$$FastClassBySpringCGLIB$$7038eb76.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:358)
+	at com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$b76d44de.autoLoadCacheDistributedLock(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider.getIfAvailable(DefaultListableBeanFactory.java:1662)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure.<init>(AutoloadCacheAutoConfigure.java:62)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure$$EnhancerBySpringCGLIB$$fdab2340.<init>(<generated>)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:122)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:271)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1193)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1095)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.registerBeanPostProcessors(PostProcessorRegistrationDelegate.java:225)
+	at org.springframework.context.support.AbstractApplicationContext.registerBeanPostProcessors(AbstractApplicationContext.java:703)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:528)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:134)
+	at com.suixingpay.config.server.ConfigServerApplication.main(ConfigServerApplication.java:32)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:53)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:226)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:16)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:194)
+	... 59 common frames omitted
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: Connection refused (Connection refused)
+	at redis.clients.jedis.Connection.connect(Connection.java:207)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:93)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1767)
+	at redis.clients.jedis.JedisFactory.makeObject(JedisFactory.java:106)
+	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:888)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:432)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:361)
+	at redis.clients.util.Pool.getResource(Pool.java:49)
+	... 62 common frames omitted
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at redis.clients.jedis.Connection.connect(Connection.java:184)
+	... 69 common frames omitted
+2018-09-11 15:22:03.512|INFO -[Bean 'autoload.cache-com.jarvis.cache.autoconfigure.AutoloadCacheProperties' of type [com.jarvis.cache.autoconfigure.AutoloadCacheProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:22:03.515|INFO -[Bean 'com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure' of type [com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure$$EnhancerBySpringCGLIB$$fdab2340] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:22:03.671|DEBUG-[HessianSerializer auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 15:22:03.688|ERROR-[Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:204)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.getConnection(JedisConnectionFactory.java:348)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheManageConfiguration.autoloadCacheCacheManager(AutoloadCacheManageConfiguration.java:124)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheManageConfiguration$$EnhancerBySpringCGLIB$$8aeb389a.CGLIB$autoloadCacheCacheManager$2(<generated>)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheManageConfiguration$$EnhancerBySpringCGLIB$$8aeb389a$$FastClassBySpringCGLIB$$7c6cb269.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:358)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheManageConfiguration$$EnhancerBySpringCGLIB$$8aeb389a.autoloadCacheCacheManager(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.aop.framework.autoproxy.BeanFactoryAdvisorRetrievalHelper.findAdvisorBeans(BeanFactoryAdvisorRetrievalHelper.java:92)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findCandidateAdvisors(AbstractAdvisorAutoProxyCreator.java:102)
+	at org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator.findCandidateAdvisors(AnnotationAwareAspectJAutoProxyCreator.java:88)
+	at org.springframework.aop.aspectj.autoproxy.AspectJAwareAdvisorAutoProxyCreator.shouldSkip(AspectJAwareAdvisorAutoProxyCreator.java:103)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessBeforeInstantiation(AbstractAutoProxyCreator.java:248)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInstantiation(AbstractAutowireCapableBeanFactory.java:1037)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.resolveBeforeInstantiation(AbstractAutowireCapableBeanFactory.java:1011)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:473)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.aop.framework.autoproxy.BeanFactoryAdvisorRetrievalHelper.findAdvisorBeans(BeanFactoryAdvisorRetrievalHelper.java:92)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findCandidateAdvisors(AbstractAdvisorAutoProxyCreator.java:102)
+	at org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator.findCandidateAdvisors(AnnotationAwareAspectJAutoProxyCreator.java:88)
+	at org.springframework.aop.aspectj.autoproxy.AspectJAwareAdvisorAutoProxyCreator.shouldSkip(AspectJAwareAdvisorAutoProxyCreator.java:103)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessBeforeInstantiation(AbstractAutoProxyCreator.java:248)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInstantiation(AbstractAutowireCapableBeanFactory.java:1037)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.resolveBeforeInstantiation(AbstractAutowireCapableBeanFactory.java:1011)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:473)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.getEmbeddedServletContainerFactory(EmbeddedWebApplicationContext.java:199)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.createEmbeddedServletContainer(EmbeddedWebApplicationContext.java:162)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.onRefresh(EmbeddedWebApplicationContext.java:134)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:537)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:134)
+	at com.suixingpay.config.server.ConfigServerApplication.main(ConfigServerApplication.java:32)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:53)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:226)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:16)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:194)
+	... 106 common frames omitted
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: Connection refused (Connection refused)
+	at redis.clients.jedis.Connection.connect(Connection.java:207)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:93)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1767)
+	at redis.clients.jedis.JedisFactory.makeObject(JedisFactory.java:106)
+	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:888)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:432)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:361)
+	at redis.clients.util.Pool.getResource(Pool.java:49)
+	... 109 common frames omitted
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at redis.clients.jedis.Connection.connect(Connection.java:184)
+	... 116 common frames omitted
+2018-09-11 15:22:03.695|DEBUG-[SpringELParser auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 15:22:04.186|INFO -[Tomcat initialized with port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 15:22:04.198|INFO -[Starting service [Tomcat]]-[o.a.catalina.core.StandardService]-[main]
+2018-09-11 15:22:04.200|INFO -[Starting Servlet Engine: Apache Tomcat/8.5.23]-[o.a.catalina.core.StandardEngine]-[main]
+2018-09-11 15:22:04.347|INFO -[Initializing Spring embedded WebApplicationContext]-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[localhost-startStop-1]
+2018-09-11 15:22:04.769|INFO -[Mapping filter: 'metricsFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:22:04.770|INFO -[Mapping filter: 'characterEncodingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:22:04.770|INFO -[Mapping filter: 'hiddenHttpMethodFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:22:04.771|INFO -[Mapping filter: 'httpPutFormContentFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:22:04.773|INFO -[Mapping filter: 'requestContextFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:22:04.775|INFO -[Mapping filter: 'webRequestLoggingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:22:04.775|INFO -[Mapping filter: 'noCacheFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:22:04.775|INFO -[Mapping filter: 'HTTPBasicAuthorizeAttribute' to urls: [/autoload-cache-ui.html, /autoload-cache/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:22:04.775|INFO -[Mapping filter: 'simpleCORSFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:22:04.776|INFO -[Mapping filter: 'applicationContextIdFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:22:04.776|INFO -[Mapping servlet: 'dispatcherServlet' to [/]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:22:04.779|INFO -[Mapping servlet: 'statViewServlet' to [/druid/*]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:22:07.104|WARN -[Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'autoloadCacheAutoConfigurationValidator': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: No cache manager could be auto-configured]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[main]
+2018-09-11 15:22:07.106|INFO -[----------------------AutoLoadHandler.shutdown--------------------]-[com.jarvis.cache.AutoLoadHandler]-[main]
+2018-09-11 15:22:07.106|TRACE-[cache destroy ... ... ...]-[com.jarvis.cache.CacheHandler]-[main]
+2018-09-11 15:22:07.108|INFO -[Stopping service [Tomcat]]-[o.a.catalina.core.StandardService]-[main]
+2018-09-11 15:22:07.132|INFO -[
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.]-[o.s.b.a.l.AutoConfigurationReportLoggingInitializer]-[main]
+2018-09-11 15:22:07.137|ERROR-[Application startup failed]-[o.s.boot.SpringApplication]-[main]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'autoloadCacheAutoConfigurationValidator': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: No cache manager could be auto-configured
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:137)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:409)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:134)
+	at com.suixingpay.config.server.ConfigServerApplication.main(ConfigServerApplication.java:32)
+Caused by: java.lang.IllegalArgumentException: No cache manager could be auto-configured
+	at org.springframework.util.Assert.notNull(Assert.java:134)
+	at com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure$CacheManagerValidator.checkHasCacheManager(AutoloadCacheAutoConfigure.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:311)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:134)
+	... 17 common frames omitted
+2018-09-11 15:23:12.342|INFO -[Starting ConfigServerApplication on qiujiayudeMacBook-Pro.local with PID 1745 (/Users/qiujiayu/Documents/suixingpay/opensource/config-keeper/suixingpay-config-server/out/production/classes started by qiujiayu in /Users/qiujiayu/Documents/suixingpay/opensource/config-keeper)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:23:12.346|DEBUG-[Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:23:12.349|INFO -[The following profiles are active: dev]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:23:12.447|INFO -[Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3f0846c6: startup date [Tue Sep 11 15:23:12 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[main]
+2018-09-11 15:23:13.325|INFO -[Overriding bean definition for bean 'filterRegistrationBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.alibaba.druid.spring.boot.autoconfigure.stat.DruidWebStatFilterConfiguration; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/stat/DruidWebStatFilterConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jarvis/cache/autoconfigure/AutoloadCacheAutoConfigure.class]]]-[o.s.b.f.s.DefaultListableBeanFactory]-[main]
+2018-09-11 15:23:13.461|INFO -[Multiple Spring Data modules found, entering strict repository configuration mode!]-[o.s.d.r.c.RepositoryConfigurationDelegate]-[main]
+2018-09-11 15:23:14.099|INFO -[Bean 'com.jarvis.cache.autoconfigure.DistributedLockConfiguration' of type [com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$e2904cd5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:23:14.208|INFO -[Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:23:14.215|INFO -[Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration$$EnhancerBySpringCGLIB$$ec459b8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:23:14.261|INFO -[Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.jedis.JedisConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:23:14.300|DEBUG-[ILock with SpringJedisLock auto-configured]-[c.j.c.a.DistributedLockConfiguration]-[main]
+2018-09-11 15:23:14.303|INFO -[Bean 'autoLoadCacheDistributedLock' of type [com.jarvis.cache.redis.SpringJedisLock] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:23:14.421|INFO -[Bean 'autoload.cache-com.jarvis.cache.autoconfigure.AutoloadCacheProperties' of type [com.jarvis.cache.autoconfigure.AutoloadCacheProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:23:14.422|INFO -[Bean 'com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure' of type [com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure$$EnhancerBySpringCGLIB$$28ce2b37] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:23:14.600|DEBUG-[HessianSerializer auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 15:23:14.626|DEBUG-[ICacheManager with SpringJedisCacheManager auto-configured,AutoLoadConfig(namespace=suixingpay-config-server, threadCnt=10, maxElement=20000, printSlowLog=true, slowLoadTime=500, sortType=NONE, checkFromCacheBeforeLoad=false, autoLoadPeriod=50, refreshThreadPoolSize=2, refreshThreadPoolMaxSize=20, refreshThreadPoolkeepAliveTime=20, refreshQueueCapacity=2000, functions=null, loadDataTryCnt=1, processingMapSize=512)]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 15:23:14.660|DEBUG-[SpringELParser auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 15:23:15.073|INFO -[Tomcat initialized with port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 15:23:15.083|INFO -[Starting service [Tomcat]]-[o.a.catalina.core.StandardService]-[main]
+2018-09-11 15:23:15.084|INFO -[Starting Servlet Engine: Apache Tomcat/8.5.23]-[o.a.catalina.core.StandardEngine]-[main]
+2018-09-11 15:23:15.164|INFO -[Initializing Spring embedded WebApplicationContext]-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[localhost-startStop-1]
+2018-09-11 15:23:15.549|INFO -[Mapping filter: 'metricsFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:23:15.550|INFO -[Mapping filter: 'characterEncodingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:23:15.550|INFO -[Mapping filter: 'hiddenHttpMethodFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:23:15.550|INFO -[Mapping filter: 'httpPutFormContentFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:23:15.550|INFO -[Mapping filter: 'requestContextFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:23:15.550|INFO -[Mapping filter: 'webRequestLoggingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:23:15.550|INFO -[Mapping filter: 'noCacheFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:23:15.551|INFO -[Mapping filter: 'HTTPBasicAuthorizeAttribute' to urls: [/autoload-cache-ui.html, /autoload-cache/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:23:15.551|INFO -[Mapping filter: 'simpleCORSFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:23:15.551|INFO -[Mapping filter: 'applicationContextIdFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:23:15.551|INFO -[Mapping servlet: 'dispatcherServlet' to [/]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:23:15.552|INFO -[Mapping servlet: 'statViewServlet' to [/druid/*]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:23:17.754|INFO -[Mapped "{[/ops/mappings || /ops/mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.755|INFO -[Mapped "{[/ops/auditevents || /ops/auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.756|INFO -[Mapped "{[/ops/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.757|INFO -[Mapped "{[/ops/env || /ops/env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.757|INFO -[Mapped "{[/ops/dump || /ops/dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.758|INFO -[Mapped "{[/ops/beans || /ops/beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.760|INFO -[Mapped "{[/ops/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.760|INFO -[Mapped "{[/ops/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.760|INFO -[Mapped "{[/ops/loggers || /ops/loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.761|INFO -[Mapped "{[/ops/configprops || /ops/configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.762|INFO -[Mapped "{[/ops/autoconfig || /ops/autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.762|INFO -[Mapped "{[/ops/info || /ops/info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.763|INFO -[Mapped "{[/ops/trace || /ops/trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.764|INFO -[Mapped "{[/ops/heapdump || /ops/heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.765|INFO -[Mapped "{[/ops/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.765|INFO -[Mapped "{[/ops/metrics || /ops/metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:17.766|INFO -[Mapped "{[/ops/health || /ops/health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:23:18.293|INFO -[Registering beans for JMX exposure on startup]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 15:23:18.295|INFO -[Bean with name 'statFilter' has been autodetected for JMX exposure]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 15:23:18.295|INFO -[Bean with name 'dataSource' has been autodetected for JMX exposure]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 15:23:18.303|INFO -[Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 15:23:18.305|INFO -[Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 15:23:18.310|INFO -[Starting beans in phase 0]-[o.s.c.s.DefaultLifecycleProcessor]-[main]
+2018-09-11 15:23:18.425|INFO -[Tomcat started on port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 15:23:18.431|INFO -[Started ConfigServerApplication in 7.155 seconds (JVM running for 8.453)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:23:18.431|INFO -[active profiles--->[dev]]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:23:18.432|INFO -[ConfigServerApplication is sussess!]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:23:19.568|INFO -[{dataSource-1} inited]-[c.alibaba.druid.pool.DruidDataSource]-[RMI TCP Connection(5)-127.0.0.1]
+2018-09-11 15:24:19.067|INFO -[Initializing Spring FrameworkServlet 'dispatcherServlet']-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[http-nio-8080-exec-1]
+2018-09-11 15:24:19.121|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-1]
+2018-09-11 15:24:19.123|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-1]
+2018-09-11 15:24:19.123|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-1]
+2018-09-11 15:24:27.441|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-2]
+2018-09-11 15:24:27.441|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-2]
+2018-09-11 15:24:27.441|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-2]
+2018-09-11 15:25:25.534|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-4]
+2018-09-11 15:25:25.534|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-4]
+2018-09-11 15:25:25.534|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-4]
+2018-09-11 15:25:43.831|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-6]
+2018-09-11 15:25:43.832|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-6]
+2018-09-11 15:25:43.832|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-6]
+2018-09-11 15:25:50.765|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-7]
+2018-09-11 15:25:50.765|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-7]
+2018-09-11 15:25:50.765|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-7]
+2018-09-11 15:25:59.126|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-9]
+2018-09-11 15:25:59.127|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-9]
+2018-09-11 15:25:59.127|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-9]
+2018-09-11 15:26:38.060|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-1]
+2018-09-11 15:26:38.060|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-1]
+2018-09-11 15:26:38.061|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-1]
+2018-09-11 15:35:17.031|INFO -[Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3f0846c6: startup date [Tue Sep 11 15:23:12 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[Thread-29]
+2018-09-11 15:35:17.033|INFO -[Stopping beans in phase 0]-[o.s.c.s.DefaultLifecycleProcessor]-[Thread-29]
+2018-09-11 15:35:17.035|INFO -[Unregistering JMX-exposed beans on shutdown]-[o.s.j.e.a.AnnotationMBeanExporter]-[Thread-29]
+2018-09-11 15:35:17.036|INFO -[Unregistering JMX-exposed beans]-[o.s.j.e.a.AnnotationMBeanExporter]-[Thread-29]
+2018-09-11 15:35:17.043|INFO -[{dataSource-1} closed]-[c.alibaba.druid.pool.DruidDataSource]-[Thread-29]
+2018-09-11 15:35:17.044|INFO -[----------------------AutoLoadHandler.shutdown--------------------]-[com.jarvis.cache.AutoLoadHandler]-[Thread-29]
+2018-09-11 15:35:17.044|TRACE-[cache destroy ... ... ...]-[com.jarvis.cache.CacheHandler]-[Thread-29]
+2018-09-11 15:35:22.609|INFO -[Starting ConfigServerApplication on qiujiayudeMacBook-Pro.local with PID 1842 (/Users/qiujiayu/Documents/suixingpay/opensource/config-keeper/suixingpay-config-server/out/production/classes started by qiujiayu in /Users/qiujiayu/Documents/suixingpay/opensource/config-keeper)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:35:22.618|DEBUG-[Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:35:22.619|INFO -[The following profiles are active: dev]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:35:22.661|INFO -[Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@78fbff54: startup date [Tue Sep 11 15:35:22 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[main]
+2018-09-11 15:35:23.478|INFO -[Overriding bean definition for bean 'filterRegistrationBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.alibaba.druid.spring.boot.autoconfigure.stat.DruidWebStatFilterConfiguration; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/stat/DruidWebStatFilterConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jarvis/cache/autoconfigure/AutoloadCacheAutoConfigure.class]]]-[o.s.b.f.s.DefaultListableBeanFactory]-[main]
+2018-09-11 15:35:23.602|INFO -[Multiple Spring Data modules found, entering strict repository configuration mode!]-[o.s.d.r.c.RepositoryConfigurationDelegate]-[main]
+2018-09-11 15:35:23.967|INFO -[Bean 'com.jarvis.cache.autoconfigure.DistributedLockConfiguration' of type [com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$465f0c8f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:35:24.032|INFO -[Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:35:24.037|INFO -[Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration$$EnhancerBySpringCGLIB$$72931972] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:35:24.072|INFO -[Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.jedis.JedisConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:35:24.107|DEBUG-[ILock with SpringJedisLock auto-configured]-[c.j.c.a.DistributedLockConfiguration]-[main]
+2018-09-11 15:35:24.110|INFO -[Bean 'autoLoadCacheDistributedLock' of type [com.jarvis.cache.redis.SpringJedisLock] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:35:24.173|INFO -[Bean 'autoload.cache-com.jarvis.cache.autoconfigure.AutoloadCacheProperties' of type [com.jarvis.cache.autoconfigure.AutoloadCacheProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:35:24.173|INFO -[Bean 'com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure' of type [com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure$$EnhancerBySpringCGLIB$$8c9ceaf1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 15:35:24.344|DEBUG-[HessianSerializer auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 15:35:24.370|DEBUG-[ICacheManager with SpringJedisCacheManager auto-configured,AutoLoadConfig(namespace=suixingpay-config-server, threadCnt=10, maxElement=20000, printSlowLog=true, slowLoadTime=500, sortType=NONE, checkFromCacheBeforeLoad=false, autoLoadPeriod=50, refreshThreadPoolSize=2, refreshThreadPoolMaxSize=20, refreshThreadPoolkeepAliveTime=20, refreshQueueCapacity=2000, functions=null, loadDataTryCnt=1, processingMapSize=512)]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 15:35:24.397|DEBUG-[SpringELParser auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 15:35:24.881|INFO -[Tomcat initialized with port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 15:35:24.901|INFO -[Starting service [Tomcat]]-[o.a.catalina.core.StandardService]-[main]
+2018-09-11 15:35:24.903|INFO -[Starting Servlet Engine: Apache Tomcat/8.5.23]-[o.a.catalina.core.StandardEngine]-[main]
+2018-09-11 15:35:25.043|INFO -[Initializing Spring embedded WebApplicationContext]-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[localhost-startStop-1]
+2018-09-11 15:35:25.433|INFO -[Mapping filter: 'metricsFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:35:25.434|INFO -[Mapping filter: 'characterEncodingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:35:25.437|INFO -[Mapping filter: 'hiddenHttpMethodFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:35:25.438|INFO -[Mapping filter: 'httpPutFormContentFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:35:25.438|INFO -[Mapping filter: 'requestContextFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:35:25.439|INFO -[Mapping filter: 'webRequestLoggingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:35:25.439|INFO -[Mapping filter: 'noCacheFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:35:25.439|INFO -[Mapping filter: 'HTTPBasicAuthorizeAttribute' to urls: [/autoload-cache-ui.html, /autoload-cache/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:35:25.439|INFO -[Mapping filter: 'simpleCORSFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:35:25.439|INFO -[Mapping filter: 'applicationContextIdFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:35:25.440|INFO -[Mapping servlet: 'dispatcherServlet' to [/]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:35:25.444|INFO -[Mapping servlet: 'statViewServlet' to [/druid/*]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 15:35:27.857|INFO -[Mapped "{[/ops/heapdump || /ops/heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.858|INFO -[Mapped "{[/ops/configprops || /ops/configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.859|INFO -[Mapped "{[/ops/auditevents || /ops/auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.860|INFO -[Mapped "{[/ops/mappings || /ops/mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.861|INFO -[Mapped "{[/ops/trace || /ops/trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.862|INFO -[Mapped "{[/ops/health || /ops/health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.864|INFO -[Mapped "{[/ops/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.864|INFO -[Mapped "{[/ops/metrics || /ops/metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.865|INFO -[Mapped "{[/ops/autoconfig || /ops/autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.866|INFO -[Mapped "{[/ops/dump || /ops/dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.868|INFO -[Mapped "{[/ops/info || /ops/info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.868|INFO -[Mapped "{[/ops/beans || /ops/beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.870|INFO -[Mapped "{[/ops/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.871|INFO -[Mapped "{[/ops/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.871|INFO -[Mapped "{[/ops/loggers || /ops/loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.872|INFO -[Mapped "{[/ops/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:27.872|INFO -[Mapped "{[/ops/env || /ops/env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 15:35:28.474|INFO -[Registering beans for JMX exposure on startup]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 15:35:28.476|INFO -[Bean with name 'statFilter' has been autodetected for JMX exposure]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 15:35:28.477|INFO -[Bean with name 'dataSource' has been autodetected for JMX exposure]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 15:35:28.486|INFO -[Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 15:35:28.488|INFO -[Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 15:35:28.495|INFO -[Starting beans in phase 0]-[o.s.c.s.DefaultLifecycleProcessor]-[main]
+2018-09-11 15:35:28.613|INFO -[Tomcat started on port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 15:35:28.619|INFO -[Started ConfigServerApplication in 6.604 seconds (JVM running for 7.753)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:35:28.620|INFO -[active profiles--->[dev]]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:35:28.620|INFO -[ConfigServerApplication is sussess!]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 15:35:29.516|INFO -[{dataSource-1} inited]-[c.alibaba.druid.pool.DruidDataSource]-[RMI TCP Connection(4)-127.0.0.1]
+2018-09-11 15:35:46.518|INFO -[Initializing Spring FrameworkServlet 'dispatcherServlet']-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[http-nio-8080-exec-1]
+2018-09-11 15:35:46.581|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-1]
+2018-09-11 15:35:46.583|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-1]
+2018-09-11 15:35:46.583|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-1]
+2018-09-11 15:35:49.532|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-2]
+2018-09-11 15:35:49.532|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-2]
+2018-09-11 15:35:49.532|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-2]
+2018-09-11 15:37:11.088|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-5]
+2018-09-11 15:37:11.089|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-5]
+2018-09-11 15:37:11.089|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-5]
+2018-09-11 15:37:21.749|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-7]
+2018-09-11 15:37:21.750|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-7]
+2018-09-11 15:37:21.750|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-7]
+2018-09-11 16:56:00.306|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-10]
+2018-09-11 16:56:00.308|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-10]
+2018-09-11 16:56:00.309|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-10]
+2018-09-11 16:56:40.779|INFO -[Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@78fbff54: startup date [Tue Sep 11 15:35:22 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[Thread-27]
+2018-09-11 16:56:40.781|INFO -[Stopping beans in phase 0]-[o.s.c.s.DefaultLifecycleProcessor]-[Thread-27]
+2018-09-11 16:56:40.787|INFO -[Unregistering JMX-exposed beans on shutdown]-[o.s.j.e.a.AnnotationMBeanExporter]-[Thread-27]
+2018-09-11 16:56:40.789|INFO -[Unregistering JMX-exposed beans]-[o.s.j.e.a.AnnotationMBeanExporter]-[Thread-27]
+2018-09-11 16:56:40.818|INFO -[{dataSource-1} closed]-[c.alibaba.druid.pool.DruidDataSource]-[Thread-27]
+2018-09-11 16:56:40.820|INFO -[----------------------AutoLoadHandler.shutdown--------------------]-[com.jarvis.cache.AutoLoadHandler]-[Thread-27]
+2018-09-11 16:56:40.820|TRACE-[cache destroy ... ... ...]-[com.jarvis.cache.CacheHandler]-[Thread-27]
+2018-09-11 17:28:03.339|INFO -[Starting ConfigServerApplication on qiujiayudeMacBook-Pro.local with PID 2114 (/Users/qiujiayu/Documents/suixingpay/opensource/config-keeper/suixingpay-config-server/out/production/classes started by qiujiayu in /Users/qiujiayu/Documents/suixingpay/opensource/config-keeper)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:28:03.346|DEBUG-[Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:28:03.346|INFO -[The following profiles are active: dev]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:28:03.470|INFO -[Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@ec2cc4: startup date [Tue Sep 11 17:28:03 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[main]
+2018-09-11 17:28:05.162|INFO -[Overriding bean definition for bean 'filterRegistrationBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.alibaba.druid.spring.boot.autoconfigure.stat.DruidWebStatFilterConfiguration; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/stat/DruidWebStatFilterConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jarvis/cache/autoconfigure/AutoloadCacheAutoConfigure.class]]]-[o.s.b.f.s.DefaultListableBeanFactory]-[main]
+2018-09-11 17:28:05.315|INFO -[Multiple Spring Data modules found, entering strict repository configuration mode!]-[o.s.d.r.c.RepositoryConfigurationDelegate]-[main]
+2018-09-11 17:28:05.968|INFO -[Bean 'com.jarvis.cache.autoconfigure.DistributedLockConfiguration' of type [com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$941bada0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:28:06.120|INFO -[Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:28:06.126|INFO -[Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration$$EnhancerBySpringCGLIB$$c04fba83] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:28:06.234|INFO -[Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.jedis.JedisConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:28:06.329|DEBUG-[ILock with SpringJedisLock auto-configured]-[c.j.c.a.DistributedLockConfiguration]-[main]
+2018-09-11 17:28:06.333|INFO -[Bean 'autoLoadCacheDistributedLock' of type [com.jarvis.cache.redis.SpringJedisLock] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:28:06.443|INFO -[Bean 'autoload.cache-com.jarvis.cache.autoconfigure.AutoloadCacheProperties' of type [com.jarvis.cache.autoconfigure.AutoloadCacheProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:28:06.444|INFO -[Bean 'com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure' of type [com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure$$EnhancerBySpringCGLIB$$da598c02] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:28:06.754|DEBUG-[HessianSerializer auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 17:28:06.796|DEBUG-[ICacheManager with SpringJedisCacheManager auto-configured,AutoLoadConfig(namespace=suixingpay-config-server, threadCnt=10, maxElement=20000, printSlowLog=true, slowLoadTime=500, sortType=NONE, checkFromCacheBeforeLoad=false, autoLoadPeriod=50, refreshThreadPoolSize=2, refreshThreadPoolMaxSize=20, refreshThreadPoolkeepAliveTime=20, refreshQueueCapacity=2000, functions=null, loadDataTryCnt=1, processingMapSize=512)]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 17:28:06.824|DEBUG-[SpringELParser auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 17:28:07.462|INFO -[Tomcat initialized with port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 17:28:07.484|INFO -[Starting service [Tomcat]]-[o.a.catalina.core.StandardService]-[main]
+2018-09-11 17:28:07.486|INFO -[Starting Servlet Engine: Apache Tomcat/8.5.23]-[o.a.catalina.core.StandardEngine]-[main]
+2018-09-11 17:28:07.660|INFO -[Initializing Spring embedded WebApplicationContext]-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[localhost-startStop-1]
+2018-09-11 17:28:08.202|INFO -[Mapping filter: 'metricsFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:28:08.318|INFO -[Mapping filter: 'characterEncodingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:28:08.319|INFO -[Mapping filter: 'hiddenHttpMethodFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:28:08.319|INFO -[Mapping filter: 'httpPutFormContentFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:28:08.319|INFO -[Mapping filter: 'requestContextFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:28:08.319|INFO -[Mapping filter: 'webRequestLoggingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:28:08.320|INFO -[Mapping filter: 'noCacheFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:28:08.320|INFO -[Mapping filter: 'HTTPBasicAuthorizeAttribute' to urls: [/autoload-cache-ui.html, /autoload-cache/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:28:08.320|INFO -[Mapping filter: 'simpleCORSFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:28:08.320|INFO -[Mapping filter: 'applicationContextIdFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:28:08.320|INFO -[Mapping servlet: 'dispatcherServlet' to [/]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:28:08.332|INFO -[Mapping servlet: 'statViewServlet' to [/druid/*]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:28:11.375|INFO -[Mapped "{[/ops/autoconfig || /ops/autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.376|INFO -[Mapped "{[/ops/mappings || /ops/mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.377|INFO -[Mapped "{[/ops/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.377|INFO -[Mapped "{[/ops/env || /ops/env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.379|INFO -[Mapped "{[/ops/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.379|INFO -[Mapped "{[/ops/metrics || /ops/metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.380|INFO -[Mapped "{[/ops/auditevents || /ops/auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.381|INFO -[Mapped "{[/ops/info || /ops/info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.382|INFO -[Mapped "{[/ops/configprops || /ops/configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.383|INFO -[Mapped "{[/ops/dump || /ops/dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.384|INFO -[Mapped "{[/ops/trace || /ops/trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.386|INFO -[Mapped "{[/ops/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.386|INFO -[Mapped "{[/ops/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.387|INFO -[Mapped "{[/ops/loggers || /ops/loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.389|INFO -[Mapped "{[/ops/heapdump || /ops/heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.390|INFO -[Mapped "{[/ops/health || /ops/health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.391|INFO -[Mapped "{[/ops/beans || /ops/beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:28:11.981|INFO -[Registering beans for JMX exposure on startup]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:28:11.983|INFO -[Bean with name 'statFilter' has been autodetected for JMX exposure]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:28:11.984|INFO -[Bean with name 'dataSource' has been autodetected for JMX exposure]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:28:11.992|INFO -[Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:28:11.995|INFO -[Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:28:12.013|INFO -[Starting beans in phase 0]-[o.s.c.s.DefaultLifecycleProcessor]-[main]
+2018-09-11 17:28:12.180|INFO -[Tomcat started on port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 17:28:12.188|INFO -[Started ConfigServerApplication in 10.111 seconds (JVM running for 11.72)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:28:12.190|INFO -[active profiles--->[dev]]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:28:12.190|INFO -[ConfigServerApplication is sussess!]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:28:19.673|INFO -[Initializing Spring FrameworkServlet 'dispatcherServlet']-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[http-nio-8080-exec-1]
+2018-09-11 17:28:19.744|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-1]
+2018-09-11 17:28:19.746|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-1]
+2018-09-11 17:28:19.747|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-1]
+2018-09-11 17:28:21.697|TRACE-[servletPath:/error]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-2]
+2018-09-11 17:28:21.697|DEBUG-[传入的token值:null]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-2]
+2018-09-11 17:28:21.697|DEBUG-[当前请求token为is empty]-[c.s.c.s.security.TokenInterceptor]-[http-nio-8080-exec-2]
+2018-09-11 17:29:11.520|INFO -[Starting ConfigServerApplication on qiujiayudeMacBook-Pro.local with PID 2117 (/Users/qiujiayu/Documents/suixingpay/opensource/config-keeper/suixingpay-config-server/out/production/classes started by qiujiayu in /Users/qiujiayu/Documents/suixingpay/opensource/config-keeper)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:29:11.527|DEBUG-[Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:29:11.527|INFO -[The following profiles are active: dev]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:29:11.601|INFO -[Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7c1e2a2d: startup date [Tue Sep 11 17:29:11 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[main]
+2018-09-11 17:29:12.971|INFO -[Overriding bean definition for bean 'filterRegistrationBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.alibaba.druid.spring.boot.autoconfigure.stat.DruidWebStatFilterConfiguration; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/stat/DruidWebStatFilterConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jarvis/cache/autoconfigure/AutoloadCacheAutoConfigure.class]]]-[o.s.b.f.s.DefaultListableBeanFactory]-[main]
+2018-09-11 17:29:13.114|INFO -[Multiple Spring Data modules found, entering strict repository configuration mode!]-[o.s.d.r.c.RepositoryConfigurationDelegate]-[main]
+2018-09-11 17:29:13.738|INFO -[Bean 'com.jarvis.cache.autoconfigure.DistributedLockConfiguration' of type [com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$c5431865] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:29:13.866|INFO -[Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:29:13.873|INFO -[Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration$$EnhancerBySpringCGLIB$$f1772548] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:29:13.940|INFO -[Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.jedis.JedisConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:29:14.081|INFO -[Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@ec2cc4: startup date [Tue Sep 11 17:28:03 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[Thread-14]
+2018-09-11 17:29:14.084|INFO -[Stopping beans in phase 0]-[o.s.c.s.DefaultLifecycleProcessor]-[Thread-14]
+2018-09-11 17:29:14.086|DEBUG-[ILock with SpringJedisLock auto-configured]-[c.j.c.a.DistributedLockConfiguration]-[main]
+2018-09-11 17:29:14.088|INFO -[Unregistering JMX-exposed beans on shutdown]-[o.s.j.e.a.AnnotationMBeanExporter]-[Thread-14]
+2018-09-11 17:29:14.089|INFO -[Unregistering JMX-exposed beans]-[o.s.j.e.a.AnnotationMBeanExporter]-[Thread-14]
+2018-09-11 17:29:14.092|INFO -[----------------------AutoLoadHandler.shutdown--------------------]-[com.jarvis.cache.AutoLoadHandler]-[Thread-14]
+2018-09-11 17:29:14.093|TRACE-[cache destroy ... ... ...]-[com.jarvis.cache.CacheHandler]-[Thread-14]
+2018-09-11 17:29:14.097|INFO -[Bean 'autoLoadCacheDistributedLock' of type [com.jarvis.cache.redis.SpringJedisLock] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:29:19.334|INFO -[Starting ConfigServerApplication on qiujiayudeMacBook-Pro.local with PID 2121 (/Users/qiujiayu/Documents/suixingpay/opensource/config-keeper/suixingpay-config-server/out/production/classes started by qiujiayu in /Users/qiujiayu/Documents/suixingpay/opensource/config-keeper)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:29:19.340|DEBUG-[Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:29:19.340|INFO -[The following profiles are active: dev]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:29:19.416|INFO -[Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7c1e2a2d: startup date [Tue Sep 11 17:29:19 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[main]
+2018-09-11 17:29:20.594|INFO -[Overriding bean definition for bean 'filterRegistrationBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.alibaba.druid.spring.boot.autoconfigure.stat.DruidWebStatFilterConfiguration; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/stat/DruidWebStatFilterConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jarvis/cache/autoconfigure/AutoloadCacheAutoConfigure.class]]]-[o.s.b.f.s.DefaultListableBeanFactory]-[main]
+2018-09-11 17:29:20.736|INFO -[Multiple Spring Data modules found, entering strict repository configuration mode!]-[o.s.d.r.c.RepositoryConfigurationDelegate]-[main]
+2018-09-11 17:29:21.348|INFO -[Bean 'com.jarvis.cache.autoconfigure.DistributedLockConfiguration' of type [com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$91cfc486] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:29:21.464|INFO -[Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:29:21.471|INFO -[Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration$$EnhancerBySpringCGLIB$$be03d169] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:29:21.556|INFO -[Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.jedis.JedisConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:29:21.651|DEBUG-[ILock with SpringJedisLock auto-configured]-[c.j.c.a.DistributedLockConfiguration]-[main]
+2018-09-11 17:29:21.654|INFO -[Bean 'autoLoadCacheDistributedLock' of type [com.jarvis.cache.redis.SpringJedisLock] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:29:21.751|INFO -[Bean 'autoload.cache-com.jarvis.cache.autoconfigure.AutoloadCacheProperties' of type [com.jarvis.cache.autoconfigure.AutoloadCacheProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:29:21.752|INFO -[Bean 'com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure' of type [com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure$$EnhancerBySpringCGLIB$$d80da2e8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:29:22.021|DEBUG-[HessianSerializer auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 17:29:22.055|DEBUG-[ICacheManager with SpringJedisCacheManager auto-configured,AutoLoadConfig(namespace=suixingpay-config-server, threadCnt=10, maxElement=20000, printSlowLog=true, slowLoadTime=500, sortType=NONE, checkFromCacheBeforeLoad=false, autoLoadPeriod=50, refreshThreadPoolSize=2, refreshThreadPoolMaxSize=20, refreshThreadPoolkeepAliveTime=20, refreshQueueCapacity=2000, functions=null, loadDataTryCnt=1, processingMapSize=512)]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 17:29:22.082|DEBUG-[SpringELParser auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 17:29:22.624|INFO -[Tomcat initialized with port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 17:29:22.647|INFO -[Starting service [Tomcat]]-[o.a.catalina.core.StandardService]-[main]
+2018-09-11 17:29:22.649|INFO -[Starting Servlet Engine: Apache Tomcat/8.5.23]-[o.a.catalina.core.StandardEngine]-[main]
+2018-09-11 17:29:22.807|INFO -[Initializing Spring embedded WebApplicationContext]-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[localhost-startStop-1]
+2018-09-11 17:29:23.420|INFO -[Mapping filter: 'metricsFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:29:23.421|INFO -[Mapping filter: 'characterEncodingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:29:23.422|INFO -[Mapping filter: 'hiddenHttpMethodFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:29:23.422|INFO -[Mapping filter: 'httpPutFormContentFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:29:23.422|INFO -[Mapping filter: 'requestContextFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:29:23.422|INFO -[Mapping filter: 'webRequestLoggingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:29:23.423|INFO -[Mapping filter: 'noCacheFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:29:23.423|INFO -[Mapping filter: 'HTTPBasicAuthorizeAttribute' to urls: [/autoload-cache-ui.html, /autoload-cache/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:29:23.423|INFO -[Mapping filter: 'simpleCORSFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:29:23.423|INFO -[Mapping filter: 'applicationContextIdFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:29:23.423|INFO -[Mapping servlet: 'dispatcherServlet' to [/]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:29:23.426|INFO -[Mapping servlet: 'statViewServlet' to [/druid/*]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:29:26.618|INFO -[Mapped "{[/ops/trace || /ops/trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.630|INFO -[Mapped "{[/ops/auditevents || /ops/auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.631|INFO -[Mapped "{[/ops/mappings || /ops/mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.632|INFO -[Mapped "{[/ops/autoconfig || /ops/autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.633|INFO -[Mapped "{[/ops/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.634|INFO -[Mapped "{[/ops/metrics || /ops/metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.634|INFO -[Mapped "{[/ops/configprops || /ops/configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.635|INFO -[Mapped "{[/ops/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.636|INFO -[Mapped "{[/ops/env || /ops/env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.637|INFO -[Mapped "{[/ops/info || /ops/info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.638|INFO -[Mapped "{[/ops/health || /ops/health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.639|INFO -[Mapped "{[/ops/beans || /ops/beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.641|INFO -[Mapped "{[/ops/heapdump || /ops/heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.643|INFO -[Mapped "{[/ops/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.644|INFO -[Mapped "{[/ops/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.644|INFO -[Mapped "{[/ops/loggers || /ops/loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:26.645|INFO -[Mapped "{[/ops/dump || /ops/dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:29:27.310|INFO -[Registering beans for JMX exposure on startup]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:29:27.313|INFO -[Bean with name 'statFilter' has been autodetected for JMX exposure]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:29:27.313|INFO -[Bean with name 'dataSource' has been autodetected for JMX exposure]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:29:27.326|INFO -[Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:29:27.332|INFO -[Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:29:27.348|INFO -[Starting beans in phase 0]-[o.s.c.s.DefaultLifecycleProcessor]-[main]
+2018-09-11 17:29:27.588|INFO -[Tomcat started on port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 17:29:27.606|INFO -[Started ConfigServerApplication in 9.431 seconds (JVM running for 10.725)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:29:27.609|INFO -[active profiles--->[dev]]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:29:27.610|INFO -[ConfigServerApplication is sussess!]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:29:35.051|INFO -[Initializing Spring FrameworkServlet 'dispatcherServlet']-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[http-nio-8080-exec-1]
+2018-09-11 17:36:26.250|INFO -[Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7c1e2a2d: startup date [Tue Sep 11 17:29:19 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[Thread-14]
+2018-09-11 17:36:26.266|INFO -[Stopping beans in phase 0]-[o.s.c.s.DefaultLifecycleProcessor]-[Thread-14]
+2018-09-11 17:36:26.276|INFO -[Unregistering JMX-exposed beans on shutdown]-[o.s.j.e.a.AnnotationMBeanExporter]-[Thread-14]
+2018-09-11 17:36:26.279|INFO -[Unregistering JMX-exposed beans]-[o.s.j.e.a.AnnotationMBeanExporter]-[Thread-14]
+2018-09-11 17:36:26.291|INFO -[----------------------AutoLoadHandler.shutdown--------------------]-[com.jarvis.cache.AutoLoadHandler]-[Thread-14]
+2018-09-11 17:36:26.295|TRACE-[cache destroy ... ... ...]-[com.jarvis.cache.CacheHandler]-[Thread-14]
+2018-09-11 17:40:57.014|INFO -[Starting ConfigServerApplication on qiujiayudeMacBook-Pro.local with PID 2181 (/Users/qiujiayu/Documents/suixingpay/opensource/config-keeper/suixingpay-config-server/out/production/classes started by qiujiayu in /Users/qiujiayu/Documents/suixingpay/opensource/config-keeper)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:40:57.020|DEBUG-[Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:40:57.020|INFO -[The following profiles are active: dev]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:40:57.093|INFO -[Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1c3b9394: startup date [Tue Sep 11 17:40:57 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[main]
+2018-09-11 17:40:58.299|INFO -[Overriding bean definition for bean 'filterRegistrationBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.alibaba.druid.spring.boot.autoconfigure.stat.DruidWebStatFilterConfiguration; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/stat/DruidWebStatFilterConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jarvis/cache/autoconfigure/AutoloadCacheAutoConfigure.class]]]-[o.s.b.f.s.DefaultListableBeanFactory]-[main]
+2018-09-11 17:40:58.484|INFO -[Multiple Spring Data modules found, entering strict repository configuration mode!]-[o.s.d.r.c.RepositoryConfigurationDelegate]-[main]
+2018-09-11 17:40:59.189|INFO -[Bean 'com.jarvis.cache.autoconfigure.DistributedLockConfiguration' of type [com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$59622453] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:40:59.347|INFO -[Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:40:59.354|INFO -[Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration$$EnhancerBySpringCGLIB$$85963136] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:40:59.520|INFO -[Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.jedis.JedisConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:40:59.529|DEBUG-[ILock with SpringJedisLock auto-configured]-[c.j.c.a.DistributedLockConfiguration]-[main]
+2018-09-11 17:40:59.533|INFO -[Bean 'autoLoadCacheDistributedLock' of type [com.jarvis.cache.redis.SpringRedisLock] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:40:59.635|INFO -[Bean 'autoload.cache-com.jarvis.cache.autoconfigure.AutoloadCacheProperties' of type [com.jarvis.cache.autoconfigure.AutoloadCacheProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:40:59.636|INFO -[Bean 'com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure' of type [com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure$$EnhancerBySpringCGLIB$$9fa002b5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 17:40:59.937|DEBUG-[HessianSerializer auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 17:40:59.968|DEBUG-[ICacheManager with SpringJedisCacheManager auto-configured,AutoLoadConfig(namespace=suixingpay-config-server, threadCnt=10, maxElement=20000, printSlowLog=true, slowLoadTime=500, sortType=NONE, checkFromCacheBeforeLoad=false, autoLoadPeriod=50, refreshThreadPoolSize=2, refreshThreadPoolMaxSize=20, refreshThreadPoolkeepAliveTime=20, refreshQueueCapacity=2000, functions=null, loadDataTryCnt=1, processingMapSize=512)]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 17:41:00.598|INFO -[Tomcat initialized with port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 17:41:00.619|INFO -[Starting service [Tomcat]]-[o.a.catalina.core.StandardService]-[main]
+2018-09-11 17:41:00.621|INFO -[Starting Servlet Engine: Apache Tomcat/8.5.23]-[o.a.catalina.core.StandardEngine]-[main]
+2018-09-11 17:41:00.772|INFO -[Initializing Spring embedded WebApplicationContext]-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[localhost-startStop-1]
+2018-09-11 17:41:01.372|INFO -[Mapping filter: 'metricsFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:41:01.373|INFO -[Mapping filter: 'characterEncodingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:41:01.374|INFO -[Mapping filter: 'hiddenHttpMethodFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:41:01.374|INFO -[Mapping filter: 'httpPutFormContentFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:41:01.374|INFO -[Mapping filter: 'requestContextFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:41:01.375|INFO -[Mapping filter: 'webRequestLoggingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:41:01.375|INFO -[Mapping filter: 'noCacheFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:41:01.375|INFO -[Mapping filter: 'HTTPBasicAuthorizeAttribute' to urls: [/autoload-cache-ui.html, /autoload-cache/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:41:01.376|INFO -[Mapping filter: 'simpleCORSFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:41:01.376|INFO -[Mapping filter: 'applicationContextIdFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:41:01.377|INFO -[Mapping servlet: 'dispatcherServlet' to [/]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:41:01.381|INFO -[Mapping servlet: 'statViewServlet' to [/druid/*]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 17:41:04.665|INFO -[Mapped "{[/ops/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.666|INFO -[Mapped "{[/ops/metrics || /ops/metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.667|INFO -[Mapped "{[/ops/dump || /ops/dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.668|INFO -[Mapped "{[/ops/heapdump || /ops/heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.668|INFO -[Mapped "{[/ops/configprops || /ops/configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.669|INFO -[Mapped "{[/ops/trace || /ops/trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.670|INFO -[Mapped "{[/ops/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.671|INFO -[Mapped "{[/ops/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.671|INFO -[Mapped "{[/ops/loggers || /ops/loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.672|INFO -[Mapped "{[/ops/auditevents || /ops/auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.673|INFO -[Mapped "{[/ops/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.674|INFO -[Mapped "{[/ops/env || /ops/env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.674|INFO -[Mapped "{[/ops/info || /ops/info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.675|INFO -[Mapped "{[/ops/mappings || /ops/mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.675|INFO -[Mapped "{[/ops/beans || /ops/beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.676|INFO -[Mapped "{[/ops/health || /ops/health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:04.677|INFO -[Mapped "{[/ops/autoconfig || /ops/autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 17:41:05.240|INFO -[Registering beans for JMX exposure on startup]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:41:05.243|INFO -[Bean with name 'statFilter' has been autodetected for JMX exposure]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:41:05.243|INFO -[Bean with name 'dataSource' has been autodetected for JMX exposure]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:41:05.251|INFO -[Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:41:05.253|INFO -[Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 17:41:05.265|INFO -[Starting beans in phase 0]-[o.s.c.s.DefaultLifecycleProcessor]-[main]
+2018-09-11 17:41:05.417|INFO -[Tomcat started on port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 17:41:05.424|INFO -[Started ConfigServerApplication in 9.495 seconds (JVM running for 10.979)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:41:05.425|INFO -[active profiles--->[dev]]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:41:05.425|INFO -[ConfigServerApplication is sussess!]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 17:41:11.994|INFO -[Initializing Spring FrameworkServlet 'dispatcherServlet']-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[http-nio-8080-exec-1]
+2018-09-11 17:42:17.030|INFO -[Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1c3b9394: startup date [Tue Sep 11 17:40:57 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[Thread-14]
+2018-09-11 17:42:17.033|INFO -[Stopping beans in phase 0]-[o.s.c.s.DefaultLifecycleProcessor]-[Thread-14]
+2018-09-11 17:42:17.036|INFO -[Unregistering JMX-exposed beans on shutdown]-[o.s.j.e.a.AnnotationMBeanExporter]-[Thread-14]
+2018-09-11 17:42:17.037|INFO -[Unregistering JMX-exposed beans]-[o.s.j.e.a.AnnotationMBeanExporter]-[Thread-14]
+2018-09-11 17:42:17.041|INFO -[----------------------AutoLoadHandler.shutdown--------------------]-[com.jarvis.cache.AutoLoadHandler]-[Thread-14]
+2018-09-11 17:42:17.041|TRACE-[cache destroy ... ... ...]-[com.jarvis.cache.CacheHandler]-[Thread-14]
+2018-09-11 18:12:14.159|INFO -[Starting ConfigServerApplication on qiujiayudeMacBook-Pro.local with PID 2286 (/Users/qiujiayu/Documents/suixingpay/opensource/config-keeper/suixingpay-config-server/out/production/classes started by qiujiayu in /Users/qiujiayu/Documents/suixingpay/opensource/config-keeper)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 18:12:14.166|DEBUG-[Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 18:12:14.166|INFO -[The following profiles are active: dev]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 18:12:14.242|INFO -[Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@11bd0f3b: startup date [Tue Sep 11 18:12:14 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[main]
+2018-09-11 18:12:15.722|INFO -[Overriding bean definition for bean 'filterRegistrationBean' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.alibaba.druid.spring.boot.autoconfigure.stat.DruidWebStatFilterConfiguration; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/stat/DruidWebStatFilterConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure; factoryMethodName=filterRegistrationBean; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jarvis/cache/autoconfigure/AutoloadCacheAutoConfigure.class]]]-[o.s.b.f.s.DefaultListableBeanFactory]-[main]
+2018-09-11 18:12:15.877|INFO -[Multiple Spring Data modules found, entering strict repository configuration mode!]-[o.s.d.r.c.RepositoryConfigurationDelegate]-[main]
+2018-09-11 18:12:16.468|INFO -[Bean 'com.jarvis.cache.autoconfigure.DistributedLockConfiguration' of type [com.jarvis.cache.autoconfigure.DistributedLockConfiguration$$EnhancerBySpringCGLIB$$fb40e0bd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:16.580|INFO -[Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:16.587|INFO -[Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration$$EnhancerBySpringCGLIB$$2774eda0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:16.682|INFO -[Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.jedis.JedisConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:16.690|DEBUG-[ILock with SpringJedisLock auto-configured]-[c.j.c.a.DistributedLockConfiguration]-[main]
+2018-09-11 18:12:16.693|INFO -[Bean 'autoLoadCacheDistributedLock' of type [com.jarvis.cache.redis.SpringRedisLock] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:16.836|INFO -[Bean 'autoload.cache-com.jarvis.cache.autoconfigure.AutoloadCacheProperties' of type [com.jarvis.cache.autoconfigure.AutoloadCacheProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:16.837|INFO -[Bean 'com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure' of type [com.jarvis.cache.autoconfigure.AutoloadCacheAutoConfigure$$EnhancerBySpringCGLIB$$417ebf1f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:17.025|INFO -[Bean 'com.jarvis.cache.autoconfigure.AutoloadCacheManageConfiguration' of type [com.jarvis.cache.autoconfigure.AutoloadCacheManageConfiguration$$EnhancerBySpringCGLIB$$cebed479] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:17.169|DEBUG-[HessianSerializer auto-configured]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 18:12:17.171|INFO -[Bean 'autoloadCacheSerializer' of type [com.jarvis.cache.serializer.HessianSerializer] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:17.200|DEBUG-[ICacheManager with SpringJedisCacheManager auto-configured,AutoLoadConfig(namespace=suixingpay-config-server, threadCnt=10, maxElement=20000, printSlowLog=true, slowLoadTime=500, sortType=NONE, checkFromCacheBeforeLoad=false, autoLoadPeriod=50, refreshThreadPoolSize=2, refreshThreadPoolMaxSize=20, refreshThreadPoolkeepAliveTime=20, refreshQueueCapacity=2000, functions=null, loadDataTryCnt=1, processingMapSize=512)]-[c.j.c.a.AutoloadCacheManageConfiguration]-[main]
+2018-09-11 18:12:17.206|INFO -[Bean 'autoloadCacheCacheManager' of type [com.jarvis.cache.redis.SpringRedisCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:17.237|INFO -[Bean 'autoloadCacheScriptParser' of type [com.jarvis.cache.script.SpringELParser] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:17.284|INFO -[Bean 'autoloadCacheHandler' of type [com.jarvis.cache.CacheHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:17.303|INFO -[Bean 'autoloadCacheDeleteTransactionalInterceptor' of type [com.jarvis.cache.interceptor.CacheDeleteTransactionalInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:17.325|INFO -[Bean 'autoloadCacheDeleteTransactionalAdvisor' of type [com.jarvis.cache.autoconfigure.MethodAnnotationPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:17.335|INFO -[Bean 'autoloadCacheDeleteInterceptor' of type [com.jarvis.cache.interceptor.CacheDeleteInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:17.337|INFO -[Bean 'autoloadCacheDeleteAdvisor' of type [com.jarvis.cache.autoconfigure.MethodAnnotationPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:17.343|INFO -[Bean 'autoloadCacheMethodInterceptor' of type [com.jarvis.cache.interceptor.CacheMethodInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:17.347|INFO -[Bean 'autoloadCacheAdvisor' of type [com.jarvis.cache.autoconfigure.MethodAnnotationPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:17.369|INFO -[Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$937ac691] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]-[o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]-[main]
+2018-09-11 18:12:17.987|INFO -[Tomcat initialized with port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 18:12:18.009|INFO -[Starting service [Tomcat]]-[o.a.catalina.core.StandardService]-[main]
+2018-09-11 18:12:18.015|INFO -[Starting Servlet Engine: Apache Tomcat/8.5.23]-[o.a.catalina.core.StandardEngine]-[main]
+2018-09-11 18:12:18.223|INFO -[Initializing Spring embedded WebApplicationContext]-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[localhost-startStop-1]
+2018-09-11 18:12:18.657|INFO -[Mapping filter: 'metricsFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 18:12:18.658|INFO -[Mapping filter: 'characterEncodingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 18:12:18.658|INFO -[Mapping filter: 'hiddenHttpMethodFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 18:12:18.659|INFO -[Mapping filter: 'httpPutFormContentFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 18:12:18.659|INFO -[Mapping filter: 'requestContextFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 18:12:18.659|INFO -[Mapping filter: 'webRequestLoggingFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 18:12:18.659|INFO -[Mapping filter: 'noCacheFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 18:12:18.660|INFO -[Mapping filter: 'HTTPBasicAuthorizeAttribute' to urls: [/autoload-cache-ui.html, /autoload-cache/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 18:12:18.660|INFO -[Mapping filter: 'simpleCORSFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 18:12:18.660|INFO -[Mapping filter: 'applicationContextIdFilter' to: [/*]]-[o.s.b.w.s.FilterRegistrationBean]-[localhost-startStop-1]
+2018-09-11 18:12:18.660|INFO -[Mapping servlet: 'dispatcherServlet' to [/]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 18:12:18.668|INFO -[Mapping servlet: 'statViewServlet' to [/druid/*]]-[o.s.b.w.s.ServletRegistrationBean]-[localhost-startStop-1]
+2018-09-11 18:12:21.768|INFO -[Mapped "{[/ops/mappings || /ops/mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.769|INFO -[Mapped "{[/ops/auditevents || /ops/auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.770|INFO -[Mapped "{[/ops/configprops || /ops/configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.771|INFO -[Mapped "{[/ops/dump || /ops/dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.772|INFO -[Mapped "{[/ops/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.772|INFO -[Mapped "{[/ops/metrics || /ops/metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.773|INFO -[Mapped "{[/ops/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.773|INFO -[Mapped "{[/ops/env || /ops/env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.774|INFO -[Mapped "{[/ops/beans || /ops/beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.775|INFO -[Mapped "{[/ops/trace || /ops/trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.775|INFO -[Mapped "{[/ops/autoconfig || /ops/autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.776|INFO -[Mapped "{[/ops/heapdump || /ops/heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.778|INFO -[Mapped "{[/ops/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.779|INFO -[Mapped "{[/ops/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.779|INFO -[Mapped "{[/ops/loggers || /ops/loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.780|INFO -[Mapped "{[/ops/health || /ops/health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal)]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.781|INFO -[Mapped "{[/ops/info || /ops/info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()]-[o.s.b.a.e.mvc.EndpointHandlerMapping]-[main]
+2018-09-11 18:12:21.952|INFO -[Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]]-[s.d.s.w.PropertySourcedRequestMappingHandlerMapping]-[main]
+2018-09-11 18:12:22.916|INFO -[Registering beans for JMX exposure on startup]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 18:12:22.919|INFO -[Bean with name 'statFilter' has been autodetected for JMX exposure]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 18:12:22.920|INFO -[Bean with name 'dataSource' has been autodetected for JMX exposure]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 18:12:22.927|INFO -[Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 18:12:22.929|INFO -[Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]]-[o.s.j.e.a.AnnotationMBeanExporter]-[main]
+2018-09-11 18:12:22.939|INFO -[Starting beans in phase 0]-[o.s.c.s.DefaultLifecycleProcessor]-[main]
+2018-09-11 18:12:22.993|INFO -[Starting beans in phase 2147483647]-[o.s.c.s.DefaultLifecycleProcessor]-[main]
+2018-09-11 18:12:22.994|INFO -[Context refreshed]-[s.d.s.w.p.DocumentationPluginsBootstrapper]-[main]
+2018-09-11 18:12:23.022|INFO -[Found 1 custom documentation plugin(s)]-[s.d.s.w.p.DocumentationPluginsBootstrapper]-[main]
+2018-09-11 18:12:23.076|INFO -[Scanning for api listing references]-[s.d.s.w.s.ApiListingReferenceScanner]-[main]
+2018-09-11 18:12:23.479|INFO -[Generating unique operation named: detailUsingGET_1]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.490|INFO -[Generating unique operation named: listUsingGET_1]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.497|INFO -[Generating unique operation named: checkKeyUniqueUsingGET_1]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.501|INFO -[Generating unique operation named: detailUsingGET_2]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.510|INFO -[Generating unique operation named: listUsingGET_2]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.543|INFO -[Generating unique operation named: checkKeyUniqueUsingGET_2]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.549|INFO -[Generating unique operation named: detailUsingGET_3]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.553|INFO -[Generating unique operation named: listUsingGET_3]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.554|INFO -[Generating unique operation named: myProfilesUsingGET_1]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.567|INFO -[Generating unique operation named: detailUsingGET_4]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.574|INFO -[Generating unique operation named: listUsingGET_4]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.595|INFO -[Generating unique operation named: checkKeyUniqueUsingGET_3]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.599|INFO -[Generating unique operation named: detailUsingGET_5]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.601|INFO -[Generating unique operation named: listUsingGET_5]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.611|INFO -[Generating unique operation named: detailUsingGET_6]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.648|INFO -[Generating unique operation named: detailUsingGET_7]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.657|INFO -[Generating unique operation named: listUsingGET_6]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.677|INFO -[Generating unique operation named: detailUsingGET_8]-[s.d.s.w.r.o.CachingOperationNameGenerator]-[main]
+2018-09-11 18:12:23.889|INFO -[Tomcat started on port(s): 8080 (http)]-[o.s.b.c.e.t.TomcatEmbeddedServletContainer]-[main]
+2018-09-11 18:12:23.896|INFO -[Started ConfigServerApplication in 10.882 seconds (JVM running for 11.61)]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 18:12:23.897|INFO -[active profiles--->[dev]]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 18:12:23.898|INFO -[ConfigServerApplication is sussess!]-[c.s.c.server.ConfigServerApplication]-[main]
+2018-09-11 18:12:28.368|INFO -[Initializing Spring FrameworkServlet 'dispatcherServlet']-[o.a.c.c.C.[Tomcat].[localhost].[/]]-[http-nio-8080-exec-1]
+2018-09-11 18:13:33.682|INFO -[Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@11bd0f3b: startup date [Tue Sep 11 18:12:14 CST 2018]; root of context hierarchy]-[o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext]-[Thread-14]
+2018-09-11 18:13:33.687|INFO -[Stopping beans in phase 2147483647]-[o.s.c.s.DefaultLifecycleProcessor]-[Thread-14]
+2018-09-11 18:13:33.689|INFO -[Stopping beans in phase 0]-[o.s.c.s.DefaultLifecycleProcessor]-[Thread-14]
+2018-09-11 18:13:33.692|INFO -[Unregistering JMX-exposed beans on shutdown]-[o.s.j.e.a.AnnotationMBeanExporter]-[Thread-14]
+2018-09-11 18:13:33.693|INFO -[Unregistering JMX-exposed beans]-[o.s.j.e.a.AnnotationMBeanExporter]-[Thread-14]
+2018-09-11 18:13:33.698|INFO -[----------------------AutoLoadHandler.shutdown--------------------]-[com.jarvis.cache.AutoLoadHandler]-[Thread-14]
+2018-09-11 18:13:33.698|TRACE-[cache destroy ... ... ...]-[com.jarvis.cache.CacheHandler]-[Thread-14]

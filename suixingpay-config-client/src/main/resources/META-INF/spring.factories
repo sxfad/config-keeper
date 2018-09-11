@@ -1,0 +1,15 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.suixingpay.config.client.SxfConfigClientAutoConfiguration
+# Bootstrap components
+org.springframework.cloud.bootstrap.BootstrapConfiguration=\
+com.suixingpay.config.client.SxfConfigServiceBootstrapConfiguration
+#,\
+#org.springframework.cloud.config.client.DiscoveryClientConfigServiceBootstrapConfiguration
+org.springframework.boot.diagnostics.FailureAnalyzer=\
+  com.suixingpay.config.client.failureanalyzer.ConfigConnectionFailureAnalyzer,\
+  com.suixingpay.config.client.failureanalyzer.UnSetApplicationNameFailureAnalyzer,\
+  com.suixingpay.config.client.failureanalyzer.UnSetProfileFailureAnalyzer
+# Application listeners
+#org.springframework.context.ApplicationListener=\
+#  com.suixingpay.config.client.ContextRefreshedListener

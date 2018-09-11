@@ -1,0 +1,31 @@
+version = "1.0.0"
+description = "配置中心服务"
+bootRepackage {
+    enabled = true
+}
+
+jar {
+    archiveName = "config.jar"
+}
+dependencies {
+    compile project(":suixingpay-config-common")
+    compile project(":suixingpay-config-front")
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.boot:spring-boot-starter-mail'
+    compile 'mysql:mysql-connector-java'
+    compile 'org.aspectj:aspectjweaver'
+    compile 'com.github.qiujiayu:autoload-cache-spring-boot-starter:6.9.5'
+    compile 'ch.qos.logback:logback-classic'
+    compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.1'
+    compile 'com.alibaba:druid-spring-boot-starter:1.1.6'
+    compile 'org.apache.commons:commons-lang3:3.5'
+    compile 'com.github.penggle:kaptcha:2.3.2'
+    compile 'org.springframework.data:spring-data-commons'
+    compile 'org.springframework.boot:spring-boot-starter-data-redis'
+    compile 'com.caucho:hessian:4.0.51'
+    compile "io.springfox:springfox-swagger2:$swaggerVersion"
+    compile "io.springfox:springfox-swagger-ui:$swaggerVersion"
+    compileOnly('org.springframework.boot:spring-boot-configuration-processor')
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}

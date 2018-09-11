@@ -1,0 +1,30 @@
+buildscript {
+    ext {
+        sxGradleHome = "https://github.com/sxfad/gradle-scripts/raw/master/"
+        swaggerVersion = "2.8.0"
+    }
+    apply from: sxGradleHome + 'maven.gradle'
+    apply from: sxGradleHome + 'spring-cloud-edgware.gradle'
+    repositories {
+        maven { url REPOSITORY_URL }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+subprojects {
+    apply from: sxGradleHome + 'maven.gradle'
+    apply from: sxGradleHome + 'spring-cloud.gradle'
+
+    version = '1.1.0-SNAPSHOT'
+    group = 'com.suixingpay.config'
+    description = '配置中心'
+
+    dependencies {
+        compileOnly("org.springframework.boot:spring-boot-configuration-processor")
+        compileOnly("org.projectlombok:lombok")
+        testCompile('org.projectlombok:lombok')
+        testCompile("org.springframework.boot:spring-boot-configuration-processor")
+    }
+}

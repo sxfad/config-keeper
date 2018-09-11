@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suixingpay.config.server.mapper.GlobalConfigLogMapper">
+
+    <resultMap id="GlobalConfigLogResultMap" type="com.suixingpay.config.server.entity.GlobalConfigLogDO">
+        <id column="id" property="id"/>
+        <result column="profile" property="profile.profile"/>
+        <result column="property_source" property="propertySource"/>
+        <result column="source_type" property="sourceType"/>
+        <result column="version" property="version"/>
+        <result column="memo" property="memo"/>
+        <result column="modify_time" property="modifyTime"/>
+        <result column="created_date" property="createdDate"/>
+        <result column="user_id" property="user.id"/>
+        <result column="user_name" property="user.name"/>
+    </resultMap>
+
+    <sql id="columns">
+    g.id, g.profile, g.property_source, g.source_type, g.version, g.memo, g.modify_time, g.created_date, g.user_id, u.name as user_name
+  </sql>
+
+    <select id="getById" parameterType="java.lang.Long" resultMap="GlobalConfigLogResultMap">
+        select
+        <include refid="columns"/>
+        from global_config_log g left join user u on g.user_id = u.id
+        where g.id = #{id}
+    </select>
+    <sql id="select_from_where">
+        from global_config_log g left join user u on g.user_id = u.id
+        <if test="!user.super">
+            inner join user_global_config_role r on g.profile = r.profile
+            where r.user_id = #{id}
+        </if>
+        <where>
+            <if test="id != null and id != ''">and g.id = #{id}</if>
+            <if test="profile != null and profile.profile != null and profile.profile != ''">and g.profile =
+                #{profile.profile}
+            </if>
+            <if test="version != null and version > 0 ">and g.version = #{version}</if>
+            <if test="minVersion != null and minVersion > 0 ">and g.version &gt;= #{minVersion}</if>
+            <if test="maxVersion != null and maxVersion > 0 ">and g.version &lt;= #{maxVersion}</if>
+            <if test="!user.super">
+                and r.user_id = #{user.id}
+            </if>
+        </where>
+    </sql>
+
+    <select id="countByCondition" parameterType="com.suixingpay.config.server.condition.GlobalConfigLogCondition"
+            resultType="java.lang.Long">
+        select count(*)
+        <include refid="select_from_where"/>
+    </select>
+
+    <select id="listByCondition" parameterType="com.suixingpay.config.server.condition.GlobalConfigLogCondition"
+            resultMap="GlobalConfigLogResultMap">
+        select
+        <include refid="columns"/>
+        <include refid="select_from_where"/>
+        order by g.id desc
+        limit #{pageable.pageSize} offset #{pageable.offset}
+    </select>
+
+    <insert id="addGlobalConfigLog" parameterType="com.suixingpay.config.server.entity.GlobalConfigLogDO">
+    insert into global_config_log(profile, property_source, source_type, version, memo, modify_time, user_id, created_date) 
+    values(#{profile.profile}, #{propertySource}, #{sourceType}, #{version}, #{memo}, #{modifyTime}, #{user.id}, now())
+  </insert>
+
+</mapper>

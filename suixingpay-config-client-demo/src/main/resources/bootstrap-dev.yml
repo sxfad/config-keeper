@@ -1,0 +1,7 @@
+suixingpay:
+  config:
+    enabled: true
+    uris:
+    - http://localhost:8080/
+    username: admin
+    password: 123456

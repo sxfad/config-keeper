@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suixingpay.config.server.mapper.ApplicationConfigMapper">
+
+    <resultMap id="ApplicationConfigResultMap" type="com.suixingpay.config.server.entity.ApplicationConfigDO">
+        <result column="profile" property="profile.profile"/>
+        <result column="application_name" property="application.name"/>
+        <result column="property_source" property="propertySource"/>
+        <result column="source_type" property="sourceType"/>
+        <result column="version" property="version"/>
+        <result column="memo" property="memo"/>
+        <result column="modify_time" property="modifyTime"/>
+        <result column="user_id" property="user.id"/>
+        <result column="user_name" property="user.name"/>
+    </resultMap>
+
+    <sql id="columns">
+    g.profile, g.application_name, g.property_source, g.source_type, g.version, g.memo, g.modify_time, g.user_id, u.name as
+    user_name
+  </sql>
+
+    <select id="getByApplicationNameAnddProfile" resultMap="ApplicationConfigResultMap">
+        select
+        <include refid="columns"/>
+        from application_config g left join user u on g.user_id = u.id
+        where g.application_name = #{applicationName} and g.profile = #{profile}
+    </select>
+
+    <sql id="select_from_where">
+        from application_config g
+        left join user u on g.user_id = u.id
+        inner join application a on g.application_name = a.name
+        <if test="!user.super">
+            inner join user_application_config_role r on g.application_name = r.application_name and g.profile =
+            r.profile
+        </if>
+        <where>
+            <if test="profile != null and profile.profile != null and profile.profile != ''">and g.profile =
+                #{profile.profile}
+            </if>
+            <if test="application != null and application.name != null and application.name != ''">
+                and g.application_name = #{application.name}
+            </if>
+            <if test="searchKey != null and searchKey != ''">
+                and (
+                g.application_name like concat('%', #{searchKey}, '%')
+                or a.description like concat('%', #{searchKey}, '%')
+                )
+            </if>
+            <if test="version != null and version > 0 ">and g.version = #{version}</if>
+            <if test="!user.super">
+                and r.user_id = #{user.id}
+            </if>
+        </where>
+    </sql>
+
+    <select id="countByCondition" parameterType="com.suixingpay.config.server.condition.ApplicationConfigCondition"
+            resultType="java.lang.Long">
+        select count(*)
+        <include refid="select_from_where"/>
+    </select>
+
+    <select id="listByCondition" parameterType="com.suixingpay.config.server.condition.ApplicationConfigCondition"
+            resultMap="ApplicationConfigResultMap">
+        select
+        <include refid="columns"/>
+        <include refid="select_from_where"/>
+        order by g.application_name , g.profile
+        limit #{pageable.pageSize} offset #{pageable.offset}
+    </select>
+
+    <insert id="addApplicationConfig" parameterType="com.suixingpay.config.server.entity.ApplicationConfigDO">
+    insert into application_config(profile, application_name, property_source, source_type, version, memo, modify_time, user_id)
+    values(#{profile.profile}, #{application.name}, #{propertySource}, #{sourceType}, 1, #{memo}, now(), #{user.id})
+  </insert>
+
+    <update id="updateApplicationConfig" parameterType="com.suixingpay.config.server.entity.ApplicationConfigDO">
+    update application_config
+    set property_source = #{propertySource}, 
+        source_type = #{sourceType}, version = version + 1, memo = #{memo}, modify_time = now(), user_id = #{user.id}
+    where application_name = #{application.name} and profile = #{profile.profile} and version = #{version}
+  </update>
+
+</mapper>

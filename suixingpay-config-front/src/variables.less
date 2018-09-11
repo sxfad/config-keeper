@@ -1,0 +1,46 @@
+@primaryColor: #404040;
+@borderColor: #d9d9d9;
+
+@headerHeight: 56px;
+@contentPadding: 16px;
+
+@sideBarToggleButtonFontColor: #fff;
+@sideBarMaxWidth: 180px;
+@sideBarMinWidth: 60px;
+@sideBarBgColor: #f0f0f0;
+@sideBarMenuBgColor: #f0f0f0;
+@sideBarMenuFontColor: #515151;
+@sideBarMenuActiveBgColor: #f5f5f5;
+@sideBarMenuActiveFontColor: lighten(@primaryColor, 10%);
+@sideBarSubMenuFontColor: #999;
+
+.switch-animation() {
+  &.leaving.right {
+    opacity: 0;
+    transform: translate(20px, 0);
+  }
+
+  &.leaving.left {
+    opacity: 0;
+    transform: translate(-20px, 0);
+  }
+
+  &.leaving.down {
+    opacity: 0;
+    transform: translate(0, 20px);
+  }
+
+  &.leaving.up {
+    opacity: 0;
+    transform: translate(0, -20px);
+  }
+
+  &.leaving.fade {
+    opacity: 0;
+  }
+
+  &.entered {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}

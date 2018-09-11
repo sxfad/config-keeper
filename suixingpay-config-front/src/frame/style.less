@@ -1,0 +1,215 @@
+@import '../variables.less';
+
+.frame-header {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  left: @sideBarMaxWidth;
+  height: @headerHeight;
+  background-color: #404040;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: .3s;
+  &.side-bar-collapsed {
+    left: @sideBarMinWidth;
+  }
+  &.side-bar-hidden {
+    left: 0;
+  }
+  .left-menu {
+    margin-left: 50px;
+    &.side-bar-hidden {
+      margin-left: 0;
+    }
+  }
+  .right-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    .right-menu-item {
+      display: inline-block;
+      line-height: @headerHeight;
+      padding: 0 16px;
+      cursor: pointer;
+      color: #fff;
+      .font-icon {
+        margin-left: 8px;
+        margin-right: 8px;
+        font-size: 14px;
+      }
+      &:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
+      &.text {
+        cursor: default;
+        &:hover {
+          background: none;
+        }
+      }
+      .notice-label {
+        padding-right: 20px;
+      }
+    }
+    .user-avatar {
+      display: inline-block;
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      border-radius: 50%;
+      text-align: center;
+    }
+  }
+  .ant-menu-horizontal {
+    padding-top: 6px;
+    border-bottom: 0;
+    background: none;
+  }
+  .font-icon {
+    margin-right: 8px;
+  }
+  .ant-menu-horizontal > .ant-menu-item > a,
+  .ant-menu-horizontal > .ant-menu-submenu > a {
+    color: #eee;
+    text-decoration: none;
+  }
+  .ant-menu-horizontal > .ant-menu-item:hover,
+  .ant-menu-horizontal > .ant-menu-item-selected {
+    border-bottom: 2px solid #fff;
+    color: #fff;
+    a {
+      color: #fff;
+    }
+  }
+}
+
+.frame-side-bar {
+  background-color: #404040;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transition: .3s;
+  .logo {
+    height: @headerHeight;
+    line-height: @headerHeight;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    background: @primaryColor;
+    & > a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: #fff;
+    }
+    .side-bar-toggle {
+      position: absolute;
+      top: 0;
+      right: -50px;
+      width: 50px;
+      transition: background .3s;
+      cursor: pointer;
+      &:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+  .menu-outer {
+    width: 100%;
+    position: absolute;
+    top: @headerHeight;
+    bottom: 0;
+    //box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-right: 1px solid @borderColor;
+    overflow: hidden;
+    background-color: #404040;
+    .ant-menu {
+      border-right: 0;
+    }
+    .font-icon {
+      margin-right: 8px;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+  .menu-inner {
+    position: relative;
+    height: 100%;
+    overflow-x: visible;
+    transition: .3s;
+  }
+  .side-bar-top-menu-text {
+    background-color: #404040;
+    display: none;
+    transition: .3s;
+  }
+  .ant-menu-item-active {
+    overflow: visible !important;
+    background-color: #ecf6fd;
+    .side-bar-top-menu-text {
+      z-index: 999;
+      display: inline-block;
+      height: 100%;
+      padding-right: 16px;
+      border-right: 3px solid @primaryColor;
+      background-color: #404040;
+    }
+  }
+}
+
+.frame-content {
+  padding-top: 106px;
+  padding-left: @sideBarMaxWidth;
+  transition: .3s;
+  &.frame-content-iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.page-header {
+  position: fixed;
+  top: @headerHeight;
+  left: @sideBarMaxWidth;
+  right: 0;
+  z-index: 998;
+  background: #fff;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid @borderColor;
+  padding: 0 16px;
+  transition: .3s;
+  &.side-bar-collapsed {
+    left: @sideBarMinWidth;
+  }
+  &.side-bar-hidden {
+    left: 0;
+  }
+  h1 {
+    display: inline-block;
+    font-size: 18px;
+  }
+  .ant-breadcrumb {
+    display: inline-block;
+    float: right;
+  }
+  .font-icon {
+    margin-right: 8px;
+  }
+}
+
+#nprogress .bar {
+  background: #fff;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #fff;
+  border-left-color: #fff;
+}

@@ -1,0 +1,8 @@
+dependencies {
+    compile 'com.fasterxml.jackson.core:jackson-databind'
+    compile("io.springfox:springfox-swagger2:$swaggerVersion")
+
+    // runtime('org.springframework.boot:spring-boot-devtools')
+    compileOnly('org.springframework.boot:spring-boot-configuration-processor')
+    compileOnly('org.projectlombok:lombok')
+}

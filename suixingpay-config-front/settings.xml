@@ -1,0 +1,9 @@
+<settings>
+    <servers>
+        <server>
+            <id>codedeploy</id>
+            <username>admin</username>
+            <password>admin123</password>
+        </server>
+    </servers>
+</settings>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .send-passward {
+            border-radius: 7px;
+            background: #2db7f5;
+            position: absolute;
+            color: #fff;
+            text-align: center;
+            height: 45px;
+            width: 20%;
+            border: 0px;
+            text-align: center;
+            cursor: pointer;
+            margin-left: 4%
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta content="_csrf" name="csrf-param">
+    <meta content="<%= htmlWebpackPlugin.options.csrf %>" name="csrf-token">
+    <script language="javascript" src="static/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./static/login/bootstrap.min.css">
+    <link rel="stylesheet" href="./static/login/animate.css">
+    <link rel="stylesheet" href="./static/login/style.css">
+    <script>
+        function keyLogin() {
+            if (event.keyCode == 13)
+                document.getElementById('login-btn').click();
+        }
+    </script>
+
+</head>
+<body onkeydown="keyLogin()">
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div class="m-b-md">
+            <h2 class="logo-name">随行付统一配置中心</h2>
+        </div>
+        <!--<h3 class="text-white">Welcome to SuixingPay Config</h3>-->
+        <!--<p class="text-white"><strong>Welcome to SuixingPay Config</strong></p>-->
+        <!--<p>Login in. To see it in action.</p>-->
+        <div class="login-content">
+            <h3 class="text-white m-t-none" style="font-size:20px;">用户登录</h3>
+            <form id="loginForm" class="m-t" role="form">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="请输入登录名" class="login-input" required autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="pass" name="pass" class="login-input" placeholder="请输入密码" required>
+                </div>
+                <div class="form-group login-flex">
+                    <input type="text" id="code" placeholder="请输入验证码" class="login-input code-input" required>
+                    <span class="code-info">
+                    <img id="codeimg" width="100%" height="100%" src=""/>
+                </span>
+                </div>
+                <!--<button type="submit" class="btn btn-primary block full-width m-b">Login</button>-->
+                <div class="error" style="color: red;clear: both" id="login-error"></div>
+                <div class="btn btn-primary block full-width m-b" id="login-btn" style="clear: both">登录</div>
+            </form>
+        </div>
+        <p class="m-t">
+            <small>随行付 &copy; 2017</small>
+        </p>
+    </div>
+</div>
+</body>
+</html>

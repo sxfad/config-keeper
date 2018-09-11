@@ -1,0 +1,10 @@
+dependencies {
+    compile project(":suixingpay-config-common")
+    compile 'org.springframework.cloud:spring-cloud-commons'
+    compile 'org.springframework.cloud:spring-cloud-context'
+    compileOnly 'org.springframework.boot:spring-boot-autoconfigure'
+    compileOnly 'org.springframework.boot:spring-boot-starter-actuator'
+    compileOnly 'org.springframework:spring-web'
+
+    compileOnly('org.projectlombok:lombok')
+}

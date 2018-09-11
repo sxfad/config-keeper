@@ -1,0 +1,27 @@
+// common action type
+
+export const SET_STATE = 'SET_STATE';
+export const ARR_APPEND_VALUE = 'ARR_APPEND_VALUE';
+export const ARR_REMOVE_VALUE = 'ARR_REMOVE_VALUE';
+export const ARR_REMOVE_ALL_VALUE = 'ARR_REMOVE_ALL_VALUE';
+export const OBJ_SET_VALUE = 'OBJ_SET_VALUE';
+export const OBJ_REMOVE_VALUE = 'OBJ_REMOVE_VALUE';
+
+// middleware
+export const SYNC_STATE_TO_STORAGE = 'SYNC_STATE_TO_STORAGE';
+export const GET_STATE_FROM_STORAGE = 'GET_STATE_FROM_STORAGE';
+
+
+export const DEMO = 'DEMO';
+
+// system menu
+export const GET_SYSTEM_MENUS = 'GET_SYSTEM_MENUS';
+export const SET_SYSTEM_MENUS_STATUS_BY_URL = 'SET_SYSTEM_MENUS_STATUS_BY_URL';
+export const SET_SYSTEM_MENU_OPEN_KEYS = 'SET_SYSTEM_MENU_OPEN_KEYS';
+export const TOGGLE_SIDE_BAR = 'TOGGLE_SIDE_BAR';
+export const SET_PAGE_TITLE = 'SET_PAGE_TITLE';
+export const SET_PAGE_BREADCRUMBS = 'SET_PAGE_BREADCRUMBS';
+export const HIDE_PAGE_HEADER = 'HIDE_PAGE_HEADER';
+export const SHOW_PAGE_HEADER = 'SHOW_PAGE_HEADER';
+export const HIDE_SIDE_BAR = 'HIDE_SIDE_BAR';
+export const SHOW_SIDE_BAR = 'SHOW_SIDE_BAR';

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suixingpay.config.server.mapper.UserGlobalConfigRoleMapper">
+
+    <resultMap id="UserGlobalConfigRoleResultMap" type="com.suixingpay.config.server.entity.UserGlobalConfigRoleDO">
+        <result column="user_id" property="userId"/>
+        <result column="profile" property="profile.profile"/>
+    </resultMap>
+
+    <sql id="columns">
+    user_id, profile
+  </sql>
+
+    <select id="listByUserId" parameterType="java.lang.Integer" resultMap="UserGlobalConfigRoleResultMap">
+        select
+        <include refid="columns"/>
+        from user_global_config_role
+        where user_id = #{userId}
+    </select>
+
+    <insert id="addRoles" parameterType="com.suixingpay.config.server.entity.UserGlobalConfigRoleDO">
+        insert into user_global_config_role(profile, user_id)
+        values
+        <foreach collection="roles" item="role" index="index" separator=",">
+            (#{role.profile.profile}, #{role.userId})
+        </foreach>
+    </insert>
+
+    <delete id="deleteUserRoles" parameterType="int">
+    delete from user_global_config_role where user_id = #{userId}
+  </delete>
+
+</mapper>

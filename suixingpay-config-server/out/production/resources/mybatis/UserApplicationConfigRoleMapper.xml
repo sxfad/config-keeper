@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suixingpay.config.server.mapper.UserApplicationConfigRoleMapper">
+
+    <resultMap id="UserApplicationConfigRoleResultMap"
+               type="com.suixingpay.config.server.entity.UserApplicationConfigRoleDO">
+        <result column="user_id" property="userId"/>
+        <result column="profile" property="profile.profile"/>
+        <result column="application_name" property="application.name"/>
+    </resultMap>
+
+    <sql id="columns">
+    user_id, profile, application_name
+  </sql>
+    <select id="getByKey" parameterType="com.suixingpay.config.server.entity.UserApplicationConfigRoleDO"
+            resultMap="UserApplicationConfigRoleResultMap">
+        select
+        <include refid="columns"/>
+        from user_application_config_role
+        where user_id = #{userId} and application_name = #{application.name} and profile = #{profile.profile}
+    </select>
+
+    <select id="listByUserId" parameterType="java.lang.Integer" resultMap="UserApplicationConfigRoleResultMap">
+        select
+        <include refid="columns"/>
+        from user_application_config_role
+        where user_id = #{userId}
+    </select>
+
+    <select id="listProfileByUserId" parameterType="java.lang.Integer" resultType="java.lang.String">
+    select distinct profile 
+    from user_application_config_role
+    where user_id = #{userId}
+  </select>
+
+    <insert id="addRole" parameterType="com.suixingpay.config.server.entity.UserApplicationConfigRoleDO">
+    insert into user_application_config_role(user_id, profile, application_name)
+    values(#{userId}, #{profile.profile}, #{application.name})
+  </insert>
+
+    <insert id="addRoles" parameterType="com.suixingpay.config.server.entity.UserApplicationConfigRoleDO">
+        insert into user_application_config_role(user_id, profile, application_name)
+        values
+        <foreach collection="roles" item="role" index="index" separator=",">
+            (#{role.userId}, #{role.profile.profile}, #{role.application.name})
+        </foreach>
+    </insert>
+
+    <delete id="deleteRolesByUserId" parameterType="java.lang.Integer">
+    delete from user_application_config_role 
+    where user_id = #{userId}
+  </delete>
+
+</mapper>

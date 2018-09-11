@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: config-demo
+
+  profiles:
+    active: ${profile:dev}
+
+server:
+  port: 8088
+
+suixingpay:
+  config:
+    cache-path: ${APP_HMOE:.}/config/
+management:
+  security:
+    enabled: false

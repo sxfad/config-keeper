@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test</title>
+    <link href="css/index.css" media="all" rel="stylesheet" type="text/css"/>
+</head>
+<body style="margin: 0">
+<script type="text/javascript">
+    var global = {};
+</script>
+
+<script src="js/global.js" type="application/javascript"></script>
+<script src="js/language.js" type="application/javascript"></script>
+<script src="js/options.js" type="application/javascript"></script>
+<script src="js/finalFile.js" type="application/javascript"></script>
+<script src="js/diffview.js" type="application/javascript"></script>
+<script src="js/prettydiff.js" type="application/javascript"></script>
+<script src="js/jquery.min.js"></script>
+
+<script type="text/javascript">
+    setTimeout(function () {
+        var historyConfigText = window.parent.document.getElementById('historyConfigText').defaultValue;
+        var currentConfigText = window.parent.document.getElementById('currentConfigText').defaultValue;
+        args = {
+            source: historyConfigText,
+            diff: currentConfigText,
+            lang: "text"
+        };
+        var output = global.prettydiff.prettydiff(args);
+        document.getElementById("prettydiff").innerHTML = output;
+
+        // 设置 iframe 高度
+        var iframeHeight = document.getElementById('prettydiff').clientHeight;
+        window.parent.document.getElementById('diffIframe').setAttribute("height", iframeHeight + 40);
+    }, 100);
+
+    // 只查看修改行内容
+    function viewDiffLine() {
+        $('.data .equal').hide();
+        var allLi = $('.diff-left .data .equal');
+        for (var i = 0; i < allLi.length; i++) {
+            var index = $('.diff-left .data li').index($(allLi[i]));
+            $("div.diff-left ol.count").find("li").eq(index).hide();
+            $("div.diff-right ol.count").find("li").eq(index).hide();
+        }
+        setIframeHeight();
+    }
+    // 查看全部内容
+    function viewAllLine() {
+        $(".data .equal").show();
+        $(".diff ol.count").find("li").show();
+        setIframeHeight();
+    }
+    
+    //设置 iframe 高度
+    function setIframeHeight() {
+        var iframeHeight = document.getElementById('prettydiff').clientHeight;
+        window.parent.document.getElementById('diffIframe').setAttribute("height", iframeHeight + 40);
+    }
+</script>
+<div class="btn-view">
+    <button type="button" value="Execute" onclick="viewDiffLine()">只查看被修改行</button>
+    <button type="button" value="Execute" onclick="viewAllLine()">查看全部行</button>
+</div>
+<div id="prettydiff"></div>
+</body>
+</html>

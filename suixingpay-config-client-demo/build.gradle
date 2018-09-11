@@ -1,0 +1,8 @@
+dependencies {
+    compile project(":suixingpay-config-client")
+    compile 'org.springframework.boot:spring-boot-autoconfigure'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+
+    compileOnly('org.projectlombok:lombok')
+}

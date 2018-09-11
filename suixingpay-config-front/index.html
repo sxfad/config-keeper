@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+<div id="main"></div>
+<!-- built files will be auto injected -->
+<script type="text/javascript">
+    function setOnlyToken() {
+        var parentIframe = document.getElementsByTagName('iframe');
+        var iframeArr = [];
+        var xmlhttp;
+        for (var i = 0; i < parentIframe.length; i++) {
+            var src = parentIframe[i].src.split('/')[0] + '//' + parentIframe[i].src.split('/')[2];
+            iframeArr.push(src);
+        }
+        for (var j = 0; j < arrUnique(iframeArr).length; j++) {
+            ajaxHttps(arrUnique(iframeArr)[j] + '/sessionRefresh/doSessionRefresh');
+        }
+    }
+
+    function arrUnique(arr) {
+        var res = [];
+        var json = {};
+        for (var i = 0; i < arr.length; i++) {
+            if (!json[arr[i]]) {
+                res.push(arr[i]);
+                json[arr[i]] = 1;
+            }
+        }
+        return res;
+    }
+
+    function ajaxHttps(url) {
+        var i = document.createElement('iframe');
+        i.src = url;
+        i.style.display = 'none';
+        i.onload = function () {
+            setTimeout(function () {
+                i.remove();
+            }, 9)
+        }
+        document.body.appendChild(i);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suixingpay.config.server.mapper.UserMapper">
+
+    <resultMap id="UserResultMap" type="com.suixingpay.config.server.entity.UserDO">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+        <result column="administrator" property="administrator"/>
+        <result column="status" property="status"/>
+        <result column="createdDate" property="created_date"/>
+    </resultMap>
+
+    <sql id="columns">
+    id, name, password, email, administrator, status, created_date
+  </sql>
+
+    <select id="getById" parameterType="java.lang.Integer" resultMap="UserResultMap">
+        select
+        <include refid="columns"/>
+        from user
+        where id = #{id}
+    </select>
+
+    <select id="getByName" parameterType="java.lang.String" resultMap="UserResultMap">
+        select
+        <include refid="columns"/>
+        from user
+        where name = #{name}
+    </select>
+
+    <insert id="addUser" parameterType="com.suixingpay.config.server.entity.UserDO">
+    insert into user(name, password, email, administrator, status, created_date) 
+    values(#{name}, #{password}, #{email}, #{administrator}, #{status}, now())
+  </insert>
+
+    <update id="updateUser" parameterType="com.suixingpay.config.server.entity.UserDO">
+        update user
+        <set>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="password != null and password != ''">password = #{password},</if>
+            <if test="email != null and email != ''">email = #{email},</if>
+            <if test="administrator != null ">administrator = #{administrator},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        where id = #{id}
+    </update>
+    <sql id="select_from_where">
+        from user
+        <where>
+            <if test="id != null">and id = #{id}</if>
+            <if test="name != null and name != ''">and name like concat('%', #{name}, '%')</if>
+            <if test="password != null and password != ''">and password = #{password}</if>
+            <if test="email != null and email != ''">and email = #{email}</if>
+            <if test="administrator != null">and administrator = #{administrator}</if>
+            <if test="status != null">and status = #{status}</if>
+        </where>
+    </sql>
+
+    <select id="countByCondition" parameterType="com.suixingpay.config.server.condition.UserCondition"
+            resultType="java.lang.Long">
+        select count(*)
+        <include refid="select_from_where"/>
+    </select>
+
+    <select id="listByCondition" parameterType="com.suixingpay.config.server.condition.UserCondition"
+            resultMap="UserResultMap">
+        select
+        <include refid="columns"/>
+        <include refid="select_from_where"/>
+        order by id desc
+        limit #{pageable.pageSize} offset #{pageable.offset}
+    </select>
+</mapper>

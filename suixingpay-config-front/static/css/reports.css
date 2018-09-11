@@ -1,0 +1,199 @@
+#prettydiff #report.contentarea{max-width:none;overflow:scroll}
+
+/*report - borders*/
+#prettydiff{ margin-bottom: -60px}
+/*#prettydiff .diff-title{margin-top: 0!important;}*/
+#prettydiff .diff{
+    font-size: 12px!important;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+#prettydiff .diff .replace em,
+#prettydiff .diff .delete em,
+#prettydiff .diff .insert em{border-style:solid;border-width:0.1em}
+#prettydiff .diff .diff-left .replace{
+    background-color: #fdeff0;
+}
+#prettydiff .diff .diff-left .replace em{
+    border:none;
+    background-color: #f39ea2;
+    font-weight: 400;
+    color: #393A34;
+}
+#prettydiff .diff .insert{
+    background-color: #f2f8ff;
+}
+
+#prettydiff .diff .delete{
+    background-color: #f7f7f7;
+    text-decoration: line-through;
+}
+
+#prettydiff .diff .diff-right .replace{
+    background-color: #eaffee;
+}
+#prettydiff .diff .diff-right .replace em{
+    border:none;
+    background-color: #c0dc91;
+    font-weight: 400;
+    color: #393A34;
+}
+
+/*report - text containers*/
+#prettydiff #report dd,
+#prettydiff #report dt,
+#prettydiff #report p,
+#prettydiff #report li,
+#prettydiff #report td,
+#prettydiff #report blockquote,
+#prettydiff #report th{font-size:14em}
+
+/*report - jsscope output*/
+#prettydiff div#webtool{background:transparent;font-size:inherit;margin:0;padding:0}
+
+/*report - error messaging in jspretty's report output*/
+#prettydiff #jserror span{display:block}
+
+/*report - markuppretty's accessibility report*/
+#prettydiff #a11y{background:transparent;clear:both;padding:0}
+#prettydiff #a11y div{margin:0.5em 0;border-style:solid;border-width:0.1em}
+#prettydiff #a11y h4{margin:0.25em 0}
+#prettydiff #a11y ol{border-style:solid;border-width:0.1em}
+
+/*report - csspretty's report*/
+#prettydiff #cssreport.doc table{clear:none;float:left;margin-left:1em}
+#prettydiff #css-size{left:24em}
+#prettydiff #css-uri{left:40em}
+#prettydiff #css-uri td{text-align:left}
+#prettydiff .report .analysis th{text-align:left}
+#prettydiff table.code td,
+#prettydiff table.code th{font-size:0.9em}
+#prettydiff table.code td,
+#prettydiff table.code th,
+#prettydiff .report .analysis .parseData td{text-align:left;white-space:pre}
+#prettydiff .report .analysis td{text-align:right}
+#prettydiff .analysis{float:left;margin:0 1em 1em 0}
+#prettydiff .analysis td,
+#prettydiff .analysis th{padding:0.5em}
+
+/*report - diffcli rendered into HTML*/
+#prettydiff .diffcli{margin:0;padding:0;text-align:left;white-space:pre;}
+#prettydiff .diffcli li{border-bottom-style:solid;border-bottom-width:0.1em;list-style:none;padding-bottom:1em}
+#prettydiff #webtool .diffcli h3{font-size:1.4em;font-weight:normal;margin-top:2em}
+#prettydiff #webtool .diffcli p,
+#prettydiff .diffcli del,
+#prettydiff .diffcli ins{display:block;font-size:1.2em;font-style:normal;margin:0;text-decoration:none}
+#prettydiff .diffcli em{color:inherit;font-style:normal;font-weight:bold}
+#prettydiff .diffcli del em,
+#prettydiff .diffcli ins em{text-decoration:underline}
+
+/*report - stat report*/
+#prettydiff #statreport div{border-style:none}
+
+/*report - generated HTML artifacts*/
+#prettydiff .diff,
+#prettydiff .beautify{border-style:solid;border-width:1px;border-color:#e1e1e1;display:inline-block;margin:0 1em 1em 0;position:relative}
+#prettydiff .diff,
+#prettydiff .diff li
+#prettydiff .diff h3,
+#prettydiff .diff h4,
+#prettydiff .beautify,
+#prettydiff .beautify li,
+#prettydiff .beautify h3,
+#prettydiff .beautify h4{}
+#prettydiff .diff li,
+#prettydiff .beautify li,
+#prettydiff .diff h3,
+#prettydiff .diff h4,
+#prettydiff .beautify h3,
+#prettydiff .beautify h4{border-style:none none solid none;border-width:0 0 0.1em 0;border-color:#e1e1e1;box-shadow:none;display:block;font-size:1.2em;margin:0 0 0 -.1em;padding:0.2em 2em;text-align:left}
+#prettydiff .diff .skip{border-style:none none solid;border-width:0 0 0.1em;border-color:#e1e1e1;}
+#prettydiff .diff .diff-left{border-style:none;display:table-cell;}
+#prettydiff .diff .diff-right{border-style:none none none solid;border-width:0 0 0 0.1em;border-color:#e1e1e1;display:table-cell;margin-left:-.1em;min-width:16.5em;right:0;top:0}
+#prettydiff .diff-right .data{width:100%}
+#prettydiff .diff .data li,
+#prettydiff .beautify .data li{min-width:16.5em;padding:0.5em}
+#prettydiff .diff li,
+#prettydiff .diff p,
+#prettydiff .diff h3,
+#prettydiff .beautify li,
+#prettydiff .beautify p,
+#prettydiff .beautify h3{font-size:12px}
+#prettydiff .diff li em,
+#prettydiff .beautify li em{font-style:normal;font-weight:bold;margin:-0.5em -0.09em}
+#prettydiff .diff p.author{border-style:solid;border-width:0.2em 0.1em 0.1em;border-color:#e1e1e1;margin:0;overflow:hidden;padding:0.4em;text-align:right}
+#prettydiff .difflabel{display:block;height:0}
+#prettydiff .count{border-style:solid;border-width:0 0.1em 0 0;border-color:#e1e1e1;font-weight:normal;padding:0;text-align:right}
+#prettydiff .count li{padding:0.5em 1em;text-align:right}
+#prettydiff .count li.fold{cursor:pointer;font-weight:bold;padding-left:0.5em}
+#prettydiff .data{text-align:left;white-space:pre}
+#prettydiff .beautify .data em{display:inline-block;font-style:normal;font-weight:bold}
+#prettydiff .beautify li,
+#prettydiff .diff li{border-style:none none solid;border-width:0 0 0.1em;border-color:#e1e1e1;display:block;height:1em;line-height:1.2;list-style-type:none;margin:0;white-space:pre}
+#prettydiff .beautify ol,
+#prettydiff .diff ol{display:table-cell;margin:0;padding:0}
+#prettydiff .beautify em.l0,
+#prettydiff .beautify em.l1,
+#prettydiff .beautify em.l2,
+#prettydiff .beautify em.l3,
+#prettydiff .beautify em.l4,
+#prettydiff .beautify em.l5,
+#prettydiff .beautify em.l6,
+#prettydiff .beautify em.l7,
+#prettydiff .beautify em.l8,
+#prettydiff .beautify em.l9,
+#prettydiff .beautify em.l10,
+#prettydiff .beautify em.l11,
+#prettydiff .beautify em.l12,
+#prettydiff .beautify em.l13,
+#prettydiff .beautify em.l14,
+#prettydiff .beautify em.l15,
+#prettydiff .beautify em.l16{height:2.2em;margin:0 0 -1em;position:relative;top:-0.5em}
+#prettydiff .beautify em.l0{margin-left:-0.5em;padding-left:0.5em}
+#prettydiff #webtool table table{margin:0 -0.1em -0.1em;width:100%}
+#prettydiff #webtool table table td,
+#prettydiff #webtool table table th{font-size:1em}
+#prettydiff #webtool table td.nested{padding:0.5em}
+
+/*webtool - overrides*/
+#prettydiff #report .beautify,
+#prettydiff #report .beautify li,
+#prettydiff #report .diff,
+#prettydiff #report .diff li{}
+#prettydiff #report .beautify{border-style:solid;border-color:#e1e1e1;}
+#prettydiff #report .diff h3,
+#prettydiff #report .beautify h3{border-top-style:solid;border-top-width:0.1em;border-color:#e1e1e1;margin:0;}
+#prettydiff #webtool #a11y,
+#prettydiff #webtool #a11y div,
+#prettydiff #webtool #a11y ol,
+#prettydiff #webtool #a11y ul{border-style:none}
+#prettydiff .diff .texttitle{
+    line-height: 3;
+    background-color: #f7f7fa;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    font-weight: bold;
+    border-left: solid 1px #e1e1e1;
+}
+
+#prettydiff .diff li{
+    border-style: dashed;
+}
+#prettydiff .count{
+    border-style: dashed;
+}
+
+.btn-view{
+    position: absolute;
+    right: 0;
+}
+.btn-view button{
+    color: #fff;
+    background-color: #108ee9;
+    border-color: #108ee9;
+    padding: 4px 15px 5px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-left: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}

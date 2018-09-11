@@ -1,0 +1,24 @@
+version: 4.2
+os: linux
+files:
+- source: public/*
+  destination: /home/app/nginx/html/
+
+
+hooks:
+  BeforeInstall:
+  - location: deployment_hooks/before_install.sh
+    timeout: 300
+    runas: app
+  AfterInstall:
+  - location: deployment_hooks/after_install.sh
+    timeout: 300
+    runas: root
+  ApplicationStart:
+  - location: deployment_hooks/application_start.sh
+    timeout: 300
+    runas: app
+  ValidateService:
+  - location: deployment_hooks/validate_service.sh
+    timeout: 300
+    runas: app
