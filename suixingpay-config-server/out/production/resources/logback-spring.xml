@@ -13,7 +13,7 @@
     <appender name="FILE"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/logs/apps/%d{yyyyMMdd}/server.log.%i
+            <fileNamePattern>${LOG_PATH}/logs/apps/%d{yyyyMMdd}/server.%i.log
             </fileNamePattern>
             <MaxHistory>10</MaxHistory>
             <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -30,7 +30,7 @@
             <level>ERROR</level>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/logs/apps/%d{yyyyMMdd}/error.log.%i
+            <fileNamePattern>${LOG_PATH}/logs/apps/%d{yyyyMMdd}/error.%i.log
             </fileNamePattern>
             <MaxHistory>10</MaxHistory>
             <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
