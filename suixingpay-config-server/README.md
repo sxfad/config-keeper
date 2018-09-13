@@ -22,11 +22,13 @@
 application.yml
 
 ### 1. 本地开发环境启动
-先将前端页面打包到后端，方便直启动后端服务即可访问页面。  
-到项目根目录下执行gradle clean build -x test  
-再启动后端服务启动类：ConfigServerApplication.java   
+使用gradle 命令启动：
+
+    gradle bootRun  
+ 
 访问方式：http://localhost:8080  
 登陆用户名密码： admin 123456
+
 ### 2. 不同服务器环境启动
 上面通过bootstrap-dev.yml、bootstrap-test.yml、bootstrap-rc.yml、bootstrap-prod.yml等文件来切换不同环境的配置，但需要通过设置spring.profiles.active来激活。
 
