@@ -49,9 +49,16 @@ class ApplicationConfigAddEdit extends Component {
         editConfigText: '',
     };
 
-    componentWillMount() {
+    componentDidMount() {
+        document.getElementById('addeditform').getElementsByTagName('form')[0].setAttribute('autocomplete', 'off');
         const {params: {profile, application}} = this.props;
-        const {setFieldsValue} = this.props.form;
+        promiseAjax.get('/applicationconfig/profiles').then(rsp => {
+            this.setState({
+                profile: rsp.data,
+            })
+        });
+
+
         if (application !== 'addApplication' && profile !== 'addProfile') {
             this.setState({
                 title: '修改配置',
@@ -63,64 +70,59 @@ class ApplicationConfigAddEdit extends Component {
                 if (rsp) {
                     this.setState({
                         applicationConfig: rsp.data,
+                    }, () => {
+                        this.initContentConfig();
                     });
                 }
             })
+        } else {
+            this.initContentConfig();
         }
-        promiseAjax.get('/applicationconfig/profiles').then(rsp => {
-            this.setState({
-                profile: rsp.data,
-            })
+
+    }
+
+    initContentConfig = () => {
+        const {setFieldsValue} = this.props.form;
+        const permalink = document.getElementById('permalink');
+        const default_text = document.getElementById('propertySource').value || '';
+        const source = codemirror.fromTextArea(document.getElementById('propertySource'), {
+            mode: 'yaml',
+            lineNumbers: true
         });
 
-        // 加载配置内容输入框样式
-        setTimeout(function () {
-            permalink = document.getElementById('permalink');
-            default_text = document.getElementById('propertySource').value || '';
-            source = codemirror.fromTextArea(document.getElementById('propertySource'), {
-                mode: 'yaml',
-                lineNumbers: true
-            });
+        let timer;
+        source.on('change', function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                let str, obj;
+                str = source.getValue();
+                setFieldsValue({
+                    propertySource: str,
+                });
 
-            let timer;
-            source.on('change', function () {
-                clearTimeout(timer);
-                timer = setTimeout(function () {
-                    let str, obj;
-                    str = source.getValue();
-                    setFieldsValue({
-                        propertySource: str,
-                    });
+                permalink.href = '#yaml=' + base64.encode(str);
+                try {
+                    obj = jsyaml.load(str, {schema: SEXY_SCHEMA});
 
-                    permalink.href = '#yaml=' + base64.encode(str);
-                    try {
-                        obj = jsyaml.load(str, {schema: SEXY_SCHEMA});
+                    result.setOption('mode', 'javascript');
+                    result.setValue(inspect(obj, false, 10));
+                } catch (err) {
+                    result.setOption('mode', 'text/plain');
+                    result.setValue(err.message || String(err));
+                }
+            }, 500);
+        });
+        result = codemirror.fromTextArea(document.getElementById('result'), {
+            readOnly: true
+        });
 
-                        result.setOption('mode', 'javascript');
-                        result.setValue(inspect(obj, false, 10));
-                    } catch (err) {
-                        result.setOption('mode', 'text/plain');
-                        result.setValue(err.message || String(err));
-                    }
-                }, 500);
-            });
-            result = codemirror.fromTextArea(document.getElementById('result'), {
-                readOnly: true
-            });
-
-            // initial source
-            let yaml;
-            if (location.hash && location.hash.toString().slice(0, 6) === '#yaml=') {
-                yaml = base64.decode(location.hash.slice(6));
-            }
-            source.setValue(yaml || default_text);
-        }, 500);
-
-    }
-
-    componentDidMount() {
-        document.getElementById('addeditform').getElementsByTagName('form')[0].setAttribute('autocomplete', 'off');
-    }
+        // initial source
+        let yaml;
+        if (location.hash && location.hash.toString().slice(0, 6) === '#yaml=') {
+            yaml = base64.decode(location.hash.slice(6));
+        }
+        source.setValue(yaml || default_text);
+    };
 
     /**
      * 提交
@@ -302,17 +304,21 @@ class ApplicationConfigAddEdit extends Component {
     }
 
     handleOk = () => {
+        const {saving} = this.state;
+        if (saving) return;
         const {form} = this.props;
         form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 values.application = this.subStr(values.application);
 
-                promiseAjax.put('/applicationconfig', values).then(rsp => {
-                    if (rsp.status === 'SUCCESS') {
-                        message.success('修改成功', 3);
-                        history.back();
-                    }
-                });
+                this.setState({saving: true});
+                promiseAjax.put('/applicationconfig', values)
+                    .then(rsp => {
+                        if (rsp.status === 'SUCCESS') {
+                            message.success('修改成功', 3);
+                            history.back();
+                        }
+                    }).finally(() => this.setState({saving: false}));
             }
         });
     };
