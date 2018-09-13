@@ -120,6 +120,6 @@ suixingpay-config-client 是基于spring-cloud开发的，所以使用方法与s
 我们还可以使用spring boot提供的env及configprops endpoint 查看配置内容，检查配置是否生效、是否正确。
 
 
-Spring 生态功能非常丰富，为我们解决了非常多棘手问题，但很多东西要进行本地化开发后才能更好的使用。此配置中心使用了不少开源技术，给我们带来了不少便利，希望通过此开源项目回馈社区，为开源社区贡献绵薄之力。
+Spring 生态功能非常丰富，为我们解决了非常多棘手问题，但很多东西要进行本地化开发后才能更好的使用。此配置中心使用了不少开源技术，给我们带来了不少便利，希望通过此开源项目回馈社区，为开源社区贡献绵薄之力。希望了解随行付更多开源项目请查看[https://github.com/sxfad](https://github.com/sxfad)和[https://gitee.com/sxfad](https://gitee.com/sxfad)。
 
 
