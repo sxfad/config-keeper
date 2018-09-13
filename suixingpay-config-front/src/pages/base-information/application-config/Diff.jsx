@@ -31,16 +31,16 @@ class Diff extends Component {
                 this.setState({
                     historyConfigText: rsp.data.propertySource,
                     historyVersionId: rsp.data.version
+                }, () => {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = '/static/diffhtml.html';
+                    iframe.width = '100%';
+                    iframe.setAttribute("frameborder", 0);
+                    iframe.setAttribute("id", 'diffIframe');
+                    document.getElementById('prettydiff').appendChild(iframe);
                 });
             }
         });
-
-        const iframe = document.createElement('iframe');
-        iframe.src = '/static/diffhtml.html';
-        iframe.width = '100%';
-        iframe.setAttribute("frameborder", 0);
-        iframe.setAttribute("id", 'diffIframe');
-        document.getElementById('prettydiff').appendChild(iframe);
     }
 
     /**
