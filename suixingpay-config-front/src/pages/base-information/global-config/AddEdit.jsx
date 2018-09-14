@@ -44,10 +44,15 @@ class GlobalConfigAddEdit extends Component {
         editConfigText: '',
     };
 
-    componentWillMount() {
+    componentDidMount() {
         // const {profile} = this.props;
         const {params: {profile}} = this.props;
-        const {setFieldsValue} = this.props.form;
+        promiseAjax.get('/globalconfig/profiles').then(rsp => {
+            this.setState({
+                profile: rsp.data,
+            })
+        });
+
         if (profile !== 'addProfile') {
             this.setState({
                 title: '修改配置',
@@ -57,58 +62,57 @@ class GlobalConfigAddEdit extends Component {
                 if (rsp) {
                     this.setState({
                         globalConfig: rsp.data,
+                    }, () => {
+                        this.initContentConfig();
                     });
                 }
             })
+        } else {
+            this.initContentConfig();
         }
 
-        promiseAjax.get('/globalconfig/profiles').then(rsp => {
-            this.setState({
-                profile: rsp.data,
-            })
+    }
+
+    initContentConfig = () => {
+        const {setFieldsValue} = this.props.form;
+        const permalink = document.getElementById('permalink');
+        const default_text = document.getElementById('propertySource').value || '';
+        const source = codemirror.fromTextArea(document.getElementById('propertySource'), {
+            mode: 'yaml',
+            lineNumbers: true
+        });
+        let timer;
+        source.on('change', function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                let str, obj;
+                str = source.getValue();
+                setFieldsValue({
+                    propertySource: str,
+                });
+                permalink.href = '#yaml=' + base64.encode(str);
+                try {
+                    obj = jsyaml.load(str, {schema: SEXY_SCHEMA});
+
+                    result.setOption('mode', 'javascript');
+                    result.setValue(inspect(obj, false, 10));
+                } catch (err) {
+                    result.setOption('mode', 'text/plain');
+                    result.setValue(err.message || String(err));
+                }
+            }, 500);
+        });
+        result = codemirror.fromTextArea(document.getElementById('result'), {
+            readOnly: true
         });
 
-        // 加载配置内容输入框样式
-        setTimeout(function () {
-            permalink = document.getElementById('permalink');
-            default_text = document.getElementById('propertySource').value || '';
-            source = codemirror.fromTextArea(document.getElementById('propertySource'), {
-                mode: 'yaml',
-                lineNumbers: true
-            });
-            let timer;
-            source.on('change', function () {
-                clearTimeout(timer);
-                timer = setTimeout(function () {
-                    let str, obj;
-                    str = source.getValue();
-                    setFieldsValue({
-                        propertySource: str,
-                    });
-                    permalink.href = '#yaml=' + base64.encode(str);
-                    try {
-                        obj = jsyaml.load(str, {schema: SEXY_SCHEMA});
-
-                        result.setOption('mode', 'javascript');
-                        result.setValue(inspect(obj, false, 10));
-                    } catch (err) {
-                        result.setOption('mode', 'text/plain');
-                        result.setValue(err.message || String(err));
-                    }
-                }, 500);
-            });
-            result = codemirror.fromTextArea(document.getElementById('result'), {
-                readOnly: true
-            });
-
-            // initial source
-            let yaml;
-            if (location.hash && location.hash.toString().slice(0, 6) === '#yaml=') {
-                yaml = base64.decode(location.hash.slice(6));
-            }
-            source.setValue(yaml || default_text);
-        }, 500);
-    }
+        // initial source
+        let yaml;
+        if (location.hash && location.hash.toString().slice(0, 6) === '#yaml=') {
+            yaml = base64.decode(location.hash.slice(6));
+        }
+        source.setValue(yaml || default_text);
+    };
 
     handleSubmit = () => {
         const {form} = this.props;
@@ -190,15 +194,19 @@ class GlobalConfigAddEdit extends Component {
     }
 
     handleOk = () => {
+        const {saving} = this.state;
+        if (saving) return;
         const {form} = this.props;
         form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                promiseAjax.put('/globalconfig', values).then(rsp => {
-                    if (rsp.status === 'SUCCESS') {
-                        message.success('修改成功', 3);
-                        history.back();
-                    }
-                });
+                this.setState({saving: true});
+                promiseAjax.put('/globalconfig', values)
+                    .then(rsp => {
+                        if (rsp.status === 'SUCCESS') {
+                            message.success('修改成功', 3);
+                            history.back();
+                        }
+                    }).finally(() => this.setState({saving: false}));
             }
         });
     };
