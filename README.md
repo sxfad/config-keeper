@@ -1,10 +1,10 @@
-# 随行付开源级配置中心ConfigKeeper
+# 金融科技微服务必备神器——配置中心ConfigKeeper开源啦！
 
-在微服务架构中，配置中心是个必不可少的基础服务。应用部署到生产环境后，由于各种原因，需要调整一些配置。如果每次修改配置都需要经过修改代码、重新打包、重新部署等过程，为了避免重新部署造成请求错误，还需要将应用从负载均衡中下线，部署成功后再重新上线，当部署的实例比较多的情况下，那就会严重影响效率，如果是为了解决生产上的问题而调整配置，那行这个过程耗时越长，带来的风险也就越大。所以我们需要在不停机、不重新打包、不重新部署的情况下，可以动态修改配置(比如：功能开关、性能参数等)。为了方便动态更新应用配置，需要把配置放到应用执行包之外的配置中心。配置文件不需要打进应用执行包中后，可以带来以下几个好处：一个可执行包就可以在不同的环境下运行，可以降低包的版本管理成本，也可以降低docker镜像的版本管理成本。
+在微服务架构中，配置中心是个必不可少的基础服务。应用部署到生产环境后，由于各种原因，需要调整一些配置。如果每次修改配置都需要经过修改代码、重新打包、重新部署等过程，为了避免重新部署造成请求错误，还需要将应用从负载均衡中下线，部署成功后再重新上线，当部署的实例比较多的情况下，那就会严重影响投产效率，如果是为了解决生产上的问题而调整配置，那么这个过程耗时越多，带来的风险也就越大。所以我们需要在不停机、不重新打包、不重新部署的情况下，可以动态修改配置(比如：功能开关、性能参数等)。为了方便动态更新应用配置，需要把配置放到应用执行包之外的配置中心。配置文件不需要打进应用执行包中后，可以带来以下几个好处：一个可执行包就可以在不同的环境下运行，可以降低包的版本管理成本，也可以降低docker镜像的版本管理成本。
 
 Spring cloud 虽然已经为我们提供了基于git或mongodb等实现的配置中心，但是这些方案实现都过于简单，没有达到实际可用的标准，比如：没有提供统一的管理页面，不便于操作和使用；没有权限管理功能；没有数据验证功能等等。但Spring cloud config的核心技术还是可以为我们所有，没有必要重新造轮子。
 
-ConfigKeeper 是由随行付架构部基于Spring Cloud研发的分布式配置中心。前端使用React进行开发，后端使用Spring Cloud开发。与Spring boot、Spring Cloud应用无缝兼容。下面我们将详细介绍ConfigKeeper配置中心(有图有真像)：
+ConfigKeeper 是由随行付架构部基于Spring Cloud研发的分布式配置中心。基于Spring Cloud开发。与Spring Boot、Spring Cloud应用无缝兼容。下面我们将详细介绍ConfigKeeper配置中心(有图有真像)：
 
 ## 1. 支持权限管理，保证数据的安全
 
@@ -48,7 +48,7 @@ ConfigKeeper 是由随行付架构部基于Spring Cloud研发的分布式配置�
 
 为了更好管理配置内容，我们使用YAML格式管理配置内容。
 
-使用Yml在线编辑器，可以非常方便编辑，比如：复制粘贴内容，就像在修改配置文件一样。当用户输入内容时，会实时检查格式是否符合yaml格式时，如果格式是正确的，右则会正确显示其对应的json内容，如果格式不正确则，右则会提示相应的错误信息，能及时发现错误。
+使用Yml在线编辑器，可以非常方便编辑，比如：复制粘贴内容，就像在修改配置文件一样。当用户编辑内容时，会实时检查格式是否符合yaml格式时，如果格式是正确的，右则会正确显示其对应的json内容，如果格式不正确则，右则会提示相应的错误信息，能及时发现错误。
 
 ### 3.3 支持修改前后内容对比功能，保证修改内容的正确性
 
@@ -66,17 +66,17 @@ suixingpay-config-client 是基于spring-cloud开发的，所以使用方法与s
 
 只需要在项目是加入suixingpay-config-client依赖，并在bootstrap.yml文件中增加如下配置：
 
-	spring:
-	  application:
-	    name: config-demo # 设置应用名称，这是必填项
-	
-	  profiles:
-	    active: ${profile:dev}
+    spring:
+      application:
+        name: config-demo # 设置应用名称，这是必填项
+    
+      profiles:
+        active: ${profile:dev}
 
-	#多环境区分配置
-	---
-	spring:
-	   profiles: test
+    #多环境区分配置
+    ---
+    spring:
+       profiles: test
     suixingpay:
       config:
         enabled: true                  # 是否启用配置中心，默认值为：true;为了方便开发，建议开发环境设置为false
@@ -91,21 +91,16 @@ suixingpay-config-client 是基于spring-cloud开发的，所以使用方法与s
         
 下面举个Spring xml文件中获取读取配置值的例子：
 
-	<?xml version="1.0" encoding="UTF-8"?>
-	<beans xmlns="http://www.springframework.org/schema/beans"
-	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-	    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
-	        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-	
-	    <dubbo:application name="${dubbo.applicationName}" />
-	    <dubbo:registry protocol="${dubbo.registryProtocol}" address="${dubbo.zookeeperAddress}" />
-	    <dubbo:protocol name="${dubbo.protocolName}" port="${dubbo.protocolPort}" />
-	    <dubbo:monitor protocol="registry" />
-	
-	    <dubbo:service interface="com.suixingpay.server.service.UserService" ref="userService"></dubbo:service>
-	</beans>
-	
+    <?xml version="1.0" encoding="UTF-8"?>
+    <beans>
+    
+        <dubbo:application name="${spring.application.name}" />
+        <dubbo:registry protocol="${dubbo.registryProtocol}" address="${dubbo.zookeeperAddress}" />
+        <dubbo:protocol name="${dubbo.protocolName}" port="${dubbo.protocolPort}" />
+        ... ...
+
+    </beans>
+
 关于@Value、@ConfigurationProperties及@RefreshScope的使用就不再一一举例子，更多内容可以参考Spring 官方文档。
 ### 4.3 支持灰度发布
 
@@ -115,10 +110,9 @@ suixingpay-config-client 是基于spring-cloud开发的，所以使用方法与s
 
 ### 4.4 支持客户端缓存，即使配置中心服务不可用，也不会影响应用的启动
 
-客户端从配置中心获取最新配置后，会缓存到本地磁盘中，应用启动时，先获取本地缓存中的配置版本号，发送给配置中心，如果客户端版本号与服务端的不一致时，才会拉取最新配置，否则返回304状态，并使用本地缓存，通过这个机制可以节约网络带宽，从而也提升一点性能；同时我们还提供 configversion endpoint 用于查看当前应用配置的本地缓存版本信息，通过它也很容易检查客户端的配置的版本与服务端的版本是否一致，能方便发现配置是更新成功。
+客户端从配置中心获取最新配置后，会缓存到本地磁盘中，应用启动时，先获取本地缓存中的配置版本号，发送给配置中心，如果客户端版本号与服务端的不一致时，才会拉取最新配置，否则返回304状态，并使用本地缓存，通过这个机制可以节约网络带宽，从而也提升一点性能；同时我们还提供 configversion endpoint 用于查看当前应用配置的本地缓存版本信息，通过它也很容易检查客户端的配置的版本与服务端的版本是否一致，能方便发现配置是否更新成功。
 
 我们还可以使用spring boot提供的env及configprops endpoint 查看配置内容，检查配置是否生效、是否正确。
-
 
 Spring 生态功能非常丰富，为我们解决了非常多棘手问题，但很多东西要进行本地化开发后才能更好的使用。此配置中心使用了不少开源技术，给我们带来了不少便利，希望通过此开源项目回馈社区，为开源社区贡献绵薄之力。希望了解随行付更多开源项目请查看[https://github.com/sxfad](https://github.com/sxfad)和[https://gitee.com/sxfad](https://gitee.com/sxfad)。
 

@@ -22,7 +22,7 @@ spring:
 
 
   redis:
-    host: 172.16.135.146
+    host: 127.0.0.1
     port: 6379
     pool:
       maxWait: 1500
