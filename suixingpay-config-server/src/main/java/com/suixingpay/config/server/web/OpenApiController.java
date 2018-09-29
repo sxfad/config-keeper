@@ -1,11 +1,14 @@
 package com.suixingpay.config.server.web;
 
+import com.suixingpay.config.common.Constant;
 import com.suixingpay.config.common.to.PropertySource;
 import com.suixingpay.config.common.to.VersionDTO;
 import com.suixingpay.config.server.entity.ApplicationConfigDO;
+import com.suixingpay.config.server.entity.ApplicationInstanceDO;
 import com.suixingpay.config.server.entity.BasePropertySourceDO;
 import com.suixingpay.config.server.entity.GlobalConfigDO;
 import com.suixingpay.config.server.service.ApplicationConfigService;
+import com.suixingpay.config.server.service.ApplicationInstanceService;
 import com.suixingpay.config.server.service.GlobalConfigService;
 import com.suixingpay.config.server.util.PropertySourceUtil;
 import io.swagger.annotations.Api;
@@ -48,6 +51,9 @@ public class OpenApiController {
 
     @Autowired
     private GlobalConfigService globalConfigService;
+
+    @Autowired
+    private ApplicationInstanceService applicationInstanceService;
 
     @ApiOperation(value = "获取配置版本", notes = "获取配置版本")
     @GetMapping("/version")
@@ -101,9 +107,28 @@ public class OpenApiController {
     @GetMapping("/{application}/{profile}")
     public PropertySource getApplicationConfig(@PathVariable @Valid @NotBlank String application,
                                                @PathVariable @Valid @NotBlank String profile, //
-                                               @ApiParam(name = "version", value = "版本号", required = false) @RequestParam(required = false) Integer version,
+                                               @ApiParam(name = "version", value = "版本号", required = false) @RequestParam(required = false) Integer version,//
+                                               @ApiParam(name = Constant.IP_ADDRESS_HEADER, value = "IP地址", required = false) @RequestHeader(name = Constant.IP_ADDRESS_HEADER, required = false) String ipAddress,//
+                                               @ApiParam(name = Constant.MANAGEMENT_PORT_HEADER, value = "management port", required = false) @RequestHeader(name = Constant.MANAGEMENT_PORT_HEADER, required = false) Integer managementPort,//
+                                               @ApiParam(name = Constant.MANAGEMENT_CONTEXT_PATH_HEADER, value = "management context path", required = false) @RequestHeader(name = Constant.MANAGEMENT_CONTEXT_PATH_HEADER, required = false) String managerPath,//
                                                HttpServletResponse response) {
+        if (log.isDebugEnabled()) {
+            log.debug("ip={};managementPort={};managerPath={}", ipAddress, managementPort, managerPath);
+        }
         ApplicationConfigDO applicationConfigDO = applicationConfigService.getForOpenApi(application, profile);
+        if (null != applicationConfigDO && null != ipAddress && !ipAddress.isEmpty() && null != managementPort) {
+            //存储应用实例信息
+            ApplicationInstanceDO applicationInstanceDO = new ApplicationInstanceDO();
+            applicationInstanceDO.setApplicationName(application);
+            applicationInstanceDO.setProfile(profile);
+            applicationInstanceDO.setIp(ipAddress);
+            applicationInstanceDO.setPort(Integer.valueOf(managementPort));
+            applicationInstanceDO.setManagerPath(managerPath);
+            if (log.isDebugEnabled()) {
+                log.debug("开启存储实例信息 instance={}", applicationInstanceDO);
+            }
+            applicationInstanceService.save(applicationInstanceDO);
+        }
         // 如果没有修改，返回304以节约带宽
         if (isNotModified(applicationConfigDO, version)) {
             response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
@@ -126,7 +151,6 @@ public class OpenApiController {
      *
      * @param propertySourceDO
      * @param version
-     * @param response
      * @return
      */
     private boolean isNotModified(BasePropertySourceDO propertySourceDO, Integer version) {

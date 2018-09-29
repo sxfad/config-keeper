@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suixingpay.config.server.mapper.ApplicationInstanceMapper">
+
+    <resultMap id="ApplicationInstanceMap" type="com.suixingpay.config.server.entity.ApplicationInstanceDO">
+        <id column="id" property="id"/>
+        <result column="application_name" property="applicationName"/>
+        <result column="profile" property="profile"/>
+        <result column="ip" property="ip"/>
+        <result column="port" property="port"/>
+        <result column="manager_path" property="managerPath"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="modify_time" property="modifyTime"/>
+    </resultMap>
+
+    <sql id="columns">
+        id, application_name, profile, ip, port, manager_path, username, password, modify_time
+    </sql>
+
+    <sql id="table">
+        application_instance
+    </sql>
+
+
+    <insert id="addInstance" keyColumn="id" useGeneratedKeys="true">
+        insert into<include refid="table"/>(application_name, profile, ip, port, manager_path, username, password,
+        created_date, modify_time)
+        values(#{applicationName}, #{profile}, #{ip}, #{port}, #{managerPath}, #{username}, #{password}, now(), now())
+    </insert>
+
+    <update id="update" parameterType="com.suixingpay.config.server.entity.ApplicationInstanceDO">
+        update
+        <include refid="table"/>
+        <set>
+            <if test="ip != null">ip = #{ip},</if>
+            <if test="port != null">port = #{port},</if>
+            <if test="managerPath != null">manager_path = #{managerPath},</if>
+            <if test="username != null">username = #{username},</if>
+            <if test="password != null">password = #{password},</if>
+            modify_time = now()
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from
+        <include refid="table"/>
+        where id = #{id}
+    </delete>
+
+    <select id="list" resultMap="ApplicationInstanceMap"
+            parameterType="com.suixingpay.config.server.condition.ApplicationInstanceCondition">
+        select
+        <include refid="columns"/>
+        from
+        <include refid="table"/>
+        where application_name = #{applicationName} and profile = #{profile}
+    </select>
+
+    <select id="findOne" resultMap="ApplicationInstanceMap">
+        select
+        <include refid="columns"/>
+        from
+        <include refid="table"/>
+        where profile = #{profile} and application_name = #{applicationName} and ip = #{ip} and port = #{port}
+    </select>
+
+    <select id="findById" resultMap="ApplicationInstanceMap">
+        select
+        <include refid="columns"/>
+        from
+        <include refid="table"/>
+        where id = #{id}
+    </select>
+
+</mapper>

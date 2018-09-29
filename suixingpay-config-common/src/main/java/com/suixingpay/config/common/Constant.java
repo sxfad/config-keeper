@@ -12,7 +12,7 @@ public interface Constant {
     String MANAGEMENT_PORT_HEADER = "MANAGEMENT-PORT";
 
     /**
-     * 刷新配置地址
+     * management context path header
      */
     String MANAGEMENT_CONTEXT_PATH_HEADER = "MANAGEMENT-CONTEXT-PATH";
 
