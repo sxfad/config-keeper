@@ -126,7 +126,7 @@ public class SxfConfigClientProperties {
         if (null == managementPort) {
             managementPort = "8080";
         }
-        if (null != managementContextPath || managementContextPath.isEmpty()) {
+        if (null == managementContextPath || managementContextPath.isEmpty()) {
             managementContextPath = environment.getProperty("management.context-path", "");
         }
 

@@ -130,3 +130,21 @@ CREATE TABLE IF NOT EXISTS `suixingpay_config`.`user_global_config_role` (
 ENGINE = InnoDB
 COMMENT = '全局配置权限';
 
+-- -----------------------------------------------------
+-- Table `suixingpay_config`.`application_instance`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `suixingpay_config`.`application_instance` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `application_name` VARCHAR(45) NOT NULL COMMENT '应用名',
+  `profile` VARCHAR(10) NOT NULL COMMENT '环境',
+  `ip` VARCHAR(15) NOT NULL COMMENT '实例ip地址',
+  `port` INT(11) NOT NULL COMMENT '端口号',
+  `manager_path` VARCHAR(200) NOT NULL COMMENT 'manager端点路径',
+  `username` VARCHAR(45) NULL COMMENT '端点用户名',
+  `password` VARCHAR(32) NULL COMMENT '端点密码',
+  `created_date` TIMESTAMP NULL COMMENT '创建时间',
+  `modify_time` TIMESTAMP NULL COMMENT '上次修改时间',
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `application_profile_ip_port` (`application_name` ASC, `profile` ASC, `ip` ASC, `port` ASC))
+ENGINE = InnoDB
+COMMENT = '应用实例信息表'
