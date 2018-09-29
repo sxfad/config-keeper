@@ -22,3 +22,5 @@ gradlew*
 .lock
 *.log
 *.cache
+target/
+out/
