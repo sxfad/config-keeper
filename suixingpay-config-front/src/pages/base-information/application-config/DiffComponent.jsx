@@ -19,7 +19,6 @@ class DiffComponent extends Component {
     componentDidMount() {
         const {profile, application, editText} = this.props;
         promiseAjax.get(`/applicationconfig/${application}/${profile}`).then(rsp => {
-            console.log(rsp);
             if (rsp.status) {
                 this.setState({
                     historyConfigText: rsp.data.propertySource,
