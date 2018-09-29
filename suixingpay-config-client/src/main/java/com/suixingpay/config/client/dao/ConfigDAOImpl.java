@@ -231,7 +231,7 @@ public class ConfigDAOImpl implements ConfigDAO {
             if (null != username && !username.trim().isEmpty()) {
                 this.restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor(username, password));
             }
-            this.restTemplate.getInterceptors().add(new AddApplicationInstanceInfoInterceptor(configClientProperties.getEnvironment()));
+            this.restTemplate.getInterceptors().add(new AddApplicationInstanceInfoInterceptor(configClientProperties));
         }
     }
 
