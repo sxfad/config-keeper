@@ -1,9 +1,10 @@
 buildscript {
     ext {
         sxGradleHome = "https://github.com/sxfad/gradle-scripts/raw/master/"
+        REPOSITORY_HOME = 'http://maven.aliyun.com' // maven需要改为公司内部的仓库
+        REPOSITORY_URL =  REPOSITORY_HOME + "/nexus/content/groups/public"
         swaggerVersion = "2.8.0"
     }
-    apply from: sxGradleHome + 'maven.gradle'
     apply from: sxGradleHome + 'spring-cloud-edgware.gradle'
     repositories {
         maven { url REPOSITORY_URL }
@@ -17,8 +18,40 @@ version = '1.0.0'
 group = 'com.suixingpay.config-keeper'
 description = '配置中心'
 
+apply plugin: 'maven'
+
+allprojects {
+
+    repositories {// 使用 mavenCentral()时，将远程的仓库替换为自己搭建的仓库
+        all {ArtifactRepository repo ->
+            // println repo.url.toString()
+            def url = repo.url.toString()
+            if (repo instanceof MavenArtifactRepository && (url.startsWith("https://repo1.maven.org/maven2") || url.startsWith('https://jcenter.bintray.com/'))) {
+                project.logger.warn "Repository ${repo.url} removed."
+                remove repo
+            } else {
+                // println "maven url:" + url
+            }
+        }
+        maven {
+            url REPOSITORY_URL
+        }
+    }
+
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                snapshotRepository(url: REPOSITORY_HOME + "/nexus/content/repositories/snapshots/") {
+                    authentication(userName: 'xxx', password: 'xxx')
+                }
+                repository(url: REPOSITORY_HOME + "/nexus/content/repositories/releases/") {
+                    authentication(userName: 'xxx', password: 'xxx')
+                }
+            }
+        }
+    }
+}
 subprojects {
-    apply from: sxGradleHome + 'maven.gradle'
     apply from: sxGradleHome + 'spring-cloud.gradle'
 
     dependencies {
