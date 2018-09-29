@@ -15,35 +15,35 @@ public interface ConfigDAO {
 
     /**
      * 获取版本配置中心配置最新版本信息
-     *
+     * 
      * @return
      */
     VersionDTO getVersion();
 
     /**
      * 获取全局配置
-     *
+     * 
      * @return
      */
     PropertySource getGlobalConfig();
 
     /**
      * 从本地缓存中获取数据
-     *
+     * 
      * @return
      */
     PropertySource getGlobalConfigLocalCache();
 
     /**
      * 获取应用配置
-     *
+     * 
      * @return
      */
     PropertySource getApplicationConfig();
 
     /**
      * 从本地缓存中获取
-     *
+     * 
      * @return
      */
     PropertySource getApplicationConfigLocalCache();

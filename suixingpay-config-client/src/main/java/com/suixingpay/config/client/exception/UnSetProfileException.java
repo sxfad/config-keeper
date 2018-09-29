@@ -2,7 +2,7 @@ package com.suixingpay.config.client.exception;
 
 /**
  * 未设置profile异常
- *
+ * 
  * @author: qiujiayu[qiu_jy@suixingpay.com]
  * @date: 2017年9月25日 上午11:43:18
  * @version: V1.0

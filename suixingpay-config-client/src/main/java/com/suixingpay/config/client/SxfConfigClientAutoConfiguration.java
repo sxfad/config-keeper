@@ -3,7 +3,7 @@ package com.suixingpay.config.client;
 import com.suixingpay.config.client.dao.ConfigDAO;
 import com.suixingpay.config.client.dao.ConfigDAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.health.HealthIndicator;
+import org.springframework.boot.actuate.endpoint.Endpoint;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -28,21 +28,14 @@ public class SxfConfigClientAutoConfiguration {
         return new ConfigDAOImpl(configClientProperties);
     }
 
-    @Bean
-    @ConditionalOnBean(ConfigDAO.class)
-    @ConditionalOnMissingBean(SxfConfigVersionEndpoint.class)
-    public SxfConfigVersionEndpoint sxfConfigVersionEndpoint() {
-        return new SxfConfigVersionEndpoint(sxfConfigDAO());
-    }
-
     @Configuration
     @ConditionalOnBean(ConfigDAO.class)
-    @ConditionalOnClass(HealthIndicator.class)
-    protected static class ConfigServerHealthIndicatorConfiguration {
+    @ConditionalOnClass(Endpoint.class)
+    protected static class SxfConfigVersionEndpointConfiguration {
 
         @Bean
-        public SxfConfigServerHealthIndicator configServerHealthIndicator(ConfigDAO configDAO) {
-            return new SxfConfigServerHealthIndicator(configDAO);
+        public SxfConfigLocalVersionEndpoint sxfConfigLocalVersionEndpoint(ConfigDAO configDAO) {
+            return new SxfConfigLocalVersionEndpoint(configDAO);
         }
     }
 }

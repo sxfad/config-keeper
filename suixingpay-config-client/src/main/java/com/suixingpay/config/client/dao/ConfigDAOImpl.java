@@ -1,18 +1,26 @@
 package com.suixingpay.config.client.dao;
 
-import com.suixingpay.config.client.SxfConfigClientProperties;
-import com.suixingpay.config.client.util.JsonUtil;
-import com.suixingpay.config.common.to.PropertySource;
-import com.suixingpay.config.common.to.VersionDTO;
-import lombok.extern.slf4j.Slf4j;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.List;
+
+import com.suixingpay.config.client.AddApplicationInstanceInfoInterceptor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.*;
-import java.util.List;
+import com.suixingpay.config.client.SxfConfigClientProperties;
+import com.suixingpay.config.client.util.JsonUtil;
+import com.suixingpay.config.common.to.PropertySource;
+import com.suixingpay.config.common.to.VersionDTO;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author: qiujiayu[qiu_jy@suixingpay.com]
@@ -55,7 +63,7 @@ public class ConfigDAOImpl implements ConfigDAO {
     private void init() {
         List<String> uris = configClientProperties.getUris();
         if (null == uris || uris.isEmpty()) {
-            log.error("没有设置suixingpay.config.uris");
+            throw new RuntimeException("没有设置suixingpay.config.uris");
         }
         int size = uris.size();
         versionUrls = new String[size];
@@ -100,7 +108,7 @@ public class ConfigDAOImpl implements ConfigDAO {
 
     @Override
     public VersionDTO getVersion() {
-        RestTemplate restTemplate = getRestTemplate();
+        genRestTemplate();
         VersionDTO versionTO = null;
         int size = versionUrls.length;
         String versionUrl = versionUrls[getIndex() % size];
@@ -119,7 +127,7 @@ public class ConfigDAOImpl implements ConfigDAO {
 
     @Override
     public PropertySource getGlobalConfig() {
-        RestTemplate restTemplate = getRestTemplate();
+        genRestTemplate();
         PropertySource propertySource = null;
         PropertySource cache = getGlobalConfigLocalCache();
         Integer version = null;
@@ -168,7 +176,7 @@ public class ConfigDAOImpl implements ConfigDAO {
 
     @Override
     public PropertySource getApplicationConfig() {
-        RestTemplate restTemplate = getRestTemplate();
+        genRestTemplate();
         PropertySource propertySource = null;
         PropertySource cache = getApplicationConfigLocalCache();
         Integer version = null;
@@ -209,28 +217,28 @@ public class ConfigDAOImpl implements ConfigDAO {
             return this.applicationConfigCache;
         }
         String json = readFile(applicationConfigCacheFile);
-        if (null != json && json.trim().length() > 0) {
+        if (null != json && !json.trim().isEmpty()) {
             this.applicationConfigCache = JsonUtil.jsonToObject(json, PropertySource.class);
         }
         return applicationConfigCache;
     }
 
-    private RestTemplate getRestTemplate() {
+    private void genRestTemplate() {
         if (null == this.restTemplate) {
             this.restTemplate = getRawRestTemplate();
             String username = configClientProperties.getUsername();
             String password = configClientProperties.getPassword();
-            if (null != username && username.trim().length() > 0) {
+            if (null != username && !username.trim().isEmpty()) {
                 this.restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor(username, password));
             }
+            this.restTemplate.getInterceptors().add(new AddApplicationInstanceInfoInterceptor(configClientProperties.getEnvironment()));
         }
-        return this.restTemplate;
     }
 
     private RestTemplate getRawRestTemplate() {
         SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
-        // TODO 1m5s make configurable?
         requestFactory.setReadTimeout(READ_TIMEOUT);
+        requestFactory.setConnectTimeout(1000);
         return new RestTemplate(requestFactory);
     }
 

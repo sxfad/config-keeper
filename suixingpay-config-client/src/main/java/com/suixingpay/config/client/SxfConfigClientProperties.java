@@ -4,8 +4,10 @@ import com.suixingpay.config.client.exception.UnSetApplicationNameException;
 import com.suixingpay.config.client.exception.UnSetProfileException;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.cloud.commons.util.InetUtils;
 import org.springframework.core.env.Environment;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
@@ -19,10 +21,6 @@ import java.util.List;
 public class SxfConfigClientProperties {
 
     public static final String PREFIX = "suixingpay.config";
-
-    private static final String BOOTSTRAP = "bootstrap";
-
-    private static final String APPLICATION = "application";
 
     /**
      * 应用名称
@@ -69,18 +67,68 @@ public class SxfConfigClientProperties {
      **/
     private String password = "";
 
+    /**
+     * 本机IP
+     */
+    private String ipAddress;
+
+    /**
+     * Management Port
+     */
+    private String managementPort;
+
+    /**
+     * Management Context Path
+     */
+    private String managementContextPath;
+
+    private Environment environment;
+
     public SxfConfigClientProperties(Environment environment) {
-        String[] profiles = environment.getActiveProfiles();
-        if (profiles.length > 0) {
-            this.setProfile(profiles[0]);
+        this.environment = environment;
+    }
+
+    @PostConstruct
+    public void init() {
+        if (null == profile || profile.isEmpty()) {
+            String[] profiles = environment.getActiveProfiles();
+            if (profiles.length == 1) {
+                this.setProfile(profiles[0]);
+            }
+            if (null == profile || profile.isEmpty()) {
+                throw new UnSetProfileException("profile is empty!");
+            }
         }
-        String applicationName = environment.getProperty("spring.application.name");
-        this.setName(applicationName);
-        if (null == profile || profile.length() == 0) {
-            throw new UnSetProfileException("profile is empty!");
+        if (null == name || name.isEmpty()) {
+            String applicationName = environment.getProperty("spring.application.name");
+            this.setName(applicationName);
         }
-        if (null == name || name.length() == 0 || BOOTSTRAP.equals(name) || APPLICATION.equals(name)) {
+        if (null == name || name.isEmpty()) {
             throw new UnSetApplicationNameException("application name is empty!");
         }
+        if ("bootstrap".equals(name) || "application".equals(name)) {
+            throw new UnSetApplicationNameException("application name can't be \"bootstrap\" and \"application\"!");
+        }
+
+        if (null == ipAddress || ipAddress.isEmpty()) {
+            ipAddress = InetUtils.getFirstNonLoopbackHostInfo().getIpAddress();
+        }
+
+        if (null == managementPort) {
+            String managementPortStr = environment.getProperty("management.port");
+            if (null == managementPortStr || managementPortStr.isEmpty()) {
+                managementPortStr = environment.getProperty("server.port");
+            }
+            if (null != managementPortStr && !managementPortStr.isEmpty()) {
+                managementPort = managementPortStr;
+            }
+        }
+        if (null == managementPort) {
+            managementPort = "8080";
+        }
+        if (null != managementContextPath || managementContextPath.isEmpty()) {
+            managementContextPath = environment.getProperty("management.context-path", "");
+        }
+
     }
 }

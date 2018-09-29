@@ -1,12 +1,14 @@
 package com.suixingpay.config.client;
 
-import com.suixingpay.config.client.dao.ConfigDAO;
-import com.suixingpay.config.common.to.PropertySource;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.bootstrap.config.PropertySourceLocator;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.env.CompositePropertySource;
 import org.springframework.core.env.MapPropertySource;
+
+import com.suixingpay.config.client.dao.ConfigDAO;
+import com.suixingpay.config.common.to.PropertySource;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author: qiujiayu[qiu_jy@suixingpay.com]
@@ -26,24 +28,27 @@ public class SxfConfigServicePropertySourceLocator implements PropertySourceLoca
 
     private SxfConfigClientProperties configClientProperties;
 
-    public SxfConfigServicePropertySourceLocator(ConfigDAO configDAO, SxfConfigClientProperties configClientProperties) {
+    public SxfConfigServicePropertySourceLocator(ConfigDAO configDAO,
+            SxfConfigClientProperties configClientProperties) {
         this.configDAO = configDAO;
         this.configClientProperties = configClientProperties;
     }
 
     @Override
     public org.springframework.core.env.PropertySource<?> locate(org.springframework.core.env.Environment environment) {
-        log.trace("suixingpay-config:locating source ... ...");
+        if (log.isTraceEnabled()) {
+            log.trace("locating source ... ...");
+        }
         CompositePropertySource composite = new CompositePropertySource("configService");
         PropertySource globalConfig = getGlobalConfig();
         if (null != globalConfig && globalConfig.getVersion() >= MIN_VERSION && null != globalConfig.getSource()
-                && globalConfig.getSource().size() > 0) {
+                && !globalConfig.getSource().isEmpty()) {
             composite.addPropertySource(new MapPropertySource(globalConfig.getName(), globalConfig.getSource()));
         }
 
         PropertySource applicationConfig = getApplicationConfig();
         if (null != applicationConfig && applicationConfig.getVersion() >= MIN_VERSION
-                && null != applicationConfig.getSource() && applicationConfig.getSource().size() > 0) {
+                && null != applicationConfig.getSource() && !applicationConfig.getSource().isEmpty()) {
             composite.addFirstPropertySource(
                     new MapPropertySource(applicationConfig.getName(), applicationConfig.getSource()));
         }
@@ -67,6 +72,7 @@ public class SxfConfigServicePropertySourceLocator implements PropertySourceLoca
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
                     log.error(e.getMessage(), e);
+                    Thread.currentThread().interrupt();
                 }
             } else {
                 break;
@@ -74,7 +80,7 @@ public class SxfConfigServicePropertySourceLocator implements PropertySourceLoca
         } while (tryCnt < TRY_CNT);
         if (null == globalConfig) {
             globalConfig = configDAO.getGlobalConfigLocalCache();
-            log.debug("get global config from local cache:{}", null == globalConfig);
+            log.warn("load remote global config fail and use local cache:{}", null == globalConfig);
         }
         return globalConfig;
     }
@@ -96,6 +102,7 @@ public class SxfConfigServicePropertySourceLocator implements PropertySourceLoca
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
                     log.error(e.getMessage(), e);
+                    Thread.currentThread().interrupt();
                 }
             } else {
                 break;
@@ -103,7 +110,7 @@ public class SxfConfigServicePropertySourceLocator implements PropertySourceLoca
         } while (null == applicationConfig && tryCnt < TRY_CNT);
         if (null == applicationConfig) {
             applicationConfig = configDAO.getApplicationConfigLocalCache();
-            log.debug("get application config from local cache:{}", null == applicationConfig);
+            log.warn("load remote application config fail and use local cache:{}", null == applicationConfig);
         }
         return applicationConfig;
     }
