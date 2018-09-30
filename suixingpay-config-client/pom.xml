@@ -6,15 +6,15 @@
     <groupId>com.suixingpay.config-keeper</groupId>
     <artifactId>suixingpay-config-client</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <parent>
         <groupId>com.suixingpay.config-keeper</groupId>
         <artifactId>config-keeper</artifactId>
-        <version>1.0.0</version>
-        <relativePath>../spring-boot-parent/pom.xml</relativePath>
+        <version>1.1.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <properties>
-        <suixingpay-config-common.version>1.0.0</suixingpay-config-common.version>
+        <suixingpay-config-common.version>1.1.0</suixingpay-config-common.version>
     </properties>
     <dependencies>
         <dependency>
