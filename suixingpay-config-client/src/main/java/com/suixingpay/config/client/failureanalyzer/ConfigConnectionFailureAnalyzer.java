@@ -1,9 +1,8 @@
 package com.suixingpay.config.client.failureanalyzer;
 
+import com.suixingpay.config.client.exception.ConfigConnectionFailureException;
 import org.springframework.boot.diagnostics.AbstractFailureAnalyzer;
 import org.springframework.boot.diagnostics.FailureAnalysis;
-
-import com.suixingpay.config.client.exception.ConfigConnectionFailureException;
 
 /**
  * @author: qiujiayu[qiu_jy@suixingpay.com]

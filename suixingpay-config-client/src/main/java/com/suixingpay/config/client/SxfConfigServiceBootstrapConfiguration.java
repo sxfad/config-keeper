@@ -40,6 +40,7 @@ public class SxfConfigServiceBootstrapConfiguration {
         return new ConfigDAOImpl(sxfConfigClientProperties);
     }
 
+
     @Bean
     @ConditionalOnMissingBean(SxfConfigServicePropertySourceLocator.class)
     @ConditionalOnProperty(value = "suixingpay.config.enabled", matchIfMissing = true)

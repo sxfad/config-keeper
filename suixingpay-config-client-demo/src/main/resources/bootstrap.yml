@@ -1,6 +1,6 @@
 spring:
   application:
-    name: config-demo
+    name: config-keeper-demo
 
   profiles:
     active: ${profile:dev}

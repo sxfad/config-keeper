@@ -2,7 +2,7 @@ package com.suixingpay.config.client.exception;
 
 /**
  * 连接配置中心失败
- * 
+ *
  * @author: qiujiayu[qiu_jy@suixingpay.com]
  * @date: 2017年9月25日 上午11:24:48
  * @version: V1.0

@@ -1,26 +1,19 @@
 package com.suixingpay.config.client.dao;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.List;
-
 import com.suixingpay.config.client.AddApplicationInstanceInfoInterceptor;
+import com.suixingpay.config.client.SxfConfigClientProperties;
+import com.suixingpay.config.client.util.JsonUtil;
+import com.suixingpay.config.common.to.PropertySource;
+import com.suixingpay.config.common.to.VersionDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.web.client.RestTemplate;
 
-import com.suixingpay.config.client.SxfConfigClientProperties;
-import com.suixingpay.config.client.util.JsonUtil;
-import com.suixingpay.config.common.to.PropertySource;
-import com.suixingpay.config.common.to.VersionDTO;
-
-import lombok.extern.slf4j.Slf4j;
+import java.io.*;
+import java.util.List;
 
 /**
  * @author: qiujiayu[qiu_jy@suixingpay.com]
@@ -49,9 +42,10 @@ public class ConfigDAOImpl implements ConfigDAO {
 
     private String applicationConfigCacheFile;
 
-    private PropertySource globalConfigCache;
+    // refresh 后 ConfigDAOImpl 在Spring 容器中不是单例，需要使用static
+    private static PropertySource globalConfigCache;
 
-    private PropertySource applicationConfigCache;
+    private static PropertySource applicationConfigCache;
 
     private RestTemplate restTemplate;
 
@@ -198,7 +192,7 @@ public class ConfigDAOImpl implements ConfigDAO {
                     String json = responseEntity.getBody();
                     propertySource = JsonUtil.jsonToObject(json, PropertySource.class);
                     if (null != propertySource) {
-                        this.applicationConfigCache = propertySource;
+                        applicationConfigCache = propertySource;
                         writeFile(this.applicationConfigCacheFile, json);
                     }
                 }
@@ -213,12 +207,12 @@ public class ConfigDAOImpl implements ConfigDAO {
 
     @Override
     public PropertySource getApplicationConfigLocalCache() {
-        if (null != this.applicationConfigCache) {
-            return this.applicationConfigCache;
+        if (null != applicationConfigCache) {
+            return applicationConfigCache;
         }
         String json = readFile(applicationConfigCacheFile);
         if (null != json && !json.trim().isEmpty()) {
-            this.applicationConfigCache = JsonUtil.jsonToObject(json, PropertySource.class);
+            applicationConfigCache = JsonUtil.jsonToObject(json, PropertySource.class);
         }
         return applicationConfigCache;
     }
