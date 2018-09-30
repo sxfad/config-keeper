@@ -1,8 +1,7 @@
 # 应用接入配置中心说明
 
-作者：邱家榆
+[![Maven Central](https://img.shields.io/maven-central/v/com.suixingpay.config-keeper/suixingpay-config-client.svg?style=flat-square)](https://maven-badges.herokuapp.com/maven-central/com.suixingpay.config-keeper/suixingpay-config-client/)
 
------
 
 应用经常需要在不停机、不重新打包的情况下，动态修改一些配置，比如：一些功能的开关、性能配置等。为了方便动态更新应用配置，需要把需要动态更新配置放到应用之外的配置中心。
 
@@ -12,7 +11,7 @@
 
 ### 1. 引入依赖jar包
 
-    compile("com.suixingpay.config:suixingpay-config-client:xxx")
+    compile("com.suixingpay.config-keeper:suixingpay-config-client:xxx")
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-actuator")
@@ -23,9 +22,9 @@
 
     spring:
       application:
-        name: config-demo        # 设置应用名称，不能与其它应用重名，必须配置
+        name: config-keeper-demo        # 设置应用名称，不能与其它应用重名，必须配置
       profiles:
-        active: ${profile:dev}   # 设置生效的profile, 必须配置
+        active: ${profile:dev}          # 设置生效的profile, 必须配置
     # 启用spring boot的 endpoints，用于监控，刷新配置等
     management:
       security:
@@ -51,6 +50,9 @@
         cachePath: ./config            # 配置缓存路径，默认值为：./config
         cacheTimeOut: 0                # 本地缓存过期时间(单位：秒),如果小于等于0时，一直有效
         failFast: false                # 是否快速失败，如果为true时，当访问配置中心时立即抛异常；如果为false时，会尝试加载3次，并会尝试获取本地缓存，最终还没有配置，才会抛异常。默认值：false
+        ipAddress:                     # 应用实例IP
+        managementPort:                # management.port
+        managementContextPath:         # management.context-path
         
 测试环境的配置文件为：src/main/resources/bootstrap-test.yml、RC环境的配置文件为：src/main/resources/bootstrap-rc.yml、生产环境的配置文件为：src/main/resources/bootstrap-prod.yml 参考开发环境的配置进行设置。    
              
