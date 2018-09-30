@@ -2,7 +2,7 @@ package com.suixingpay.config.client.exception;
 
 /**
  * bootstrap.yml未设置spring.application.name
- * 
+ *
  * @author: qiujiayu[qiu_jy@suixingpay.com]
  * @date: 2017年9月25日 下午1:04:12
  * @version: V1.0

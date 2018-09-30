@@ -1,13 +1,12 @@
 package com.suixingpay.config.client.failureanalyzer;
 
+import com.suixingpay.config.client.exception.UnSetApplicationNameException;
 import org.springframework.boot.diagnostics.AbstractFailureAnalyzer;
 import org.springframework.boot.diagnostics.FailureAnalysis;
 
-import com.suixingpay.config.client.exception.UnSetApplicationNameException;
-
 /**
  * 未设置spring.application.name异常分析
- * 
+ *
  * @author: qiujiayu[qiu_jy@suixingpay.com]
  * @date: 2017年9月25日 上午11:45:32
  * @version: V1.0

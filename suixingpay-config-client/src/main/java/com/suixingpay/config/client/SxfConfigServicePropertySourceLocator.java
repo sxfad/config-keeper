@@ -1,14 +1,12 @@
 package com.suixingpay.config.client;
 
+import com.suixingpay.config.client.dao.ConfigDAO;
+import com.suixingpay.config.common.to.PropertySource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.bootstrap.config.PropertySourceLocator;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.env.CompositePropertySource;
 import org.springframework.core.env.MapPropertySource;
-
-import com.suixingpay.config.client.dao.ConfigDAO;
-import com.suixingpay.config.common.to.PropertySource;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author: qiujiayu[qiu_jy@suixingpay.com]
@@ -29,7 +27,7 @@ public class SxfConfigServicePropertySourceLocator implements PropertySourceLoca
     private SxfConfigClientProperties configClientProperties;
 
     public SxfConfigServicePropertySourceLocator(ConfigDAO configDAO,
-            SxfConfigClientProperties configClientProperties) {
+                                                 SxfConfigClientProperties configClientProperties) {
         this.configDAO = configDAO;
         this.configClientProperties = configClientProperties;
     }
