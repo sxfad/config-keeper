@@ -8,6 +8,8 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.Pattern;
+
 /**
  * 添加修改应用表单
  *
@@ -22,6 +24,7 @@ public class AddEditApplicationForm {
     @ApiModelProperty(value = "应用名称", required = true)
     @NotBlank(message = "应用名称不能为空")
     @Length(max = 40, message = "应用名称长度不能超过{max}位字符")
+    @Pattern(regexp = "^[A-Za-z0-9_-]+$", message = "只能输入英文大小写，下划线，中划线和数字")
     private String name;
 
     @ApiModelProperty(value = "应用显示名称", required = true) //
