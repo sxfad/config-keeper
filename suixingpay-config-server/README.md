@@ -14,25 +14,43 @@
 2. global_config, global_config_log, application_config, application_config_log等表，除超级管理员外，需要分配相应的权限才能进行管理；
 
 
-## 三. 服务端(suixingpay-config-server)部署
+## 三. 服务端(suixingpay-config-server)部署步骤
 
-### 1. 修改配置文件
+### 1. 初始化数据库
 
-需要根据实际情况修改：
-application.yml
+### 2. 准备好Redis环境
 
-### 1. 本地开发环境启动
+### 3. 修改配置文件
+
+需要根据实际情况修改或增加：application-xxx.yml 文件(xxx指spring profile)
+
+### 4. 构建
+
+
+服务端使用前后端分离架构，为了降低学习成本，建议大家将前端静态资源文件（suixingpay-config-front中的文件）使用gradle assemble 或mvn package，将前端静态页面也打进可执行的jar包中。
+
+
+通过下面命令进行构建打包：
+
+gradle:
+
+    gradle assemble
+    
+maven:
+
+    mvn clean package -Dmaven.test.skip=true
+
+### 5. 运行方法
+
+#### 1. 本地开发环境启动
 使用gradle 命令启动：
 
-    gradle bootRun  
+    gradle bootRun 
  
 访问方式：http://localhost:8080  
 登陆用户名密码： admin 123456
 
-### 2. 不同服务器环境启动
-上面通过bootstrap-dev.yml、bootstrap-test.yml、bootstrap-rc.yml、bootstrap-prod.yml等文件来切换不同环境的配置，但需要通过设置spring.profiles.active来激活。
-
-激活Spring boot profile的方式很多，我们统一使用jvm参数指定：  
-java -jar xxx.jar --profile=test	
-java -jar xxx.jar --profile=rc  
-java -jar xxx.jar --profile=prod
+#### 2. 通过jar包进行启动，并指定服务器运行环境
+使用jvm参数激活Spring boot profile：（比如：dev 为开发环境；prod 为生产环境）
+java -jar config.jar --profile=dev 
+java -jar config.jar --profile=prod

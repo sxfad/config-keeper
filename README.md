@@ -104,9 +104,13 @@ suixingpay-config-client 是基于spring-cloud开发的，所以使用方法与s
 关于@Value、@ConfigurationProperties及@RefreshScope的使用就不再一一举例子，更多内容可以参考Spring 官方文档。
 ### 4.3 支持灰度发布
 
-为了支持灰度发布，suixingpay-config-client并实现没有自动刷新配置的功能，而是通过使用Spring cloud提供的refresh endpoint进行手动刷新，因为当配置变更后，没有经过验证就将最新配置推送给所有应用，风险是非常之大的。正确的做法是，修改配置内容后，先将最新配置内容刷新到一个应用实例进行验证，验证无误后，再刷新剩余的应用。
+为了支持灰度发布，suixingpay-config-client并实现没有自动刷新配置的功能，而是通过使用Spring cloud提供的refresh endpoint进行手动刷新，因为当配置变更后，没有经过验证就将最新配置推送给所有应用，风险是非常之大的。正确的做法是，修改配置内容后，先将最新配置内容刷新到其中一个应用实例进行验证，验证无误后，再刷新剩余的应用。
 
-现有版本还没有方便刷新配置的相关工具，需要借助curl或postmain等工具来完成，我们正在开发相应的功能来提升这块的用户体验，大家可以关注github中的更新。
+需要除了可以借助curl或postmain等工具进行刷新配置之外，还可以使用配置中心的刷新功能，通过应用配置列表页中的“查看实例” 链接进入下面页面：
+
+![查看实例信息及刷新功能](doc/applicationInstance.png)
+
+此页面可以查看应用各个实例中的配置版本号，以确认版本是否最新，也可以通过刷新按钮批量刷新选中实例的配置。
 
 ### 4.4 支持客户端缓存，即使配置中心服务不可用，也不会影响应用的启动
 
@@ -117,3 +121,7 @@ suixingpay-config-client 是基于spring-cloud开发的，所以使用方法与s
 Spring 生态功能非常丰富，为我们解决了非常多棘手问题，但很多东西要进行本地化开发后才能更好的使用。此配置中心使用了不少开源技术，给我们带来了不少便利，希望通过此开源项目回馈社区，为开源社区贡献绵薄之力。希望了解随行付更多开源项目请查看[https://github.com/sxfad](https://github.com/sxfad)和[https://gitee.com/sxfad](https://gitee.com/sxfad)。
 
 ConfigKeeper交流群:478814745
+
+[服务端使用说明](suixingpay-config-server/README.md)
+
+[客户端使用说明](suixingpay-config-client/README.md)

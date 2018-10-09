@@ -107,6 +107,107 @@
     <build>
         <finalName>config</finalName>
         <plugins>
+            <!-- 执行NPM编译 -->
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.6</version>
+                <configuration>
+                    <!--JONE的node和yarn的下载地址 不可变动-->
+                    <!--<installDirectory>/usr/local/lib/node_modules</installDirectory>-->
+                    <installDirectory>target</installDirectory>
+                    <skip>${skipBuild}</skip>
+                    <nodeVersion>v8.9.4</nodeVersion>
+                    <npmVersion>5.6.0</npmVersion>
+                    <yarnVersion>v1.3.2</yarnVersion>
+                    <!-- 下载地址欺骗 实际执行构建服务器 -->
+                    <nodeDownloadRoot>http://nodejs.org/dist/</nodeDownloadRoot>
+                    <yarnDownloadRoot>http://github.com/yarnpkg/yarn/releases/download/</yarnDownloadRoot>
+                    <workingDirectory>../suixingpay-config-front</workingDirectory>
+                </configuration>
+                <executions>
+                    <!--<execution>-->
+                    <!--<id>install node and yarn</id>-->
+                    <!--<goals>-->
+                    <!--<goal>install-node-and-yarn</goal>-->
+                    <!--</goals>-->
+                    <!--<phase>generate-resources</phase>-->
+                    <!--</execution>-->
+                    <execution>
+                        <!-- optional: you don't really need execution ids, but it looks nice in your build log. -->
+                        <id>install node and yarn</id>
+                        <goals>
+                            <goal>install-node-and-yarn</goal>
+                        </goals>
+                        <!-- optional: default phase is "generate-resources" -->
+                        <phase>generate-resources</phase>
+                    </execution>
+                    <execution>
+                        <id>yarn config set</id>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>config set registry https://registry.npm.taobao.org</arguments>
+                        </configuration>
+                        <phase>generate-resources</phase>
+                    </execution>
+                    <execution>
+                        <id>yarn install</id>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                        <configuration>
+                            <!-- optional: The default argument is actually
+                            "install", so unless you need to run some other yarn command,
+                            you can remove this whole <configuration> section.
+                            -->
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>yarn build</id>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>build</arguments>
+                        </configuration>
+                        <phase>compile</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.4.3</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>copy-spring-boot-resources</id>
+                        <!-- here the phase you need -->
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <encoding>utf-8</encoding>
+                            <outputDirectory>${project.build.directory}/classes/static</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>../suixingpay-config-front/public</directory>
+                                    <includes>
+                                        <include>**/**</include>
+                                    </includes>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
