@@ -11,7 +11,7 @@
 
 ### 1. 引入依赖jar包
 
-    compile("com.suixingpay.config-keeper:suixingpay-config-client:xxx")
+    compile("com.suixingpay.config-keeper:suixingpay-config-client:1.10")
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-actuator")
@@ -149,15 +149,9 @@ spring boot中读取配置项内容的方法很多，最常用的有两种方式
     
     **注意**：应用程序没有实现自动监控配置版本是否发生变更，而进行自动刷新配置的功能。主要是考虑如果全自动刷新，不太可控，当配置内容有问题等原因造成刷新失败时，会造成所有应用不可用。而通过手动刷新，就可以先刷新几个实例，当验证没有问题后，再刷新其它实例。 动态刷新功能一定要做好测试。
     
-2. health : 用于检查应用的健康状态，其返回值中，configServer项是显示当前应用访问配置中心的状态。如果无法访问配置中心服务，status为DOWN，如果配置中心的版本号与本地缓存的版本号不一致时，status为UNKNOWN，否则为UP。
-    
-    refreshScope,是刷新后的状态。如果在调用/refresh endpoint时失败了，则其状态会变为DOWN。
-    
-    **注意：**配置中心没有实现告警功能。目的是将监控维护的需求与实际业务需求进行解耦。监控程序定时调用应用的/health endpoint来实现监控，并根据需求进行发邮件、短信等告警。
-    
-3. configversion : 用于查看当前应用配置的本地缓存版本与远程配置版本信息。
-4. env : 查看所有配置信息。
+2. configversion : 用于查看当前应用配置的本地缓存版本。
+3. env : 查看所有配置信息。
     
    注：这里只是看配置内容，但不一定是程序的真实使用的配置值，因为有些情况是不能被刷新，比如：@Value没结合@RefreshScope使用。
     
-5. configprops 查看所有使用@ConfigurationProperties 配置的值，用于检查配置是否生效。
+4. configprops 查看所有使用@ConfigurationProperties 配置的值，用于检查配置是否生效。
