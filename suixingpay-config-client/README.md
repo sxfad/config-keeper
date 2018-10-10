@@ -12,6 +12,8 @@
 ### 1. 引入依赖jar包
 
     compile("com.suixingpay.config-keeper:suixingpay-config-client:1.1.0")
+    compile("org.springframework.cloud:spring-cloud-commons")
+    compile("org.springframework.cloud:spring-cloud-context")
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-actuator")
