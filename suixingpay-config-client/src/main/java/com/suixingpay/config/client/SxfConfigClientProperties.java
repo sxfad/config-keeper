@@ -113,21 +113,26 @@ public class SxfConfigClientProperties {
         if (null == ipAddress || ipAddress.isEmpty()) {
             ipAddress = InetUtils.getFirstNonLoopbackHostInfo().getIpAddress();
         }
-
-        if (null == managementPort) {
-            String managementPortStr = environment.getProperty("management.port");
+        String envManagementPort = environment.getProperty("management.port");
+        if (null == this.managementPort) {
+            String managementPortStr = envManagementPort;
             if (null == managementPortStr || managementPortStr.isEmpty()) {
                 managementPortStr = environment.getProperty("server.port");
             }
             if (null != managementPortStr && !managementPortStr.isEmpty()) {
-                managementPort = managementPortStr;
+                this.managementPort = managementPortStr;
             }
         }
-        if (null == managementPort) {
-            managementPort = "8080";
+        if (null == this.managementPort) {
+            this.managementPort = "8080";
         }
+
         if (null == managementContextPath || managementContextPath.isEmpty()) {
-            managementContextPath = environment.getProperty("management.context-path", "");
+            String prefix = "";
+            if (null == envManagementPort || envManagementPort.isEmpty()){
+                prefix = environment.getProperty("server.context-path", "");
+            }
+            managementContextPath = prefix + environment.getProperty("management.context-path", "");
         }
 
     }
