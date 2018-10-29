@@ -34,6 +34,6 @@ suixingpay:
   autoload:
     cache:
       enable: true
-  security:
+  security: # 客户端安全校验用户名和密码
     username: admin
     password: 123456
