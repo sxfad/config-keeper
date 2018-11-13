@@ -38,6 +38,8 @@ public class ApplicationInstanceServiceImpl implements ApplicationInstanceServic
             if (null == one) {
                 instanceMapper.addInstance(instanceDO);
             } else if (!instanceDO.getManagerPath().equals(one.getManagerPath())) {
+                instanceDO.setId(one.getId());
+                // 更新 ManagerPath
                 instanceMapper.update(instanceDO);
             }
         }
