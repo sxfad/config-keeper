@@ -117,9 +117,9 @@
                     <!--<installDirectory>/usr/local/lib/node_modules</installDirectory>-->
                     <installDirectory>target</installDirectory>
                     <skip>${skipBuild}</skip>
-                    <nodeVersion>v8.9.4</nodeVersion>
-                    <npmVersion>5.6.0</npmVersion>
-                    <yarnVersion>v1.3.2</yarnVersion>
+                    <nodeVersion>v10.13.0</nodeVersion>
+                    <npmVersion>6.4.1</npmVersion>
+                    <yarnVersion>v1.9.4</yarnVersion>
                     <!-- 下载地址欺骗 实际执行构建服务器 -->
                     <nodeDownloadRoot>http://nodejs.org/dist/</nodeDownloadRoot>
                     <yarnDownloadRoot>http://github.com/yarnpkg/yarn/releases/download/</yarnDownloadRoot>
