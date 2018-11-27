@@ -3,8 +3,8 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.suixingpay.config.client.SxfConfigClientAutoConfiguration
 # Bootstrap components
 org.springframework.cloud.bootstrap.BootstrapConfiguration=\
-com.suixingpay.config.client.SxfConfigServiceBootstrapConfiguration
-#,\
+com.suixingpay.config.client.SxfConfigServiceBootstrapConfiguration,\
+org.springframework.cloud.commons.util.UtilAutoConfiguration
 #org.springframework.cloud.config.client.DiscoveryClientConfigServiceBootstrapConfiguration
 org.springframework.boot.diagnostics.FailureAnalyzer=\
   com.suixingpay.config.client.failureanalyzer.ConfigConnectionFailureAnalyzer,\

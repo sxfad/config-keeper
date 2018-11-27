@@ -84,8 +84,11 @@ public class SxfConfigClientProperties {
 
     private Environment environment;
 
-    public SxfConfigClientProperties(Environment environment) {
+    private InetUtils inetUtils;
+
+    public SxfConfigClientProperties(Environment environment, InetUtils inetUtils) {
         this.environment = environment;
+        this.inetUtils = inetUtils;
     }
 
     @PostConstruct
@@ -111,7 +114,7 @@ public class SxfConfigClientProperties {
         }
 
         if (null == ipAddress || ipAddress.isEmpty()) {
-            ipAddress = InetUtils.getFirstNonLoopbackHostInfo().getIpAddress();
+            ipAddress = inetUtils.findFirstNonLoopbackHostInfo().getIpAddress();
         }
         String envManagementPort = environment.getProperty("management.port");
         if (null == this.managementPort) {
