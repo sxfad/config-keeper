@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.cloud.commons.util.InetUtils;
 import org.springframework.cloud.commons.util.UtilAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -26,13 +27,16 @@ public class SxfConfigServiceBootstrapConfiguration {
     @Autowired
     private ConfigurableEnvironment environment;
 
+    @Autowired
+    private InetUtils inetUtils;
+
     @Bean
     public SxfConfigClientProperties sxfConfigClientProperties(ApplicationContext context) {
         if (context.getParent() != null && BeanFactoryUtils.beanNamesForTypeIncludingAncestors(context.getParent(),
                 SxfConfigClientProperties.class).length > 0) {
             return BeanFactoryUtils.beanOfTypeIncludingAncestors(context.getParent(), SxfConfigClientProperties.class);
         }
-        return new SxfConfigClientProperties(environment);
+        return new SxfConfigClientProperties(environment, inetUtils);
     }
 
     @Bean
