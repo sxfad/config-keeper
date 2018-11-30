@@ -5,6 +5,5 @@ dependencies {
     compileOnly 'org.springframework.boot:spring-boot-autoconfigure'
     compileOnly 'org.springframework.boot:spring-boot-starter-actuator'
     compileOnly 'org.springframework:spring-web'
-
-    compileOnly('org.projectlombok:lombok')
+  
 }

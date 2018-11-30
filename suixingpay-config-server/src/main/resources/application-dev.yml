@@ -1,9 +1,9 @@
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://127.0.0.1:3306/suixingpay_config?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
-      username: xxxxx
-      password: xxxxx
+      url: jdbc:mysql://172.16.187.100:3306/suixingpay_config?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: 123456
       driver-class-name: com.mysql.jdbc.Driver
       filters: stat,wall
       initialSize: 5
@@ -22,13 +22,14 @@ spring:
 
 
   redis:
-    host: 127.0.0.1
+    host: 172.16.187.100
     port: 6379
-    pool:
-      maxWait: 1500
-      maxActive: 2048
-      minIdle: 20
-      maxIdle: 200
+    jedis:
+      pool:
+        maxWait: 1500ms
+        maxActive: 2048
+        minIdle: 20
+        maxIdle: 200
 
 suixingpay:
   autoload:

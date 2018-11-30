@@ -11,6 +11,3 @@ server:
 suixingpay:
   config:
     cache-path: ${APP_HMOE:.}/config/
-management:
-  security:
-    enabled: false
