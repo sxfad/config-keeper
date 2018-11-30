@@ -4,7 +4,8 @@ import com.suixingpay.config.client.dao.ConfigDAO;
 import com.suixingpay.config.common.Constant;
 import com.suixingpay.config.common.to.PropertySource;
 import com.suixingpay.config.common.to.VersionDTO;
-import org.springframework.boot.actuate.endpoint.Endpoint;
+import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
+import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 
 
 /**
@@ -15,7 +16,8 @@ import org.springframework.boot.actuate.endpoint.Endpoint;
  * @version: V1.0
  * @review: qiujiayu[qiu_jy@suixingpay.com]/2017年9月21日 下午5:19:08
  */
-public class SxfConfigLocalVersionEndpoint implements Endpoint<VersionDTO> {
+@Endpoint(id = Constant.GET_CONFIG_VERSION_PATH)
+public class SxfConfigLocalVersionEndpoint {
     private static final int UNKOWN_VERSION = -1;
     private final ConfigDAO configDAO;
 
@@ -23,23 +25,8 @@ public class SxfConfigLocalVersionEndpoint implements Endpoint<VersionDTO> {
         this.configDAO = configDAO;
     }
 
-    @Override
-    public String getId() {
-        return Constant.GET_CONFIG_VERSION_PATH;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
-    @Override
-    public boolean isSensitive() {
-        return false;
-    }
-
-    @Override
-    public VersionDTO invoke() {
+    @ReadOperation
+    public VersionDTO version() {
         VersionDTO cache = new VersionDTO();
         PropertySource propertySources = configDAO.getApplicationConfigLocalCache();
         cache.setApplicationConfigVersion(null == propertySources ? UNKOWN_VERSION : propertySources.getVersion());

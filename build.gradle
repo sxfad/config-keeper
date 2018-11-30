@@ -1,11 +1,13 @@
 buildscript {
     ext {
-        sxGradleHome = "https://github.com/sxfad/gradle-scripts/raw/master/"
+        springBootVersion = '2.1.0.RELEASE'
+        springCloudVersion = 'Finchley.SR2' 
+//        sxGradleHome = "https://github.com/sxfad/gradle-scripts/raw/master/"
         REPOSITORY_HOME = 'http://maven.aliyun.com' // maven需要改为公司内部的仓库
         REPOSITORY_URL =  REPOSITORY_HOME + "/nexus/content/groups/public"
         swaggerVersion = "2.8.0"
     }
-    apply from: sxGradleHome + 'spring-cloud-edgware.gradle'
+//    apply from: sxGradleHome + 'spring-cloud-edgware.gradle'
     repositories {
         maven { url REPOSITORY_URL }
     }
@@ -52,13 +54,22 @@ allprojects {
     }
 }
 subprojects {
-    apply from: sxGradleHome + 'spring-cloud.gradle'
+//    apply from: sxGradleHome + 'spring-cloud2.gradle'
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
 
     dependencies {
         compileOnly("org.springframework.boot:spring-boot-configuration-processor")
-        compileOnly("org.projectlombok:lombok")
-        testCompile('org.projectlombok:lombok')
+        compile("org.projectlombok:lombok:1.16.20")
+        testCompile('org.projectlombok:lombok:1.16.20')
         testCompile("org.springframework.boot:spring-boot-configuration-processor")
+    }
+    dependencyManagement {
+      imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+      }
     }
 }
 

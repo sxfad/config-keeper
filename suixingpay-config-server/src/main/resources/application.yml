@@ -18,9 +18,9 @@ server:
   port: ${port:8080}
 
 management:
-  security:
-    enabled: false
-  context-path: /ops
+  server:
+    servlet:
+      context-path: /ops
 
 #mybatis see org.mybatis.spring.boot.autoconfigure.MybatisProperties
 #mybatis.type-handlers-package=
