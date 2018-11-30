@@ -26,9 +26,9 @@ management:
 #mybatis.type-handlers-package=
 mybatis:
   configuration:
-    cacheEnabled: false
+    cache-enabled: false
     default-statement-timeout: 5
-  mapperLocations: classpath:mybatis/*.xml
+  mapper-locations: classpath:mybatis/*.xml
 
 suixingpay:
   security:

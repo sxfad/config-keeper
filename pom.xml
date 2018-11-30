@@ -6,7 +6,7 @@
     <groupId>com.suixingpay.config-keeper</groupId>
     <artifactId>config-keeper</artifactId>
     <packaging>pom</packaging>
-    <version>1.1.0</version>
+    <version>2.0.0</version>
     <name>ConfigKeeper</name>
     <description>Spring Cloud Config.</description>
     <url>https://github.com/sxfad/config-keeper</url>
