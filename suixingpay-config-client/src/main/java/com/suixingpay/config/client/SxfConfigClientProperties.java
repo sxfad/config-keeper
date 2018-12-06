@@ -117,7 +117,7 @@ public class SxfConfigClientProperties {
             ipAddress = inetUtils.findFirstNonLoopbackHostInfo().getIpAddress();
         }
         String envManagementPort = environment.getProperty("management.port");
-        if (null == this.managementPort) {
+        if (null == this.managementPort || this.managementPort.isEmpty()) {
             String managementPortStr = envManagementPort;
             if (null == managementPortStr || managementPortStr.isEmpty()) {
                 managementPortStr = environment.getProperty("server.port");
@@ -126,7 +126,7 @@ public class SxfConfigClientProperties {
                 this.managementPort = managementPortStr;
             }
         }
-        if (null == this.managementPort) {
+        if (null == this.managementPort || this.managementPort.isEmpty()) {
             this.managementPort = "8080";
         }
 
