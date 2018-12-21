@@ -116,7 +116,7 @@ public class SxfConfigClientProperties {
         if (null == ipAddress || ipAddress.isEmpty()) {
             ipAddress = inetUtils.findFirstNonLoopbackHostInfo().getIpAddress();
         }
-        String envManagementPort = environment.getProperty("management.port");
+        String envManagementPort = environment.getProperty("management.server.port");
         if (null == this.managementPort) {
             String managementPortStr = envManagementPort;
             if (null == managementPortStr || managementPortStr.isEmpty()) {
@@ -131,11 +131,13 @@ public class SxfConfigClientProperties {
         }
 
         if (null == managementContextPath || managementContextPath.isEmpty()) {
-            String prefix = "";
-            if (null == envManagementPort || envManagementPort.isEmpty()){
-                prefix = environment.getProperty("server.context-path", "");
+            String contextPath;
+            if (null == envManagementPort || envManagementPort.isEmpty()) {
+                contextPath = environment.getProperty("server.servlet.context-path", "");
+            } else {
+                contextPath = environment.getProperty("management.servlet.context-path", "");
             }
-            managementContextPath = prefix + environment.getProperty("management.context-path", "");
+            managementContextPath = contextPath + environment.getProperty("management.endpoints.web.base-path", "/actuator");
         }
 
     }

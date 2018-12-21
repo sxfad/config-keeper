@@ -37,8 +37,8 @@ public class ConfigTestApplication {
         // PropertySourceBootstrapConfiguration cc;
 
         // print internal state
-        LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
-        StatusPrinter.print(lc);
+        //LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
+        //StatusPrinter.print(lc);
     }
 
     private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder builder) {

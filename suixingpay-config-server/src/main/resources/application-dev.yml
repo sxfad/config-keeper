@@ -1,35 +1,34 @@
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://172.16.187.100:3306/suixingpay_config?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
-      username: root
+      url: jdbc:mysql://172.16.60.247:3306/suixingpay_config?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
+      username: fd
       password: 123456
       driver-class-name: com.mysql.jdbc.Driver
       filters: stat,wall
-      initialSize: 5
-      minIdle: 5
-      maxActive: 50
-      maxWait: 60000
-      timeBetweenEvictionRunsMillis: 60000
-      minEvictableIdleTimeMillis: 300000
-      validationQuery: select 1 from dual
-      testWhileIdle: true
-      testOnBorrow: false
-      testOnReturn: false
-      poolPreparedStatements: true
-      maxPoolPreparedStatementPerConnectionSize: 20
-      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-
+      initial-size: 5
+      min-idle: 5
+      max-active: 50
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictableidle-time-millis: 300000
+      validation-query: select 1 from dual
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 
   redis:
-    host: 172.16.187.100
+    host: 172.16.136.146
     port: 6379
     jedis:
       pool:
-        maxWait: 1500ms
-        maxActive: 2048
-        minIdle: 20
-        maxIdle: 200
+        max-wait: 1500ms
+        max-active: 2048
+        min-idle: 20
+        max-idle: 200
 
 suixingpay:
   autoload:

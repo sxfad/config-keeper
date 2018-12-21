@@ -7,7 +7,22 @@ spring:
 
 server:
   port: 8088
+  #servlet:
+  #  context-path: /test
 
 suixingpay:
   config:
     cache-path: ${APP_HMOE:.}/config/
+#management:
+#  endpoints:
+#    web:
+#      base-path: /aa
+#      exposure:
+#        include: '*'
+#
+#  server:
+#    #port: 9090
+#    servlet:
+#      context-path: /mbase
+
+
