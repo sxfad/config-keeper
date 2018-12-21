@@ -126,6 +126,8 @@ Spring 生态功能非常丰富，为我们解决了非常多棘手问题，但�
 
 ConfigKeeper交流群:478814745
 
+![wx](doc/wx.png)
+
 [服务端使用说明](suixingpay-config-server/README.md)
 
 [客户端使用说明](suixingpay-config-client/README.md)
