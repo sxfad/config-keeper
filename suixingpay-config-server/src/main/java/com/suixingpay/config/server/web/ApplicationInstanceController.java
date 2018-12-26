@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.client.support.BasicAuthenticationInterceptor;
@@ -102,7 +103,7 @@ public class ApplicationInstanceController {
             }
             RestTemplate restTemplate = genRestTemplate(instanceDO.getUsername(), instanceDO.getPassword());
             HttpHeaders headers = new HttpHeaders();
-            headers.add("Content-Type", "application/json");
+            headers.setContentType(MediaType.APPLICATION_JSON);
             HttpEntity entity = new HttpEntity(null, headers);
             ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, entity, String.class);
             if (log.isDebugEnabled()) {
