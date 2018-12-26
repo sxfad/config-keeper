@@ -16,7 +16,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.validation.annotation.Validated;
@@ -89,9 +93,12 @@ public class ApplicationInstanceController {
             String url = buildUrl(instanceDO);
             url += "/refresh";
             RestTemplate restTemplate = genRestTemplate(instanceDO.getUsername(), instanceDO.getPassword());
-            String res = restTemplate.postForObject(url, null, String.class);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            HttpEntity entity = new HttpEntity(null, headers);
+            ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, entity, String.class);
             if (log.isDebugEnabled()) {
-                log.debug(res);
+                log.debug(responseEntity.getBody());
             }
             return getNewVersion(instanceDO);
         } catch (ResourceAccessException e) {
