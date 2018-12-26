@@ -52,5 +52,7 @@ maven:
 
 #### 2. 通过jar包进行启动，并指定服务器运行环境
 使用jvm参数激活Spring boot profile：（比如：dev 为开发环境；prod 为生产环境）
-java -jar config.jar --profile=dev 
-java -jar config.jar --profile=prod
+
+开发环境：java -jar config.jar --profile=dev 
+
+生产环境(需要增加application-prod.yml文件)：java -jar config.jar --profile=prod

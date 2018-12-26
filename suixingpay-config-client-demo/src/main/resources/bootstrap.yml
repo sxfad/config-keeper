@@ -1,6 +1,6 @@
 spring:
   application:
-    name: config-keeper-demo
+    name: config-keeper-demo2
 
   profiles:
     active: ${profile:dev}
@@ -13,16 +13,16 @@ server:
 suixingpay:
   config:
     cache-path: ${APP_HMOE:.}/config/
-#management:
-#  endpoints:
-#    web:
-#      base-path: /aa
-#      exposure:
-#        include: '*'
-#
-#  server:
-#    #port: 9090
-#    servlet:
-#      context-path: /mbase
+management:
+  endpoints:
+    web:
+      base-path: /ops
+      exposure:
+        include: '*'
+
+  server:
+    #port: 9090
+    #servlet:
+    #  context-path: /mbase
 
 

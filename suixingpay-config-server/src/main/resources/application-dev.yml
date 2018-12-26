@@ -1,8 +1,8 @@
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://172.16.60.247:3306/suixingpay_config?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
-      username: fd
+      url: jdbc:mysql://localhost:3306/suixingpay_config?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
+      username: root
       password: 123456
       driver-class-name: com.mysql.jdbc.Driver
       filters: stat,wall
@@ -21,7 +21,7 @@ spring:
       connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 
   redis:
-    host: 172.16.136.146
+    host: localhost
     port: 6379
     jedis:
       pool:

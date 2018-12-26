@@ -3,5 +3,5 @@ suixingpay:
     enabled: true
     uris:
     - http://localhost:8080/
-    username: admin
-    password: 123456
+    username: admin # 通过配置中心服务端 suixingpay.security.username 配置
+    password: 123456 # 通过配置中心服务端 suixingpay.security.password 配置
