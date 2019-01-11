@@ -13,7 +13,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +28,6 @@ import javax.validation.constraints.NotNull;
  * @version: V1.0
  * @review: qiujiayu[qiu_jy@suixingpay.com]/2017年9月8日 下午6:30:28
  */
-@Validated
 @Api(description = "全局配置日志")
 @RestController
 @RequestMapping("/globalconfiglog")

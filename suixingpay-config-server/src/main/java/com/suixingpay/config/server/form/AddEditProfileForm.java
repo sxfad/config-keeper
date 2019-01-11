@@ -8,6 +8,8 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.Pattern;
+
 /**
  * @author: qiujiayu[qiu_jy@suixingpay.com]
  * @date: 2017年10月16日 下午6:08:45
@@ -19,6 +21,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public class AddEditProfileForm {
     @ApiModelProperty(value = "profile", required = true) //
     @NotBlank(message = "profile不能为空")
+    @Pattern(regexp = "^[A-Za-z0-9]+$", message = "只能输入英文大小写字母和数字")
     private String profile;
 
     @ApiModelProperty(value = "name", required = true) //

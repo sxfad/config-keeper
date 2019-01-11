@@ -8,7 +8,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,7 +25,6 @@ import javax.validation.constraints.NotNull;
  * @version: V1.0
  * @review: qiujiayu[qiu_jy@suixingpay.com]/2017年11月14日 下午4:52:42
  */
-@Validated
 @Api(description = "图片验证码接口")
 @RestController
 @RequestMapping("/captcha")

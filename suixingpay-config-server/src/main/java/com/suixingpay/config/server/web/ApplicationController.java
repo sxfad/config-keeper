@@ -15,7 +15,13 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
@@ -27,7 +33,6 @@ import javax.validation.Valid;
  * @version: V1.0
  * @review: qiujiayu[qiu_jy@suixingpay.com]/2017年9月1日 上午10:02:58
  */
-@Validated
 @Api(description = "应用")
 @RestController
 @RequestMapping("/application")
@@ -76,7 +81,7 @@ public class ApplicationController {
     @PostMapping
     @PreAuthorize(UserService.HAS_SUPER_ROLE)
     @ApiOperation(value = "添加应用", notes = "添加应用")
-    public ResponseDTO<Void> addApplication(@RequestBody AddEditApplicationForm addEditApplicationForm)
+    public ResponseDTO<Void> addApplication(@RequestBody @Validated AddEditApplicationForm addEditApplicationForm)
             throws Exception {
         ApplicationDO applicationDO = addEditApplicationForm.convertToApplicationDO();
         applicationService.addApplication(applicationDO);
@@ -93,7 +98,7 @@ public class ApplicationController {
     @PutMapping
     @PreAuthorize(UserService.HAS_SUPER_ROLE)
     @ApiOperation(value = "修改应用", notes = "修改应用")
-    public ResponseDTO<Void> updateApplication(@RequestBody AddEditApplicationForm addEditApplicationForm)
+    public ResponseDTO<Void> updateApplication(@RequestBody @Validated AddEditApplicationForm addEditApplicationForm)
             throws Exception {
         ApplicationDO applicationDO = addEditApplicationForm.convertToApplicationDO();
         applicationService.updateApplication(applicationDO);

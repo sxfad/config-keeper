@@ -9,7 +9,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +24,6 @@ import java.util.List;
  * @version: V1.0
  * @review: qiujiayu[qiu_jy@suixingpay.com]/2017年9月8日 下午6:30:02
  */
-@Validated
 @Api(description = "用户应用关系权限接口")
 @RestController
 @RequestMapping("/userapplicationconfigrole")
