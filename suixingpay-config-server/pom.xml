@@ -76,7 +76,7 @@
         <dependency>
             <groupId>com.github.qiujiayu</groupId>
             <artifactId>autoload-cache-spring-boot-starter</artifactId>
-            <version>7.0.0</version>
+            <version>7.0.2-1</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

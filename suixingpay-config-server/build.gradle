@@ -21,7 +21,7 @@ dependencies {
     compile 'org.aspectj:aspectjweaver'
     compile 'ch.qos.logback:logback-classic'
     compile "redis.clients:jedis"
-    compile 'com.github.qiujiayu:autoload-cache-spring-boot-starter:7.0.0'
+    compile 'com.github.qiujiayu:autoload-cache-spring-boot-starter:7.0.2-1'
     compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2'
     compile 'com.alibaba:druid-spring-boot-starter:1.1.10'
     compile 'org.apache.commons:commons-lang3:3.5'
