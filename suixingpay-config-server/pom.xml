@@ -6,7 +6,7 @@
     <groupId>com.suixingpay.config-keeper</groupId>
     <artifactId>suixingpay-config-server</artifactId>
     <packaging>jar</packaging>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <parent>
         <groupId>com.suixingpay.config-keeper</groupId>
         <artifactId>config-keeper</artifactId>
@@ -14,7 +14,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <properties>
-        <suixingpay-config-common.version>1.1.0</suixingpay-config-common.version>
+        <suixingpay-config-common.version>1.2.0</suixingpay-config-common.version>
     </properties>
     <dependencies>
         <dependency>
@@ -66,7 +66,7 @@
         <dependency>
             <groupId>com.github.qiujiayu</groupId>
             <artifactId>autoload-cache-spring-boot-starter</artifactId>
-            <version>6.9.5</version>
+            <version>6.10.2</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

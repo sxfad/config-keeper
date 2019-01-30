@@ -11,7 +11,9 @@
 
 ### 1. 引入依赖jar包
 
-    compile("com.suixingpay.config-keeper:suixingpay-config-client:1.1.0")
+    // spring boot 1.x 使用suixingpay-config-client 1.x版本
+    // spring boot 2.x 使用suixingpay-config-client 2.x版本
+    compile("com.suixingpay.config-keeper:suixingpay-config-client:1.2.0")
     compile("org.springframework.cloud:spring-cloud-commons")
     compile("org.springframework.cloud:spring-cloud-context")
     compile("org.springframework.boot:spring-boot-starter-web")

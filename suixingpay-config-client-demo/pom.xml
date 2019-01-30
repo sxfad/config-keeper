@@ -6,7 +6,7 @@
     <groupId>com.suixingpay.config-keeper</groupId>
     <artifactId>suixingpay-config-client-demo</artifactId>
     <packaging>jar</packaging>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <parent>
         <groupId>com.suixingpay.config-keeper</groupId>
         <artifactId>config-keeper</artifactId>
@@ -14,7 +14,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <properties>
-        <suixingpay-config-client.version>1.0.0</suixingpay-config-client.version>
+        <suixingpay-config-client.version>1.2.0</suixingpay-config-client.version>
     </properties>
     <dependencies>
         <dependency>
