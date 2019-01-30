@@ -13,9 +13,8 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'org.springframework.data:spring-data-commons'
-    compile ("org.springframework.boot:spring-boot-starter-data-redis"){
-        exclude group: "io.lettuce", module: "lettuce-core"
-    }
+    compile ("org.springframework.boot:spring-boot-starter-data-redis")
+    compile("io.lettuce:lettuce-core")
 
     compile 'mysql:mysql-connector-java'
     compile 'org.aspectj:aspectjweaver'

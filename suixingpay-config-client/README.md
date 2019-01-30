@@ -11,7 +11,9 @@
 
 ### 1. 引入依赖jar包
 
-    compile("com.suixingpay.config-keeper:suixingpay-config-client:1.1.0")
+    // spring boot 1.x 使用suixingpay-config-client 1.x版本
+    // spring boot 2.x 使用suixingpay-config-client 2.x版本
+    compile("com.suixingpay.config-keeper:suixingpay-config-client:2.0.0")
     compile("org.springframework.cloud:spring-cloud-commons")
     compile("org.springframework.cloud:spring-cloud-context")
     compile("org.springframework.boot:spring-boot-starter-web")
@@ -27,19 +29,18 @@
         name: config-keeper-demo        # 设置应用名称，不能与其它应用重名，必须配置
       profiles:
         active: ${profile:dev}          # 设置生效的profile, 必须配置
+    suixingpay:
+      config:
+        cache-path: ${APP_HMOE:.}/config/
+
     # 启用spring boot的 endpoints，用于监控，刷新配置等
     management:
-      security:
-        enabled: true
-      context-path: /ops
-    security:
-      basic:
-        enabled: true
-        path: /ops/**
-      user:
-        name: admin
-        password: 123456
-            
+      endpoints:
+        web:
+          base-path: /ops
+          exposure:
+            include: '*'    
+
 通常应用是运行在不同的环境（或机房）中，比如：开发环境(dev)、测试环境(test)、RC环境(rc)、生产环境(prod)。那么需要根据不同的环境配置不同的配置中心服务地址，比如，开发环境的配置，配置到src/main/resources/bootstrap-dev.yml文件中：
     
     suixingpay:
