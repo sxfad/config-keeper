@@ -83,5 +83,9 @@ subprojects {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
       }
     }
+  
+    jar {
+      enabled = true
+    }
 }
 
