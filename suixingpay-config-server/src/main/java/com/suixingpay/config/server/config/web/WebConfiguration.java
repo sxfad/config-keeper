@@ -16,7 +16,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 
 /**
- * 解决 前端页面打包至server，刷新页面404。若是前后端分离去除此配置！
+ * 解决 前端页面打包至server，刷新页面404。当404时跳转到首页
+ * 若是前后端分离去除此配置！
  * @author: tangqihua[tang_qh@suixingpay.com]
  * @date: 2018年11月27日 11时31分
  * @version: V1.0
