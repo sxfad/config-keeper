@@ -63,8 +63,8 @@ CREATE TABLE IF NOT EXISTS `suixingpay_config`.`global_config_log` (
   `source_type` VARCHAR(10) NOT NULL COMMENT '配置类型：PROPERTIES 或 YAML',
   `version` INT NOT NULL DEFAULT 0 COMMENT '版本，每修改一次版本号加1，并添加新的一条记录',
   `memo` VARCHAR(450) NULL COMMENT '备注说明',
-  `modify_time` TIMESTAMP NOT NULL COMMENT '数据修改时间',
-  `created_date` TIMESTAMP NOT NULL COMMENT '操作时间',
+  `modify_time` TIMESTAMP NOT NULL  COMMENT '数据修改时间',
+  `created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '操作时间',
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `profile` (`profile` ASC))
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `suixingpay_config`.`application_config_log` (
   `version` INT NOT NULL DEFAULT 0 COMMENT '版本，每修改一次版本号加1，并增加一条记录。',
   `memo` VARCHAR(500) NULL COMMENT '备注说明',
   `modify_time` TIMESTAMP NOT NULL COMMENT '数据创建时间',
-  `created_date` TIMESTAMP NOT NULL COMMENT '数据创建时间',
+  `created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '数据创建时间',
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `application_name_profile` (`application_name` ASC, `profile` ASC))
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `suixingpay_config`.`user` (
   `email` VARCHAR(45) NULL COMMENT '邮箱',
   `administrator` VARCHAR(3) NOT NULL DEFAULT 0 COMMENT '是否超级管理员，YES是超级管理员，NO不是超级管理员',
   `status` VARCHAR(10) NOT NULL DEFAULT 1 COMMENT '状态VALID：有效；INVALID；无效',
-  `created_date` TIMESTAMP NOT NULL COMMENT '创建时间',
+  `created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC))
 ENGINE = InnoDB
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `suixingpay_config`.`application_instance` (
   `manager_path` VARCHAR(200) NOT NULL COMMENT 'manager端点路径',
   `username` VARCHAR(45) NULL COMMENT '端点用户名',
   `password` VARCHAR(32) NULL COMMENT '端点密码',
-  `created_date` TIMESTAMP NULL COMMENT '创建时间',
+  `created_date` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `modify_time` TIMESTAMP NULL COMMENT '上次修改时间',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `application_profile_ip_port` (`application_name` ASC, `profile` ASC, `ip` ASC, `port` ASC))
