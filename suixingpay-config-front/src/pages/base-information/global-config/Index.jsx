@@ -60,8 +60,8 @@ class globalConfig extends Component {
         },
         {
             title: '修改人',
-            dataIndex: 'user.realName',
-            key: 'user.realName',
+            dataIndex: 'user.name',
+            key: 'user.name',
         },
         {
             title: '修改时间',
