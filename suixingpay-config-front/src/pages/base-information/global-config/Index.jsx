@@ -60,8 +60,8 @@ class globalConfig extends Component {
         },
         {
             title: '修改人',
-            dataIndex: 'user.name',
-            key: 'user.name',
+            dataIndex: 'user.realName',
+            key: 'user.realName',
         },
         {
             title: '修改时间',
@@ -153,6 +153,9 @@ class globalConfig extends Component {
      * 历史版本
      * @param record
      */
+    // handleHistory = (record) => {
+    //     browserHistory.push(`/base-information/application-config/+history/${record.profile.profile}/${record.application.name}`);
+    // };
     handleHistory = (record) => {
         // this.setState({
         //     history: true,

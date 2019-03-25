@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Form, Input, Button, Table, Row, Col, message} from 'antd';
-import {PageContent, Operator, QueryBar, QueryResult, PaginationComponent} from 'sx-ui/antd';
+import {PageContent, Operator, QueryBar, QueryResult, PaginationComponent, ToolBar} from 'sx-ui/antd';
 import {promiseAjax} from 'sx-ui';
 import GlobalConfigDetail from './Detail';
 import {browserHistory} from 'react-router';
@@ -24,12 +24,14 @@ class GlobalConfig extends Component {
         pageNum: 1,
         pageSize: 10,
         gettingGlobalConfig: false,
-        globalConfigs: [],
+        allGlobalConfigs: [],
         total: 0,
         detail: false,
         historyId: '',
         globalConfigId: '',
         profile: '',
+        selectedRowKeys: [],
+        record: {},
     };
 
     columns = [
@@ -105,10 +107,13 @@ class GlobalConfig extends Component {
                             onConfirm: () => this.handleReplace(record),
                         },
                     },
-                    {
-                        label: '对比',
-                        onClick: () => this.handleDiff(record),
-                    },
+                    this.state.selectedRowKeys.length >= 2 ?
+                        {
+                            label: <span style={{color: '#999'}}>对比</span>,
+                        } : {
+                            label: <span>对比</span>,
+                            onClick: () => this.handleDiff(record),
+                        },
                 ];
 
                 return (<Operator items={items}/>);
@@ -186,7 +191,7 @@ class GlobalConfig extends Component {
         promiseAjax.put(`/globalconfig/${record.id}`).then(rsp => {
             if (rsp.status === 'SUCCESS') {
                 message.success('替换成功', 3);
-                history.back();
+                window.history.back();
             }
             // this.props.handleSave(false)
         })
@@ -228,6 +233,29 @@ class GlobalConfig extends Component {
             pageNum: 1,
             pageSize,
         });
+    };
+
+    handleFirstRecord = (firstId) => {
+        const { globalConfigs } = this.state;
+        const record = globalConfigs.find(item => item.id === firstId);
+        this.setState({record});
+    }
+
+    handleRowSelected = (selectedRowKeys,) => {
+        if(selectedRowKeys.length === 1){
+            const firstId = selectedRowKeys[0];
+            this.handleFirstRecord(firstId);
+        }
+        if (selectedRowKeys && selectedRowKeys.length > 2) {
+            return message.info('最多选择两条记录进行对比');
+        }
+        this.setState({selectedRowKeys});
+    };
+
+    handleCompare = () => {
+        const {selectedRowKeys, record} = this.state;
+        const secondId = selectedRowKeys[1] || '';
+        browserHistory.push(`/base-information/global-config/+diff/${record.profile.profile}/${record.id}?secondId=${secondId}`);
     };
 
     componentWillMount() {
@@ -273,7 +301,7 @@ class GlobalConfig extends Component {
      *
      * */
     goBack = () => {
-        history.back();
+        window.history.back();
     };
 
     /**
@@ -296,6 +324,7 @@ class GlobalConfig extends Component {
             total,
             pageNum,
             pageSize,
+            selectedRowKeys,
         } = this.state;
         const {form: {getFieldDecorator}} = this.props;
         const formItemLayout = {
@@ -380,11 +409,20 @@ class GlobalConfig extends Component {
                             </Row>
                         </Form>
                     </QueryBar>
+                    <ToolBar>
+                        <Button
+                            disabled={selectedRowKeys && selectedRowKeys.length < 1}
+                            type="primary"
+                            onClick={this.handleCompare}
+                        >对比</Button>
+                    </ToolBar>
                     <QueryResult>
                         <Table
+                            rowSelection={{selectedRowKeys, onChange: this.handleRowSelected}}
                             loading={gettingGlobalConfig}
                             size="middle"
-                            rowKey={(record) => record.modifyTime}
+                            // rowKey={(record) => record.modifyTime}
+                            rowKey={(record) => record.id}
                             columns={this.columns}
                             dataSource={globalConfigs}
                             pagination={false}
