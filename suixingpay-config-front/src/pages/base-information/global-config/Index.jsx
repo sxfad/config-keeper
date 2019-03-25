@@ -153,6 +153,9 @@ class globalConfig extends Component {
      * 历史版本
      * @param record
      */
+        // handleHistory = (record) => {
+        //     browserHistory.push(`/base-information/application-config/+history/${record.profile.profile}/${record.application.name}`);
+        // };
     handleHistory = (record) => {
         // this.setState({
         //     history: true,

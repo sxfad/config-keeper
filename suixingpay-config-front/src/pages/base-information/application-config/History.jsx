@@ -31,11 +31,14 @@ class ApplicationConfig extends Component {
         applicationConfigId: '',
         application: '',
         profile: '',
+        selectedRowKeys: [],
+        record: {},
     };
 
     columns = [
         {
             title: '#',
+            key: '__num__',
             render: (text, record, index) => (index + 1) + ((this.state.pageNum - 1) * this.state.pageSize),
         },
         {
@@ -120,10 +123,13 @@ class ApplicationConfig extends Component {
                             onConfirm: () => this.handleReplace(record),
                         },
                     },
-                    {
-                        label: '对比',
-                        onClick: () => this.handleDiff(record),
-                    },
+                    this.state.selectedRowKeys.length >= 2 ?
+                        {
+                            label: <span style={{color: '#999'}}>对比</span>,
+                        } : {
+                            label: <span>对比</span>,
+                            onClick: () => this.handleDiff(record),
+                        },
                 ];
 
                 return (<Operator items={items}/>);
@@ -189,7 +195,7 @@ class ApplicationConfig extends Component {
         promiseAjax.put(`/applicationconfig/${record.id}`).then(rsp => {
             if (rsp.status === 'SUCCESS') {
                 message.success('替换成功', 3);
-                history.back();
+                window.history.back();
             }
             // this.props.handleSave(false)
         })
@@ -286,7 +292,7 @@ class ApplicationConfig extends Component {
      *
      * */
     goBack = () => {
-        history.back();
+        window.history.back();
     };
 
     /**
@@ -302,6 +308,29 @@ class ApplicationConfig extends Component {
         this.props.form.resetFields();
     }
 
+    handleFirstRecord = (firstId) => {
+        const { applicationConfigs } = this.state;
+        const record = applicationConfigs.find(item => item.id === firstId);
+        this.setState({record});
+    }
+
+    handleRowSelected = (selectedRowKeys) => {
+        if(selectedRowKeys.length === 1){
+            const firstId = selectedRowKeys[0];
+            this.handleFirstRecord(firstId);
+        }
+        if (selectedRowKeys && selectedRowKeys.length > 2) {
+            return message.info('最多选择两条记录进行对比');
+        }
+        this.setState({selectedRowKeys});
+    };
+
+    handleCompare = () => {
+        const {selectedRowKeys, record} = this.state;
+        const secondId = selectedRowKeys[1] || '';
+        browserHistory.push(`/base-information/application-config/+diff/${record.profile.profile}/${record.application.name}/${record.id}?secondId=${secondId}`);
+    };
+
     render() {
         const {
             gettingApplicationConfig,
@@ -309,6 +338,7 @@ class ApplicationConfig extends Component {
             total,
             pageNum,
             pageSize,
+            selectedRowKeys,
         } = this.state;
         const {form: {getFieldDecorator}} = this.props;
         const formItemLayout = {
@@ -396,11 +426,19 @@ class ApplicationConfig extends Component {
                             </Row>
                         </Form>
                     </QueryBar>
+                    <ToolBar>
+                        <Button
+                            disabled={selectedRowKeys && selectedRowKeys.length < 1}
+                            type="primary"
+                            onClick={this.handleCompare}
+                        >对比</Button>
+                    </ToolBar>
                     <QueryResult>
                         <Table
+                            rowSelection={{selectedRowKeys, onChange: this.handleRowSelected}}
                             loading={gettingApplicationConfig}
                             size="middle"
-                            rowKey={(record) => record.modifyTime}
+                            rowKey={(record) => record.id}
                             columns={this.columns}
                             dataSource={applicationConfigs}
                             pagination={false}
