@@ -12,7 +12,13 @@ import io.swagger.annotations.ApiParam;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -25,7 +31,6 @@ import java.util.List;
  * @version: V1.0
  * @review: qiujiayu[qiu_jy@suixingpay.com]/2017年9月1日 上午9:43:52
  */
-@Validated
 @Api(description = "Profile")
 @RestController
 @RequestMapping("/profile")
@@ -54,7 +59,7 @@ public class ProfileController {
     @PostMapping
     @PreAuthorize(UserService.HAS_SUPER_ROLE)
     @ApiOperation(value = "添加Profile", notes = "添加Profile")
-    public ResponseDTO<Void> addProfile(@RequestBody AddEditProfileForm addEditProfileForm) throws Exception {
+    public ResponseDTO<Void> addProfile(@RequestBody @Validated AddEditProfileForm addEditProfileForm) throws Exception {
         ProfileDO profileDO = addEditProfileForm.convertToProfileDO();
         profileService.addProfile(profileDO);
         return new ResponseDTO<Void>();
@@ -63,7 +68,7 @@ public class ProfileController {
     @PutMapping
     @PreAuthorize(UserService.HAS_SUPER_ROLE)
     @ApiOperation(value = "修改Profile", notes = "修改Profile")
-    public ResponseDTO<Void> updateProfile(@RequestBody AddEditProfileForm addEditProfileForm) throws Exception {
+    public ResponseDTO<Void> updateProfile(@RequestBody @Validated AddEditProfileForm addEditProfileForm) throws Exception {
         ProfileDO profileDO = addEditProfileForm.convertToProfileDO();
         profileService.updateProfile(profileDO);
         return new ResponseDTO<Void>();

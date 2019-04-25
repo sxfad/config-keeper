@@ -18,7 +18,11 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -31,7 +35,6 @@ import java.util.Optional;
  * @version: V1.0
  * @review: qiujiayu[qiu_jy@suixingpay.com]/2017年10月16日 下午6:09:33
  */
-@Validated
 @Api(description = "鉴权接口")
 @RestController
 @RequestMapping("/auth")
@@ -54,7 +57,7 @@ public class AuthController {
     private String applicationName;
 
     @PostMapping({"/login"})
-    public ResponseDTO<String> login(@RequestBody LoginForm form) {
+    public ResponseDTO<String> login(@RequestBody @Validated LoginForm form) {
         ResponseDTO<String> res = new ResponseDTO<>();
         if (!kaptchaUtil.check(form.getKey(), form.getCode())) {
             return res.addErrorMessage("验证码错误");

@@ -33,18 +33,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-            <exclusions>
-              <exclusion>
-                <groupId>io.lettuce</groupId>
-                <artifactId>lettuce-core</artifactId>
-              </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
-          <groupId>redis.clients</groupId>
-          <artifactId>jedis</artifactId>
+          <groupId>io.lettuce</groupId>
+          <artifactId>lettuce-core</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
@@ -76,7 +69,7 @@
         <dependency>
             <groupId>com.github.qiujiayu</groupId>
             <artifactId>autoload-cache-spring-boot-starter</artifactId>
-            <version>7.0.0</version>
+            <version>7.0.2-1</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
