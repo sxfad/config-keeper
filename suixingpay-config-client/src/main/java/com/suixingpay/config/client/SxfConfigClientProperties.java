@@ -17,7 +17,6 @@ import java.util.List;
  * @review: qiujiayu[qiu_jy@suixingpay.com]/2017年9月8日 下午4:04:20
  */
 @Data
-@ConfigurationProperties(SxfConfigClientProperties.PREFIX)
 public class SxfConfigClientProperties {
 
     public static final String PREFIX = "suixingpay.config";
@@ -135,7 +134,7 @@ public class SxfConfigClientProperties {
             if (null == envManagementPort || envManagementPort.isEmpty()) {
                 contextPath = environment.getProperty("server.servlet.context-path", "");
             } else {
-                contextPath = environment.getProperty("management.servlet.context-path", "");
+	            contextPath = environment.getProperty("management.server.servlet.context-path", "");
             }
             managementContextPath = contextPath + environment.getProperty("management.endpoints.web.base-path", "/actuator");
         }

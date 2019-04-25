@@ -13,6 +13,11 @@ server:
 suixingpay:
   config:
     cache-path: ${APP_HMOE:.}/config/
+# !!! management context 的 endpoint path 为 http://ip:{port}/{context-path}/{base-path}/{endpoint id}
+# port 的值优先是 management.server.port，为空则取 server.port
+# context-path的值优先是 management.server.servlet.context-path，为空则取 server.servlet.context-path
+# base-path 的值是 management.endpoints.web.base-path
+# endpoint id 则为对应的端点id
 management:
   endpoints:
     web:
