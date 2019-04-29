@@ -42,7 +42,7 @@ public class UserQueryForm {
         condition.setStatus(status);
         condition.setAdministrator(administrator);
 
-        Pageable pageable = new PageRequest(pageNum - 1, pageSize);
+        Pageable pageable = PageRequest.of(pageNum - 1, pageSize);
         condition.setPageable(pageable);
         return condition;
     }

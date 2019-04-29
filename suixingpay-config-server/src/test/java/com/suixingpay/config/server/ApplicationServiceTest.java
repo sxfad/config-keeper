@@ -42,7 +42,7 @@ public class ApplicationServiceTest extends BaseServiceTest {
         applicationService.updateApplication(applicationDO);
 
         ApplicationCondition condition = new ApplicationCondition();
-        Pageable pageable = new PageRequest(1, 10);
+        Pageable pageable = PageRequest.of(1, 10);
         condition.setPageable(pageable);
 
         Page<ApplicationDO> page = applicationService.pageByCondition(condition);

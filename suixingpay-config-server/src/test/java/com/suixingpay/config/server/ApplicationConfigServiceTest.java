@@ -51,7 +51,7 @@ public class ApplicationConfigServiceTest extends BaseServiceTest {
         applicationConfigService.saveApplicationConfig(applicationConfigDO);
 
         ApplicationConfigCondition condition = new ApplicationConfigCondition();
-        Pageable pageable = new PageRequest(1, 20);
+        Pageable pageable = PageRequest.of(1, 20);
         condition.setPageable(pageable);
         List<ApplicationConfigDO> list = applicationConfigService.pageByCondition(condition).getContent();
 

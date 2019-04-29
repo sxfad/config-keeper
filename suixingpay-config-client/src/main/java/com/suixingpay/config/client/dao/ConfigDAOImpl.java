@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
-import org.springframework.http.client.support.BasicAuthorizationInterceptor;
+import org.springframework.http.client.support.BasicAuthenticationInterceptor;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.*;
@@ -143,7 +143,7 @@ public class ConfigDAOImpl implements ConfigDAO {
                     String json = responseEntity.getBody();
                     propertySource = JsonUtil.jsonToObject(json, PropertySource.class);
                     if (null != propertySource) {
-                        this.globalConfigCache = propertySource;
+                        globalConfigCache = propertySource;
                         writeFile(this.globalConfigCacheFile, json);
                     }
                 }
@@ -158,14 +158,14 @@ public class ConfigDAOImpl implements ConfigDAO {
 
     @Override
     public PropertySource getGlobalConfigLocalCache() {
-        if (null != this.globalConfigCache) {
+        if (null != globalConfigCache) {
             return globalConfigCache;
         }
         String json = readFile(this.globalConfigCacheFile);
         if (null != json && json.trim().length() > 0) {
-            this.globalConfigCache = JsonUtil.jsonToObject(json, PropertySource.class);
+            globalConfigCache = JsonUtil.jsonToObject(json, PropertySource.class);
         }
-        return this.globalConfigCache;
+        return globalConfigCache;
     }
 
     @Override
@@ -223,7 +223,7 @@ public class ConfigDAOImpl implements ConfigDAO {
             String username = configClientProperties.getUsername();
             String password = configClientProperties.getPassword();
             if (null != username && !username.trim().isEmpty()) {
-                this.restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor(username, password));
+                this.restTemplate.getInterceptors().add(new BasicAuthenticationInterceptor(username, password));
             }
             this.restTemplate.getInterceptors().add(new AddApplicationInstanceInfoInterceptor(configClientProperties));
         }

@@ -2,9 +2,10 @@ package com.suixingpay.config.server.condition;
 
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
 
 import java.io.Serializable;
+
+import javax.validation.constraints.NotBlank;
 
 /**
  * @author: tangqihua[tang_qh@suixingpay.com]

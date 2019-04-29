@@ -30,7 +30,7 @@ public class ApplicationQueryForm {
         ApplicationCondition condition = new ApplicationCondition();
 
         condition.setSearchKey(searchKey);
-        Pageable pageable = new PageRequest(pageNum - 1, pageSize);
+        Pageable pageable = PageRequest.of(pageNum - 1, pageSize);
         condition.setPageable(pageable);
         return condition;
     }
