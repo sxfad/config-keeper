@@ -3,7 +3,6 @@ package com.suixingpay.config.client;
 import com.suixingpay.config.client.exception.UnSetApplicationNameException;
 import com.suixingpay.config.client.exception.UnSetProfileException;
 import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.commons.util.InetUtils;
 import org.springframework.core.env.Environment;
 
@@ -17,7 +16,6 @@ import java.util.List;
  * @review: qiujiayu[qiu_jy@suixingpay.com]/2017年9月8日 下午4:04:20
  */
 @Data
-@ConfigurationProperties(SxfConfigClientProperties.PREFIX)
 public class SxfConfigClientProperties {
 
     public static final String PREFIX = "suixingpay.config";
