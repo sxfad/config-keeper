@@ -6,7 +6,6 @@ import com.suixingpay.config.server.util.KaptchaUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -54,7 +54,6 @@ public class CaptchaController {
      * 检查验证码是否正确
      *
      * @param key
-     * @param captchaCode
      * @return
      */
     @ApiOperation(value = "检查验证码是否正确", notes = "检查验证码是否正确")

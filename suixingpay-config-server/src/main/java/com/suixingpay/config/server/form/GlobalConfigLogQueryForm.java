@@ -42,7 +42,7 @@ public class GlobalConfigLogQueryForm {
         profileDO.setProfile(profileName);
         condition.setProfile(profileDO);
 
-        Pageable pageable = new PageRequest(pageNum - 1, pageSize);
+        Pageable pageable = PageRequest.of(pageNum - 1, pageSize);
         condition.setPageable(pageable);
         condition.setMaxVersion(maxVersion);
         condition.setMinVersion(minVersion);

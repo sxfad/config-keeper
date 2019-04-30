@@ -57,7 +57,7 @@ public class ApplicationConfigQueryForm {
         applicationConfigCondition.setApplication(applicationDO).setProfile(profileDO);
         applicationConfigCondition.setSearchKey(searchKey);
 
-        Pageable pageable = new PageRequest(pageNum - 1, pageSize);
+        Pageable pageable = PageRequest.of(pageNum - 1, pageSize);
         applicationConfigCondition.setPageable(pageable);
         return applicationConfigCondition;
     }

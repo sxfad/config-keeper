@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ import java.util.List;
  */
 @Configuration
 @EnableConfigurationProperties({TokenProperties.class, BasicAuthorizationProperties.class})
-public class SecurityConfiguration extends WebMvcConfigurerAdapter {
+public class SecurityConfiguration implements WebMvcConfigurer {
     @Autowired
     private TokenProperties tokenProperties;
 

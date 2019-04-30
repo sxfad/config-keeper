@@ -38,7 +38,7 @@ public class UserServiceTest extends BaseServiceTest {
         userService.updateUser(userDO);
 
         UserCondition condition = new UserCondition();
-        Pageable pageable = new PageRequest(1, 10);
+        Pageable pageable = PageRequest.of(1, 10);
         condition.setPageable(pageable);
 
         Page<UserDO> page = userService.pageByCondition(condition);

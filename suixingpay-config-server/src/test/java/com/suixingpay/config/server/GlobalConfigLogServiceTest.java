@@ -33,7 +33,7 @@ public class GlobalConfigLogServiceTest extends BaseServiceTest {
     @Rollback(true)
     public void test() {
         GlobalConfigLogCondition condition = new GlobalConfigLogCondition();
-        Pageable pageable = new PageRequest(1, 10);
+        Pageable pageable = PageRequest.of(1, 10);
         condition.setPageable(pageable);
         UserDO userDO = new UserDO();
         userDO.setId(2);

@@ -145,7 +145,7 @@ public class UserApplicationConfigRoleServiceImpl implements UserApplicationConf
             ApplicationCondition condition = new ApplicationCondition();
             condition.setName(applicationName);
             condition.setSearchKey(searchKey);
-            Pageable pageable = new PageRequest(DEFAULT_PAGE, DEFAULT_SIZE);
+            Pageable pageable = PageRequest.of(DEFAULT_PAGE, DEFAULT_SIZE);
             condition.setPageable(pageable);
             return applicationMapper.listByCondition(condition);
         }

@@ -1,16 +1,13 @@
 buildscript {
     ext {
-        springBootVersion = '2.1.0.RELEASE'
-        springCloudVersion = 'Finchley.SR2' 
-//        sxGradleHome = "https://github.com/sxfad/gradle-scripts/raw/master/"
+        sxGradleHome = "https://github.com/sxfad/gradle-scripts/raw/master/"
         REPOSITORY_HOME = 'http://maven.aliyun.com' // maven需要改为公司内部的仓库
         REPOSITORY_URL =  REPOSITORY_HOME + "/nexus/content/groups/public"
         swaggerVersion = "2.8.0"
     }
-//    apply from: sxGradleHome + 'spring-cloud-edgware.gradle'
+    apply from: sxGradleHome + 'spring-cloud-greenwich.gradle'
     repositories {
-//        maven { url REPOSITORY_URL }
-        mavenCentral()
+        maven { url REPOSITORY_URL }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -23,69 +20,57 @@ description = '配置中心'
 
 apply plugin: 'maven'
 
-//allprojects {
-//
-//    repositories {// 使用 mavenCentral()时，将远程的仓库替换为自己搭建的仓库
-//        all {ArtifactRepository repo ->
-//            // println repo.url.toString()
-//            def url = repo.url.toString()
-//            if (repo instanceof MavenArtifactRepository && (url.startsWith("https://repo1.maven.org/maven2") || url.startsWith('https://jcenter.bintray.com/'))) {
-//                project.logger.warn "Repository ${repo.url} removed."
-//                remove repo
-//            } else {
-//                // println "maven url:" + url
-//            }
-//        }
-//        maven {
-//            url REPOSITORY_URL
-//        }
-//    }
-//
-//    uploadArchives {
-//        repositories {
-//            mavenDeployer {
-//                snapshotRepository(url: REPOSITORY_HOME + "/nexus/content/repositories/snapshots/") {
-//                    authentication(userName: 'xxx', password: 'xxx')
-//                }
-//                repository(url: REPOSITORY_HOME + "/nexus/content/repositories/releases/") {
-//                    authentication(userName: 'xxx', password: 'xxx')
-//                }
-//            }
-//        }
-//    }
-//}
+allprojects {
+
+    repositories {// 使用 mavenCentral()时，将远程的仓库替换为自己搭建的仓库
+        all {ArtifactRepository repo ->
+            // println repo.url.toString()
+            def url = repo.url.toString()
+            if (repo instanceof MavenArtifactRepository && (url.startsWith("https://repo1.maven.org/maven2") || url.startsWith('https://jcenter.bintray.com/'))) {
+                project.logger.warn "Repository ${repo.url} removed."
+                remove repo
+            } else {
+                // println "maven url:" + url
+            }
+        }
+        maven {
+            url REPOSITORY_URL
+        }
+    }
+
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                snapshotRepository(url: REPOSITORY_HOME + "/nexus/content/repositories/snapshots/") {
+                    authentication(userName: 'xxx', password: 'xxx')
+                }
+                repository(url: REPOSITORY_HOME + "/nexus/content/repositories/releases/") {
+                    authentication(userName: 'xxx', password: 'xxx')
+                }
+            }
+        }
+    }
+}
 
 
 
 
 subprojects {
-//    apply from: sxGradleHome + 'spring-cloud2.gradle'
-    apply plugin: 'java'
-    apply plugin: 'eclipse'
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
-
-    repositories {
-        mavenCentral()
-        maven { url "https://repo.spring.io/milestone" }
-    }
+    apply from: sxGradleHome + 'spring-cloud2.gradle'
+	
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 
+	//	With Gradle 4.6 and later, the dependency should be declared in the annotationProcessor configuration
     dependencies {
+		annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
         compileOnly("org.springframework.boot:spring-boot-configuration-processor")
+		annotationProcessor("org.projectlombok:lombok")
         compile("org.projectlombok:lombok")
+		testAnnotationProcessor('org.projectlombok:lombok')
         testCompile('org.projectlombok:lombok')
+		testAnnotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
         testCompile("org.springframework.boot:spring-boot-configuration-processor")
-    }
-    dependencyManagement {
-      imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-      }
-    }
-  
-    jar {
-      enabled = true
     }
 }
 
