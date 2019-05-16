@@ -31,9 +31,9 @@ spring:
         max-idle: 200
 
 suixingpay:
-  autoload:
-    cache:
-      enable: true
   security: # 客户端安全校验用户名和密码
     username: admin
     password: 123456
+autoload:
+  cache:
+    enable: false
