@@ -5,6 +5,7 @@ import com.suixingpay.config.client.exception.UnSetProfileException;
 import lombok.Data;
 import org.springframework.cloud.commons.util.InetUtils;
 import org.springframework.core.env.Environment;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -114,27 +115,32 @@ public class SxfConfigClientProperties {
         if (null == ipAddress || ipAddress.isEmpty()) {
             ipAddress = inetUtils.findFirstNonLoopbackHostInfo().getIpAddress();
         }
-        String envManagementPort = environment.getProperty("management.port");
-        if (null == this.managementPort || this.managementPort.isEmpty()) {
-            String managementPortStr = envManagementPort;
-            if (null == managementPortStr || managementPortStr.isEmpty()) {
-                managementPortStr = environment.getProperty("server.port");
-            }
-            if (null != managementPortStr && !managementPortStr.isEmpty()) {
-                this.managementPort = managementPortStr;
-            }
-        }
-        if (null == this.managementPort || this.managementPort.isEmpty()) {
-            this.managementPort = "8080";
-        }
-
-        if (null == managementContextPath || managementContextPath.isEmpty()) {
-            String prefix = "";
-            if (null == envManagementPort || envManagementPort.isEmpty()){
-                prefix = environment.getProperty("server.context-path", "");
-            }
-            managementContextPath = prefix + environment.getProperty("management.context-path", "");
-        }
+	    boolean samePort;
+	    String serverPort = environment.getProperty("server.port");
+	    if (null == this.managementPort || this.managementPort.isEmpty()) {
+		    this.managementPort = environment.getProperty("management.port");
+		    // disable management context
+		    if (!StringUtils.isEmpty(this.managementPort) && Integer.parseInt(this.managementPort) <= 0) {
+			    this.managementPort = null;
+			    this.managementContextPath = null;
+			    return;
+		    }
+		    samePort = ((this.managementPort == null)
+				    || (serverPort == null && this.managementPort.equals("8080"))
+				    || (!"0".equals(this.managementPort) && this.managementPort.equals(serverPort)));
+		    if (samePort) {
+			    this.managementPort = StringUtils.isEmpty(serverPort) ? "8080" : serverPort;
+		    }
+	    }else {
+		    samePort = this.managementPort.equals(serverPort);
+	    }
+	    if (null == this.managementContextPath || this.managementContextPath.isEmpty()) {
+		    String prefix = "";
+		    if (samePort) {
+			    prefix = environment.getProperty("server.context-path", "");
+		    }
+		    managementContextPath = prefix + environment.getProperty("management.context-path", "");
+	    }
 
     }
 }
